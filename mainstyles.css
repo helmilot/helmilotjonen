@@ -1,0 +1,91 @@
+/* PT Serif fonttien määrittelyt */
+@font-face {
+    font-family: "PT Serif";
+    src: url('./assets/fonts/PTSerif-Regular.woff2') format('woff2'),
+         url('./assets/fonts/PTSerif-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "PT Serif";
+    src: url('./assets/fonts/PTSerif-Italic.woff2') format('woff2'),
+         url('./assets/fonts/PTSerif-Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "PT Serif";
+    src: url('./assets/fonts/PTSerif-Bold.woff2') format('woff2'),
+         url('./assets/fonts/PTSerif-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "PT Serif";
+    src: url('./assets/fonts/PTSerif-BoldItalic.woff2') format('woff2'),
+         url('./assets/fonts/PTSerif-BoldItalic.ttf') format('truetype');
+    font-weight: 700;
+    font-style: italic;
+}
+
+/* Fonttimuuttujat */
+:root {
+        --font-ptserif: 'PT Serif', serif;
+        --font-ptserif-regular: 400;
+        --font-ptserif-bold: 700;
+        --font-ptserif-italic: italic;
+    --art-bg: linear-gradient(to bottom, #010313 0%, #06112a 60%, #0e1f47 100%);
+    --art-bg-blend: screen, lighten, normal;
+    --color-text: #fff;
+    --color-link: #fff;
+    --color-link-hover: #40454a;
+}
+
+body {
+    font-family: var(--font-ptserif);
+    font-weight: var(--font-ptserif-regular);
+    color: var(--color-text);
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--color-text);
+}
+
+p {
+    color: var(--color-text);
+}
+
+a {
+    color: var(--color-link);
+    text-decoration: underline;
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: #595e62;
+}
+
+.jewellerygrid {
+  display: grid;
+  grid-template-columns: repeat(40, 1fr);
+  grid-template-rows: repeat(100, 1fr);
+  width: 1500px; /* Optional: container size */
+  height: 700px; /* Optional: container size */
+}
+
+.item-image img {
+  width: var(--h);  /* Oli ennen 100px Set the width */
+  height: var(--j); /* Oli ennen 70 px Set the height */
+  object-fit: top; /* Control how the image fits in the grid */
+  z-index: 1;
+  position: absolute;
+}
+
+.item-image {
+  grid-column: var(--u);
+  grid-row: var(--v);
+}
