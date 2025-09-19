@@ -2,32 +2,165 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-  <meta charset="UTF-8">
+  <meta ch    .ovet-grid {
+      display: flex;
+      flex-direction: row;
+      gap: 2px;
+      justify-content: center;
+    }"UTF-8">
   <title>Tervetuloa</title>
-  <link rel="stylesheet" href="poster-template.css">
+  <script type="module" src="./assets/components/html-css-viewer.js"></script> <!---Tämä komponentti on HTML- ja CSS-koodin katselija, joka voi myös näyttää esikatselun, löytyy components kansiosta ja liitetään siis koodin tässä-->
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon.png" />
+  <link rel="shortcut icon" href="favicon.png" />  <!-- Faviconin lisääminen-->
+    <link rel="stylesheet" href="mainstyles.css">
+
   <style>
     body {
-      background: rgb(203, 211, 240);
-
-   }
-
-    body {
-      width:80%;
-      max-width:800px;
-      margin: 0 auto; 
-      font-family:'Courier New'
+      color: #000;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      color: #000;
+    }
+    
+    p {
+      color: #000;
+    }
+    
+    a {
+      color: #000;
+      text-decoration: none;
+    }
+    
+    .yks {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 2px;
+      align-items: center;
+      font-size: 15px;
+    }
+    
+    .yks nav {
+      margin: 20px;
+      margin-left: 40px;
+    }
+    
+    .ovet-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 250px auto;
+      max-width: 1000px;
+    }
+    
+    .ovet-grid {
+      display: flex;
+      flex-direction: row;
+      gap: 2px;
+      justify-content: center;
+    }
+    
+    .ovi {
+      width: 200px;
+      height: auto;
+    }
+    
+    .ovi img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      transition: opacity 0.3s ease;
+    }
+    
+    .ovi {
+      position: relative;
+      width: 200px;
+      height: auto;
+    }
+    
+    .ovi .ovi-auki {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .ovi:hover .ovi-auki {
+      opacity: 1;
+    }
+    
+    .ovi:hover .ovi-kiinni {
+      opacity: 0;
     }
   </style>
+
     </head>
 
 
 <body>
+
 <div class="yks" id = "uniikki">
-  <h1>Oma sivuni</h1> <!-- kuusi tasoa H:ta, eri otsikkotyypit-->
-  <p>
-    <a href="https://kenana.myportfolio.com">Kenana</a>
-     ei tykkää Metan-tuotteista, joten aloitimme projektin</p>
+
+  <nav>
+    <a href="Introduction.html">Intro</a>
+  </nav>
+
+    <nav>
+    <a href="Jewellery lines.html">Jewellery lines</a>
+  </nav>
+
+    <nav>
+    <a href="Motion.html">Motion work and sounds</a>
+  </nav>
+
+  <nav>
+    <a href="Poster-projects.html">Poster projects</a>
+  </nav>
+
+  <nav>
+    <a href="Experimental-pages.html">Experimental pages</a>
+  </nav>
+
   </div>
+
+  <!-- Ovet-osio -->
+  <div class="ovet-container">
+    <div class="ovet-grid">
+      <div class="ovi">
+        <a href="Introduction.html">
+          <img class="ovi-kiinni" src="./assets/img/ovi1.webp" alt="Ovi 1">
+          <img class="ovi-auki" src="./assets/img/ovi1-auki.webp" alt="Ovi 1 auki">
+        </a>
+      </div>
+      <div class="ovi">
+        <a href="Jewellery lines.html">
+          <img class="ovi-kiinni" src="./assets/img/ovi2.webp" alt="Ovi 2">
+          <img class="ovi-auki" src="./assets/img/ovi2-auki.webp" alt="Ovi 2 auki">
+        </a>
+      </div>
+      <div class="ovi">
+        <a href="Motion.html">
+          <img class="ovi-kiinni" src="./assets/img/ovi3.webp" alt="Ovi 3">
+          <img class="ovi-auki" src="./assets/img/ovi3-auki.webp" alt="Ovi 3 auki">
+        </a>
+      </div>
+      <div class="ovi">
+        <a href="Poster-projects.html">
+          <img class="ovi-kiinni" src="./assets/img/ovi4.webp" alt="Ovi 4">
+        <img class="ovi-auki" src="./assets/img/ovi4-auki.webp" alt="Ovi 4 auki">
+      </div>
+      <div class="ovi">
+        <a href="Experimental-pages.html">
+          <img class="ovi-kiinni" src="./assets/img/ovi5.webp" alt="Ovi 5">
+          <img class="ovi-auki" src="./assets/img/ovi5-auki.webp" alt="Ovi 5 auki">
+        </a>
+      </div>
+    </div>
+  </div>
+  
 
 </body>
 </html>
