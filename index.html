@@ -2,17 +2,16 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-  <meta ch    .ovet-grid {
-      display: flex;
-      flex-direction: row;
-      gap: 2px;
-      justify-content: center;
-    }"UTF-8">
-  <title>Tervetuloa</title>
-  <script type="module" src="./assets/components/html-css-viewer.js"></script> <!---Tämä komponentti on HTML- ja CSS-koodin katselija, joka voi myös näyttää esikatselun, löytyy components kansiosta ja liitetään siis koodin tässä-->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Helmilotjonen Portfolio</title>
+  <script type="module" src="./assets/components/html-css-viewer.js"></script>
+  <!-- Parempi favicon-tuki -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link rel="icon" type="image/png" sizes="32x32" href="favicon.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="favicon.png" />
-  <link rel="shortcut icon" href="favicon.png" />  <!-- Faviconin lisääminen-->
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon.png" />
+  <link rel="shortcut icon" href="favicon.png" />
     <link rel="stylesheet" href="mainstyles.css">
 
   <style>
@@ -94,6 +93,51 @@
     
     .ovi:hover .ovi-kiinni {
       opacity: 0;
+    }
+    
+    /* Mobiiliversio */
+    @media (max-width: 768px) {
+      .yks {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      
+      .yks nav {
+        margin: 5px 0;
+        margin-left: 20px;
+      }
+      
+      .ovet-container {
+        margin: 30px auto;
+        padding: 0 10px;
+      }
+      
+      .ovet-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+      }
+      
+      .ovi {
+        width: 150px;
+      }
+    }
+    
+    /* Pieni mobiili */
+    @media (max-width: 480px) {
+      .ovi {
+        width: 120px;
+      }
+      
+      .ovet-grid {
+        gap: 5px;
+      }
+      
+      .yks nav {
+        margin-left: 10px;
+        font-size: 14px;
+      }
     }
   </style>
 
