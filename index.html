@@ -123,13 +123,22 @@
         width: 150px;
       }
       
-      /* Pidempi hover mobiilissa */
+      /* Mobiilissa käytetään :active sen sijaan että hover */
+      .ovi:active .ovi-auki {
+        opacity: 1;
+      }
+      
+      .ovi:active .ovi-kiinni {
+        opacity: 0;
+      }
+      
+      /* Pidempi siirtymä ja viive mobiilissa */
       .ovi .ovi-auki {
-        transition: opacity 1.5s ease;
+        transition: opacity 0.8s ease;
       }
       
       .ovi img {
-        transition: opacity 1.5s ease;
+        transition: opacity 0.8s ease;
       }
     }
     
@@ -148,13 +157,13 @@
         font-size: 14px;
       }
       
-      /* Vielä pidempi hover pienille mobiileille */
+      /* Pienessä mobiilissa hieman pidempi animaatio */
       .ovi .ovi-auki {
-        transition: opacity 2s ease;
+        transition: opacity 1s ease;
       }
       
       .ovi img {
-        transition: opacity 2s ease;
+        transition: opacity 1s ease;
       }
     }
   </style>
