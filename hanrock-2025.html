@@ -34,6 +34,13 @@
         display: grid;
         grid-template-columns: 85% 15%;
     }
+
+        .new-section {
+        padding: 5px 10px 5px 20px;
+        font-size: 25px;
+        display: grid;
+        grid-template-rows: 85% 15%;
+    }
     
     .top-left {
         display: grid;
@@ -286,6 +293,72 @@
         font-size: 20px;
         opacity: 1;
     }
+
+        .stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 20px;
+        padding: 5px 20px 5px 20px;
+        justify-content: center;
+    }
+
+            .stat {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 40px;
+        text-align: center;
+        min-height: 200px;
+    }
+
+      .header {
+        padding: 5px 20px 5px 20px;
+        justify-content: center;
+        font-size: 30px;
+    }
+
+      .header2 {
+        padding: 5px 20px 5px 20px;
+        justify-content: center;
+        font-size: 50px;
+        align-items: center;
+        text-align: justify;
+    }
+    
+    .pink-text {
+        color: #ffffff !important;
+        text-shadow: 
+            0 0 5px #ff69b4,
+            0 0 10px #ff69b4,
+            0 0 15px #ff69b4,
+            0 0 20px #ff1493;
+    }
+    
+    .hover-container {
+        position: relative;
+        display: inline-block;
+    }
+    
+    .hover-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(225, 89, 198, 0.8);
+        color: white;
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-size: 18px;
+        font-weight: bold;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        pointer-events: none;
+        z-index: 10;
+    }
+    
+    .hover-container:hover .hover-text {
+        opacity: 1;
+    }
     
 
 
@@ -344,6 +417,7 @@
   </div>
   
   <div class="bottom-section">
+
     <div class="bottom-top">
       <div class="bottom-top-section">
         <p>2020</p>
@@ -428,7 +502,43 @@
           the atmosphere felt even more energized.</p>
       </div>
     </div>
-  </div>
+    </div>
+
+    <div class="header">
+      <h1>More stats</h1>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="hover-container">
+          <img src="assets/img/stat1.webp" alt="Hanrock 2020" style="max-width: 80%; height: auto;">
+          <div class="hover-text">The Band and the manager (Helmi)</div>
+        </div>
+      </div>
+      <div class="stat">
+        <div class="hover-container">
+          <img src="assets/img/audience.webp" alt="Hanrock 2020" style="max-width: 70%; height: auto;">
+          <div class="hover-text">The audience</div>
+        </div>
+      </div>
+      
+      <div class="stat">
+        <div class="hover-container">
+          <img src="assets/img/yearbook.webp" alt="Hanrock 2020" style="max-width: 90%; height: auto;">
+          <div class="hover-text">The yearbook</div>
+        </div>
+      </div>
+    </div>
+
+        <div class="header2">
+      <h1>Gimme Gimme Gimme Reiviluola Hold the Line Livin' on a prayer Like a prayer Angels
+        Onnellinen It's my life Summer of '69 Don't stop believing Poison You give lova a bad name
+        Thunderstruck Valokuvia Taivas Lyö Tulta <span class="pink-text">Viva La Hanrock</span> Hard Rock Hallelujah Bohemian Rhapsody Rusketusraidat
+        Ikuinen virta Ihmisten Edessä Lay all your love on me Dancing queen Take a chance Unwritten
+        Tuulet puhaltaa Final countdown
+      </h1>
+    </div>
+
 
   <!-- Modal for webbi.webp -->
   <div id="imageModal" class="modal">
