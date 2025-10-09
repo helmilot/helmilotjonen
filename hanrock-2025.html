@@ -97,6 +97,7 @@
         width: 100%;
         height: 100%;
         background-color: rgba(0,0,0,0.9);
+        overflow-y: auto;
     }
     
     .modal-content {
@@ -104,7 +105,9 @@
         margin: 5% auto;
         width: 100%;
         max-width: 1000px;
+        max-height: 90vh;
         text-align: center;
+        overflow-y: auto;
     }
     
     .modal-image {
@@ -128,6 +131,48 @@
     
     .close:hover {
         background: rgba(0,0,0,0.8);
+    }
+    
+    /* Responsiivinen modal pienille ruuduille */
+    @media (max-width: 768px) {
+        .modal-content {
+            margin: 2% auto;
+            width: 95%;
+            max-width: none;
+        }
+        
+        .modal-image {
+            width: 100%;
+            max-width: 90vw;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+        
+        .close {
+            top: -30px;
+            right: 5px;
+            font-size: 24px;
+            padding: 3px 8px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .modal-content {
+            margin: 1% auto;
+            width: 98%;
+        }
+        
+        .modal-image {
+            max-width: 95vw;
+            max-height: 75vh;
+        }
+        
+        .close {
+            top: -25px;
+            right: 2px;
+            font-size: 20px;
+            padding: 2px 6px;
+        }
     }
     
     .bottom-section {
@@ -540,6 +585,10 @@
       </h1>
     </div>
 
+    <div class="header">
+          <a href="Experimental-pages.html">Back to other experiments</a>
+      <a href="index.html">Back to home</a>
+    </div>
 
   <!-- Modal for webbi.webp -->
   <div id="imageModal" class="modal">
