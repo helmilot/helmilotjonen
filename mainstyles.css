@@ -39,7 +39,7 @@
         --font-ptserif-italic: italic;
     --art-bg: linear-gradient(to bottom, #010313 0%, #06112a 60%, #0e1f47 100%);
     --art-bg-blend: screen, lighten, normal;
-    --color-text: #fff;
+    --color-text: #000000;
     --color-link: #fff;
     --color-link-hover: #40454a;
 }
