@@ -279,6 +279,12 @@ document.addEventListener('DOMContentLoaded', function() {
   const ovet = document.querySelectorAll('.ovi');
   console.log('Löydettiin', ovet.length, 'ovea');
   
+  // Varmista että kaikki ovet ovat kiinni sivun latautuessa
+  ovet.forEach(ovi => {
+    ovi.classList.remove('ovi-touched');
+  });
+  console.log('Kaikki ovet suljettu sivun latauksen yhteydessä');
+  
   ovet.forEach((ovi, index) => {
     let touchStarted = false;
     const linkki = ovi.querySelector('a');
@@ -338,6 +344,15 @@ document.addEventListener('DOMContentLoaded', function() {
       this.classList.remove('ovi-touched');
       touchStarted = false;
     }, { passive: true });
+  });
+});
+
+// Varmista että ovet ovat kiinni myös kun sivulle palataan selaimen takaisin-napilla
+window.addEventListener('pageshow', function(event) {
+  console.log('Pageshow event - suljetaan kaikki ovet');
+  const ovet = document.querySelectorAll('.ovi');
+  ovet.forEach(ovi => {
+    ovi.classList.remove('ovi-touched');
   });
 });
 </script>
