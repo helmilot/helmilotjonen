@@ -95,12 +95,35 @@
       opacity: 0;
     }
     
+    /* Responsiivinen skaalaus tabletille/iPadille */
+    @media (max-width: 1024px) {
+      .ovet-grid {
+        gap: 25px;
+      }
+      
+      .ovi {
+        width: 180px;
+      }
+    }
+    
+    @media (max-width: 900px) {
+      .ovet-grid {
+        gap: 15px;
+      }
+      
+      .ovi {
+        width: 160px;
+      }
+    }
+    
+
     /* Mobiiliversio */
-    @media (max-width: 768px) {
+    @media (max-width: 820px) {
       .yks {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: flex-center;
         gap: 10px;
+        margin-top: 5px;
       }
       
       .yks nav {
@@ -109,7 +132,7 @@
       }
       
       .ovet-container {
-        margin: 30px auto;
+        margin: auto;
         padding: 0 10px;
       }
       
@@ -123,22 +146,41 @@
         width: 150px;
       }
       
-      /* Mobiilissa käytetään :active sen sijaan että hover */
-      .ovi:active .ovi-auki {
+      /* Mobiilissa käytetään sekä :active että :focus kosketusta varten */
+      .ovi:active .ovi-auki,
+      .ovi:focus-within .ovi-auki,
+      .ovi a:focus .ovi-auki {
         opacity: 1;
       }
       
-      .ovi:active .ovi-kiinni {
+      .ovi:active .ovi-kiinni,
+      .ovi:focus-within .ovi-kiinni,
+      .ovi a:focus .ovi-kiinni {
         opacity: 0;
       }
       
       /* Pidempi siirtymä ja viive mobiilissa */
       .ovi .ovi-auki {
-        transition: opacity 0.8s ease;
+        transition: opacity 2s ease;
       }
       
       .ovi img {
-        transition: opacity 0.8s ease;
+        transition: opacity 2s ease;
+      }
+      
+      /* Kosketusystävällisyys */
+      .ovi a {
+        display: block;
+        -webkit-tap-highlight-color: transparent;
+      }
+      
+      /* JavaScript-lisätty luokka kosketukselle */
+      .ovi-touched .ovi-auki {
+        opacity: 1 !important;
+      }
+      
+      .ovi-touched .ovi-kiinni {
+        opacity: 0 !important;
       }
     }
     
@@ -158,12 +200,9 @@
       }
       
       /* Pienessä mobiilissa hieman pidempi animaatio */
-      .ovi .ovi-auki {
-        transition: opacity 1s ease;
-      }
-      
-      .ovi img {
-        transition: opacity 1s ease;
+      .ovi .ovi-auki,
+      .ovi .ovi-kiinni {
+        transition: opacity 1.5s ease;
       }
     }
   </style>
@@ -233,6 +272,75 @@
     </div>
   </div>
   
+<script>
+// Parannettu kosketustuki mobiililaitteille
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('Ovi-skripti ladattu');
+  const ovet = document.querySelectorAll('.ovi');
+  console.log('Löydettiin', ovet.length, 'ovea');
+  
+  ovet.forEach((ovi, index) => {
+    let touchStarted = false;
+    const linkki = ovi.querySelector('a');
+    const kohdeURL = linkki.href;
+    
+    console.log('Liitetään event listenerit oveen', index + 1, 'URL:', kohdeURL);
+    
+    // Estetään linkin normaali toiminta
+    linkki.addEventListener('click', function(e) {
+      // Tarkista ruudun koko
+      if (window.innerWidth <= 820) {
+        e.preventDefault();
+        console.log('Klikattu ovea', index + 1, '- näytetään ovi auki 2 sekuntia (mobiili)');
+        
+        // Lisää ovi-touched luokka
+        ovi.classList.add('ovi-touched');
+        
+        // Odota 2 sekuntia ja sitten navigoi
+        setTimeout(() => {
+          console.log('Navigoidaan sivulle:', kohdeURL);
+          window.location.href = kohdeURL;
+        }, 2000);
+      } else {
+        console.log('Desktop-koko - navigoidaan heti ovesta', index + 1);
+        // Isommalla ruudulla normaali navigointi (ei estä)
+      }
+    });
+    
+    // Kosketuksen alku
+    ovi.addEventListener('touchstart', function(e) {
+      console.log('Touch start - ovi', index + 1);
+      touchStarted = true;
+    }, { passive: true });
+    
+    // Kosketuksen loppu
+    ovi.addEventListener('touchend', function(e) {
+      console.log('Touch end - ovi', index + 1);
+      if (touchStarted && window.innerWidth <= 820) {
+        e.preventDefault();
+        console.log('Koskettu ovea', index + 1, '- näytetään ovi auki 2 sekuntia (mobiili)');
+        
+        // Lisää ovi-touched luokka
+        this.classList.add('ovi-touched');
+        
+        // Odota 2 sekuntia ja sitten navigoi
+        setTimeout(() => {
+          console.log('Navigoidaan sivulle:', kohdeURL);
+          window.location.href = kohdeURL;
+        }, 2000);
+      }
+      touchStarted = false;
+    }, { passive: false });
+    
+    // Jos kosketus peruuntuu
+    ovi.addEventListener('touchcancel', function(e) {
+      console.log('Touch cancel - ovi', index + 1);
+      this.classList.remove('ovi-touched');
+      touchStarted = false;
+    }, { passive: true });
+  });
+});
+</script>
 
 </body>
 </html>
