@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sivu 2</title>
+  <script type="module" src="./assets/components/html-css-viewer.js"></script>
+  <link rel="icon" href="favicon.png" />
+  <link rel="stylesheet" href="mainstyles.css">
+
+
+<style>
+
+      /* Kapakana fontti */
+    @font-face {
+      font-family: 'Kapakana';
+      src: url('./assets/fonts/Kapakana-Regular.ttf') format('truetype');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+        body {
+        color: #000 !important;
+        display: grid;
+        grid-template-rows: auto 1fr;
+        min-height: 100vh;
+
+        padding: 0;
+        gap: 0;
+    }
+
+    a {
+        color: #000 !important;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: #ffffff !important;
+        text-decoration: none;
+    }
+
+    .navicontainer {
+  display: row;
+  justify-content: flex-end; /* vie .navi oikeaan reunaan */
+  padding-right: 30px;
+  padding-top: 10px;
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+}
+
+.navi {
+  display: flex;
+  flex-direction: row;
+   justify-content: center; /* vie linkit oikeaan laitaan boksin sisällä */
+  gap: 10px;                 
+  padding: 10px;
+  gap: 20px;
+}
+
+.navi a {
+  color: rgb(66, 65, 65) !important;              /* näkyvä linkkiväri */
+  text-decoration: none;
+  font-size: 16px;
+    background: #c9dcd7;
+}
+
+.navi2 {
+  display: flex;
+  flex-direction: row;
+   justify-content: center; /* vie linkit oikeaan laitaan boksin sisällä */
+  gap: 10px;                 
+  padding: 5px;
+}
+
+.navi2 a {
+  color: rgb(243, 253, 252) !important;   /* näkyvä linkkiväri */
+  text-decoration: none;
+  font-size: 16px;
+  background: #515151;
+}
+
+.navi2 a:hover {
+  color: #7e7d7d !important; /* hover-väri */
+}
+
+.navi a:hover {
+  color: #a0f0e3 !important;              /* näkyvä linkkiväri */
+}
+    
+    .navi nav {
+      margin-right: 30px;
+    }
+
+    /* Kuvakonttaineri */
+    .kuva-layout {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: -1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Iso kuva - koko leveys */
+    .iso-kuva {
+      width: 100%;
+      aspect-ratio: 16/11;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+    }
+
+        .iso-kuva2 {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+    }
+
+        .iso-kuva3 {
+      width: 100%;
+      aspect-ratio: 16/19;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+    }
+
+
+
+
+    /* Läpi kuvien menevä teksti */
+    .yliteksti-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .yliteksti {
+      position: absolute;
+      top: var(--y, 5%);
+      left: var(--x, 0%);
+      white-space: nowrap;
+      color: #bfddd6;
+      font-size: 20vw;  /* responsiivinen */
+      pointer-events: none;
+    }
+
+      .yliteksti2 {
+      position: absolute;
+      top: var(--y, 50%);
+      left: var(--x, 30%);
+      transform: translateX(-50%);
+      max-width: 30%;
+      white-space: normal;
+      color: #373737;
+      font-size: 1vw;  /* responsiivinen */
+      pointer-events: none;
+    }
+
+        .yliteksti3 {
+      position: absolute;
+      top: var(--y, 5%);
+      left: var(--x, 0%);
+      white-space: nowrap;
+      color: #D7E6FF;
+      font-size: 12vw;  /* responsiivinen */
+      pointer-events: none;
+    }
+
+      .yliteksti4 {
+      position: absolute;
+      top: var(--y, 50%);
+      left: var(--x, 30%);
+      transform: translateX(-50%);
+      max-width: 30%;
+      white-space: normal;
+      color: #eaeaea;
+      font-size: 1vw;  /* responsiivinen */
+      pointer-events: none;
+    }
+
+
+
+
+
+
+</style>
+
+<body>
+
+      <div class="navicontainer">
+<div class="navi">
+
+    <navi>
+    <a href="index.html">Home</a>
+  </navi>
+
+  <navi>
+    <a href="Introduction.html">Intro</a>
+  </navi>
+
+    <navi>
+    <a href="Jewellery lines.html">Jewellery lines</a>
+  </navi>
+
+    <navi>
+    <a href="Motion.html">Motion work and sounds</a>
+  </navi>
+
+  <navi>
+    <a href="Poster-projects.html">Poster projects</a>
+  </navi>
+
+  <navi>
+    <a href="Experimental-pages.html">Experimental pages</a>
+  </navi>
+  </div>
+
+  <div class="navi2">
+
+    <a href="Jewellery lines.html">2025</a>
+    <a href="Jewellery_two.html">2024</a>
+
+  </div>
+   </div>
+
+
+<!-- Läpi menevät tekstit -->
+<div class="yliteksti-container">
+<span class="yliteksti" style="--x: 63vw;--y: 25vw;">4/25</span>
+<span class="yliteksti" style="--x: 25vw;--y: 42vw;">Aalto Arts</span>
+<span class="yliteksti2" style="--x: 55vw;--y: 116vw;">This piece was the final project for the course Wandering/Wondering with Art (Liikkeellä taiteen kanssa). The assignment was to create a two-metre-long artwork in any form. In the middle of a very busy year full of celebrations, I wanted to make a necklace that I could wear at these festivities — to quite literally be on the move with my own art.</span>
+<span class="yliteksti3" style="--x: 58vw; --y : 174vw;">Weared</span>
+<span class="yliteksti4" style="--x: 75vw; --y: 187vw;">at my friend’s wedding in beautiful Taormina. The piece went into use right away, and it was refreshing to make art just for myself for once. While working on it, I spent a lot of time reflecting on my own taste and on how I express myself through the way I dress.</span>
+
+<!-- Kuvalayout: 2 isoa kuvaa + 4 pientä rivissä -->
+<div class="kuva-layout">
+  <div class="iso-kuva" style="background-image: url('./assets/img/koruaalto1.webp');"></div>
+  <div class="iso-kuva2" style="background-image: url('./assets/img/koruaalto2.webp');"></div>
+<div class="iso-kuva3" style="background-image: url('./assets/img/koruaalto3.webp');"></div>
+</div>
+
+
+
+
+
+
+</body>
+</html>
