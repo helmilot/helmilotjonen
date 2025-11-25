@@ -144,6 +144,7 @@
       display: inline-block;
       white-space: nowrap;
       animation: marquee2 120s linear infinite;
+      animation-delay: -60s;  /* alkaa puolivälissä */
       font-size: 800px;
       color: #f3f2f2;
       opacity: 0.7;
@@ -155,7 +156,7 @@
         transform: translateX(100vw);
       }
       100% {
-        transform: translateX(-10%);
+        transform: translateX(-1%);
       }
     }
 
@@ -173,7 +174,8 @@
     .marquee3-content {
       display: inline-block;
       white-space: nowrap;
-      animation: marquee2 120s linear infinite;
+      animation: marquee3 120s linear infinite;
+      animation-delay: -60s;  /* alkaa puolivälissä */
       font-size: 300px;
       color: #f3f2f2;
       opacity: 0.5;
@@ -185,7 +187,7 @@
         transform: translateX(100vw);
       }
       100% {
-        transform: translateX(-20%);
+        transform: translateX(-10%);
       }
     }
 
@@ -238,10 +240,12 @@
   flex-direction: row;
    justify-content: center; /* vie linkit oikeaan laitaan boksin sisällä */
   gap: 10px;                 
-  padding: 10px;
+  padding: 20px;
   gap: 20px;
   /*background: #9c9b9b;*/
 }
+
+
 
 .navi a {
   color: rgb(101, 100, 100);              /* näkyvä linkkiväri */
@@ -253,9 +257,6 @@
   color: rgb(255, 255, 255);              /* näkyvä linkkiväri */
 }
     
-    .navi nav {
-      margin-right: 30px;
-    }
     
     .ovet-container {
       display: flex;
@@ -473,6 +474,7 @@
 
 
 <div class="navicontainer">
+
 <div class="navi">
 
 
@@ -533,6 +535,7 @@
         </a>
       </div>
     </div>
+
 
 
   </div>
@@ -645,7 +648,7 @@ function draw() {
   for (let x = 0; x < windowWidth; x += stripeWidth * 2) {
     fill(219, 219, 219);
     rect(x, 0, stripeWidth, windowHeight);
-    fill(225, 225, 225);
+    fill(225, 225, 230);
     rect(x + stripeWidth, 0, stripeWidth, windowHeight);
   }
 
