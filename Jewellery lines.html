@@ -10,21 +10,21 @@
 
 
 <style>
+
+      /* Kapakana fontti */
     @font-face {
-        font-family: 'Big Caslon';
-        src: url('./assets/fonts/BigCaslon.ttf') format('truetype');
-        font-weight: normal;
-        font-style: normal;
+      font-family: 'Kapakana';
+      src: url('./assets/fonts/Kapakana-Regular.ttf') format('truetype');
+      font-weight: 400;
+      font-style: normal;
     }
 
         body {
         color: #000 !important;
-        font-family: 'Big Caslon', serif !important;
-        font-weight: bold !important;
         display: grid;
         grid-template-rows: auto 1fr;
         min-height: 100vh;
-        margin: 60px;
+
         padding: 0;
         gap: 0;
     }
@@ -35,20 +35,285 @@
     }
 
     a:hover {
-        color: #717171 !important;
+        color: #ffffff !important;
         text-decoration: none;
     }
+
+    .navicontainer {
+  display: row;
+  justify-content: flex-end; /* vie .navi oikeaan reunaan */
+  padding-right: 30px;
+  padding-top: 10px;
+  position: fixed;
+  width: 100%;
+}
+
+.navi {
+  display: flex;
+  flex-direction: row;
+   justify-content: center; /* vie linkit oikeaan laitaan boksin sisällä */
+  gap: 10px;                 
+  padding: 10px;
+  gap: 20px;
+}
+
+.navi a {
+  color: rgb(101, 100, 100);              /* näkyvä linkkiväri */
+  text-decoration: none;
+  font-size: 16px;
+    background: #efefef;
+}
+
+.navi2 {
+  display: flex;
+  flex-direction: row;
+   justify-content: center; /* vie linkit oikeaan laitaan boksin sisällä */
+  gap: 10px;                 
+  padding: 5px;
+}
+
+.navi2 a {
+  color: white !important;   /* näkyvä linkkiväri */
+  text-decoration: none;
+  font-size: 16px;
+  background: #3a3a3a;
+}
+
+.navi2 a:hover {
+  color: #1f1f1f !important; /* hover-väri */
+}
+
+.navi a:hover {
+  color: rgb(255, 255, 255);              /* näkyvä linkkiväri */
+}
+    
+    .navi nav {
+      margin-right: 30px;
+    }
+
+    /* Taustakontaineri - 2x4 ruudukko */
+    .taustaruudukko {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr; /* 2 samankokoista laatikkoa vierekkäin */
+      grid-template-rows: auto; /* rivit mukautuvat sisältöön */
+    }
+
+    .ruutu {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      aspect-ratio: 1 / 1.2; /* kuvasuhde - säädä tätä haluamaksesi */
+      position: relative; /* jotta teksti voi sijoittua suhteessa ruutuun */
+    }
+
+    .ruutu-teksti {
+      position: absolute;
+      top: var(--y, 50%);    /* pystysuunta - oletuksena 50% */
+      left: var(--x, 20px);  /* vaakasuunta - oletuksena 20px */
+      color: #59565f;
+      font-size: 2vw;  /* responsiivinen */
+      font-family: 'Kapakana', sans-serif;
+    }
+
+    /* Läpi ruutujen menevä teksti */
+    .yliteksti-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .yliteksti {
+      position: absolute;
+      top: var(--y, 5%);
+      left: 0;
+      width: 100%;
+      white-space: nowrap;
+      color: #ffffff;
+      font-size: 20vw;  /* responsiivinen */
+      pointer-events: none;
+    }
+
+      .yliteksti2 {
+      position: absolute;
+      top: var(--y, 50%);
+      left: 50%;
+      transform: translateX(-50%);
+      max-width: 15%;
+      white-space: normal;
+      color: #373737;
+      font-size: 1vw;  /* responsiivinen */
+      pointer-events: none;
+    }
+
+      .yliteksti3 {
+      position: absolute;
+      top: var(--y, 50%);
+      left: 50%;
+      transform: translateX(-50%);
+      max-width: 15%;
+      white-space: normal;
+      color: #373737;
+      font-size: 1vw;  /* responsiivinen */
+      pointer-events: none;
+    }
+
+      .yliteksti4 {
+      position: absolute;
+      top: var(--y, 50%);
+      left: var(--x, 0%);
+      width: 100%;
+      white-space: normal;
+      color: #ffffff;
+      font-size: 6vw;  /* responsiivinen */
+      pointer-events: none;
+    }
+
+      .yliteksti5 {
+      position: absolute;
+      top: var(--y, 50%);
+      left: 50%;
+      transform: translateX(-50%);
+      max-width: 15%;
+      white-space: normal;
+      color: #373737;
+      font-size: 1vw;  /* responsiivinen */
+      pointer-events: none;
+    }
+
+
+    /* Taustakuvat ruuduille */
+    .ruutu:nth-of-type(1) {
+      background-image: url('./assets/img/koru1.webp');
+    }
+    .ruutu:nth-of-type(2) {
+      background-image: url('./assets/img/koru5.webp');
+    }
+    .ruutu:nth-of-type(3) {
+      background-image: url('./assets/img/koru9.webp');
+    }
+    .ruutu:nth-of-type(4) {
+      background-image: url('./assets/img/koru4.webp');
+    }
+    .ruutu:nth-of-type(5) {
+      background-image: url('./assets/img/koru11.webp');
+    }
+    .ruutu:nth-of-type(6) {
+      background-image: url('./assets/img/koru12.webp');
+    }
+    .ruutu:nth-of-type(7) {
+      background-image: url('./assets/img/koru6.webp');
+    }
+    .ruutu:nth-of-type(8) {
+      background-image: url('./assets/img/koru8.webp');
+    }
+
+    .ruutu:nth-of-type(9) {
+      background-image: url('./assets/img/koru10.webp');
+    }
+    .ruutu:nth-of-type(10) {
+      background-image: url('./assets/img/koru7.webp');
+    }
+
+    .ruutu:nth-of-type(11) {
+      background-image: url('./assets/img/koru3.webp');
+    }
+    .ruutu:nth-of-type(12) {
+      background-image: url('./assets/img/koru2.webp');
+    }
+
+    .ruutu:nth-of-type(13) {
+      background-image: url('./assets/img/korut12.webp');
+    }
+    .ruutu:nth-of-type(14) {
+      background-image: url('./assets/img/korut13.webp');
+    }
+
+
 
 </style>
 
 <body>
-  <div class="container">
-    
-    <h2>Coming soon!</h2>
-    
-    <nav>
-      <a href="index.html">← Back to Home</a>
-    </nav>
+
+      <div class="navicontainer">
+<div class="navi">
+
+    <navi>
+    <a href="index.html">Home</a>
+  </navi>
+
+  <navi>
+    <a href="Introduction.html">Intro</a>
+  </navi>
+
+    <navi>
+    <a href="Jewellery lines.html">Jewellery lines</a>
+  </navi>
+
+    <navi>
+    <a href="Motion.html">Motion work and sounds</a>
+  </navi>
+
+  <navi>
+    <a href="Poster-projects.html">Poster projects</a>
+  </navi>
+
+  <navi>
+    <a href="Experimental-pages.html">Experimental pages</a>
+  </navi>
   </div>
+
+  <div class="navi2">
+
+    <a href="Jewellery_two.html">2024</a>
+    <a href="Jewellery_three.html">Aalto ARTS</a>
+
+  </div>
+   </div>
+
+
+<!-- Läpi menevät tekstit -->
+<div class="yliteksti-container">
+  <span class="yliteksti" style="--y: 23vw;">Hanrock 25</span>
+  <span class="yliteksti2" style="--y: 57vw;">This jewellery line was created as a side project for the Hanrock 2025 concert. The collection consists mainly of bracelets inspired by the event. Creating these pieces gave me the chance to improvise and to challenge myself as an artist.</span>
+  <span class="yliteksti3" style="--y: 175vw;">During this project, I focused on patterns and how changing them can create interesting results. Overall, mimicing, repetition, and staying focused were key outcomes of the process, well as understanding when it is the right moment to break the pattern.</span>
+  <span class="yliteksti4" style="--x: 40%; --y: 357vw;">Despite the rain,</span>
+  <span class="yliteksti5" style="--x: 40%; --y: 364vw;">the line sold out at the event and through social media! Big thanks to everyone who showed interest. This really motivated me to try new techniques and improve my self-expression.</span>
+</div>
+
+<!-- Taustakontaineri 2x4 ruudukko -->
+<div class="taustaruudukko">
+  <div class="ruutu"><span class="ruutu-teksti" style="--x: 30%; --y: 93%;">Merellä</span></div>
+  <div class="ruutu"><span class="ruutu-teksti" style="--x: 58%; --y: 90%;">Merellä 2</span></div>
+  <div class="ruutu"><span class="ruutu-teksti" style="--x: 14%; --y: 90%;">Hauen Hammas valk.</span></div>
+  <div class="ruutu"><span class="ruutu-teksti" style="--x: 56%; --y: 93%;">Hauen Hammas must.</span></div>
+  <div class="ruutu"><span class="ruutu-teksti" style="--x: 33%; --y: 90%;">Keskustelu</span></div>
+  <div class="ruutu"><span class="ruutu-teksti" style="--x: 58%; --y: 90%;">Eleganssi?</span></div>
+  <div class="ruutu"><span class="ruutu-teksti" style="--x: 10%; --y: 88%;">Karusellin ranta</span></div>
+  <div class="ruutu"><span class="ruutu-teksti" style="--x: 42%; --y: 91%;">Casinon ranta</span></div>
+  <div class="ruutu"><span class="ruutu-teksti" style="--x: 30%; --y: 93%;">Sirkus</span></div>
+  <div class="ruutu"><span class="ruutu-teksti" style="--x: 70%; --y: 90%;">Trubaduuri</span></div>
+  <div class="ruutu"><span class="ruutu-teksti" style="--x: 43%; --y: 88%;">Kalavale</span></div>
+  <div class="ruutu"><span class="ruutu-teksti" style="--x: 60%; --y: 77%;">Blackout</span></div>
+  <div class="ruutu"><span class="ruutu-teksti" style="--x: 35%; --y: 80%;">Minä & musiikki</span></div>
+  <div class="ruutu"><span class="ruutu-teksti" style="--x: 60%; --y: 75%;">Riennot</span></div>
+</div>
+
+
+
+
+
+
+
+
+
 </body>
 </html>
