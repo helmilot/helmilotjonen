@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creative Computation - Helmi Lötjönen</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png" />
+  <link rel="stylesheet" href="mainstyles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+  <style>
+    body {
+      color: #000 !important;
+      background: #ffffff;
+      line-height: 1.6;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      color: #000 !important;
+    }
+    
+    p {
+      color: #000 !important;
+    }
+
+    a {
+      color: #000 !important;
+    }
+    
+    .container {
+      max-width: 1000px;
+      margin-left: 50px;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container2 {
+      max-width: 1000px;
+      margin: 0 auto;
+      margin-left: 50px;
+      display: flex;
+      flex-direction: column;
+    }
+
+        .container3 {
+       margin-left: 50px;
+      margin-bottom: 20px;     
+      display: flex;
+      flex-direction: row;
+    }
+    
+    .sketch-container {
+      margin-left: 50px;
+      margin-bottom: 20px;
+      padding: 40px 20px;
+    }
+
+
+.container {
+  display: flex;
+}
+
+.column {
+  width: 30px;
+  height: 50px;
+  margin: 5px;
+  border: 1px solid #000;
+}
+
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Creative Computation</h1>
+    <p>Exploring the intersection of art, technology, and algorithmic creativity.</p>
+    
+
+    <p>Differences between JS versus CSS+HTML </p>
+
+    <div class="container2">
+    <div class="sketch-container" id="p5-sketch">
+        <p>JS<br>
+function setup() {
+  let canvas = createCanvas(200, 100); // Asetetaan kanvaasin koko <br>
+  canvas.parent('p5-sketch'); // Liitetään canvas sketch-containeriin <br>
+  noLoop();<br>
+}<br>
+
+function draw() { <br>
+  let grayScales = [170, 187, 204, 221]; // Harmaan sävyt<br>
+  let columnWidth = 30;<br>
+  let columnHeight = 50;<br>
+
+  for (let i = 0; i < grayScales.length; i++) {<br>
+    fill(grayScales[i]); // Asettaa täyttövärin<br>
+    rect(i * (columnWidth + 10), 25, columnWidth, columnHeight); // Piirtää neliöt, jossa 5 px väli<br>
+  }<br>
+}<br>
+<br>
+div class="sketch-container" id="p5-sketch"
+
+        </p>
+    </div>
+
+    <div class="container3">
+        <p>CSS<br>
+        .column {
+          width: 30px;
+          height: 50px;
+          margin: 5px;
+          border: 1px solid #000;
+        }
+        </p>
+    <div class="column" style="background-color: #aaa;"></div>
+    <div class="column" style="background-color: #bbb;"></div>
+    <div class="column" style="background-color: #ccc;"></div>
+    <div class="column" style="background-color: #ddd;"></div>
+
+    </div>
+</div>
+</div>
+
+    
+    <nav style="margin-top: 50px;">
+      <a href="Experimental-pages.html">← Back to Experimental Pages</a>
+    </nav>
+  </div>
+
+<script>
+function setup() {
+  let canvas = createCanvas(200, 100); // Asetetaan kanvaasin koko
+  canvas.parent('p5-sketch'); // Liitetään canvas sketch-containeriin
+  noLoop();
+}
+
+function draw() {
+  let grayScales = [170, 187, 204, 221]; // Harmaan sävyt
+  let columnWidth = 30;
+  let columnHeight = 50;
+
+  for (let i = 0; i < grayScales.length; i++) {
+    fill(grayScales[i]); // Asettaa täyttövärin
+    rect(i * (columnWidth + 10), 25, columnWidth, columnHeight); // Piirtää neliöt, jossa 5 px väli
+  }
+}
+</script>
+
+
+</body>
+</html>
