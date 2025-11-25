@@ -1,42 +1,15 @@
-/* PT Serif fonttien määrittelyt */
+/* ITC Garamond fontti */
 @font-face {
-    font-family: "PT Serif";
-    src: url('./assets/fonts/PTSerif-Regular.woff2') format('woff2'),
-         url('./assets/fonts/PTSerif-Regular.ttf') format('truetype');
+    font-family: "ITC Garamond";
+    src: url('./assets/fonts/ITCGaramondStd-BkNarrow.otf') format('opentype');
     font-weight: 400;
     font-style: normal;
-}
-
-@font-face {
-    font-family: "PT Serif";
-    src: url('./assets/fonts/PTSerif-Italic.woff2') format('woff2'),
-         url('./assets/fonts/PTSerif-Italic.ttf') format('truetype');
-    font-weight: 400;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: "PT Serif";
-    src: url('./assets/fonts/PTSerif-Bold.woff2') format('woff2'),
-         url('./assets/fonts/PTSerif-Bold.ttf') format('truetype');
-    font-weight: 700;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: "PT Serif";
-    src: url('./assets/fonts/PTSerif-BoldItalic.woff2') format('woff2'),
-         url('./assets/fonts/PTSerif-BoldItalic.ttf') format('truetype');
-    font-weight: 700;
-    font-style: italic;
 }
 
 /* Fonttimuuttujat */
 :root {
-        --font-ptserif: 'PT Serif', serif;
-        --font-ptserif-regular: 400;
-        --font-ptserif-bold: 700;
-        --font-ptserif-italic: italic;
+        --font-main: 'ITC Garamond', serif;
+        --font-weight-regular: 400;
     --art-bg: linear-gradient(to bottom, #010313 0%, #06112a 60%, #0e1f47 100%);
     --art-bg-blend: screen, lighten, normal;
     --color-text: #000000;
@@ -45,8 +18,8 @@
 }
 
 body {
-    font-family: var(--font-ptserif);
-    font-weight: var(--font-ptserif-regular);
+    font-family: var(--font-main);
+    font-weight: var(--font-weight-regular);
     color: var(--color-text);
     min-height: 100vh;
 }
