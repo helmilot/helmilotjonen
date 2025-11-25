@@ -113,6 +113,15 @@
       position: relative;
     }
 
+        .iso-kuva2 {
+      width: 100%;
+      aspect-ratio: 16/12;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+    }
+
     /* 4 kuvan rivi */
     .kuvarivi {
       display: grid;
@@ -142,10 +151,10 @@
     .yliteksti {
       position: absolute;
       top: var(--y, 5%);
-      left: 0;
-      width: 100%;
+     left: var(--x, 30%);
+      transform: translateX(-50%);
       white-space: nowrap;
-      color: #010418;
+      color: #060921;
       font-size: 20vw;  /* responsiivinen */
       pointer-events: none;
     }
@@ -157,7 +166,7 @@
       transform: translateX(-50%);
       max-width: 30%;
       white-space: normal;
-      color: #373737;
+      color: #eceaea;
       font-size: 1vw;  /* responsiivinen */
       pointer-events: none;
     }
@@ -232,15 +241,16 @@
 
 <!-- Läpi menevät tekstit -->
 <div class="yliteksti-container">
-  <span class="yliteksti" style="--y: 67vw;">Hanrock 24</span>
-  <span class="yliteksti2" style="--y: 85vw;">This was my first more formal jewellery experiment. The line consisted of earrings and was sold alongside the Hanrock concert in 2024. I discovered that making jewellery is a fun and meditative activity, and it also offers the opportunity to surprise yourself as an artist.</span>
-<span class="yliteksti3" style="--x: 10vw; --y : 142vw;">Sold &</span>
-<span class="yliteksti3" style="--x: 25vw; --y: 170vw;">celebrated</span>
-<span class="yliteksti4" style="--x: 25vw; --y: 154vw;">It was amazing to see people get excited about my artistic output as wearable work. As always, dear friends remain the best supporters and give me the motivation to keep creating these projects. This project also taught me that experimentation is worth it. I learned to let go of strict planning and to trust the process. Mixing different materials added a lot of nuance and character to the pieces as well.</span>
+  <span class="yliteksti" style="--x: 33vw;--y: 23vw;">Hanrock</span>
+  <span class="yliteksti" style="--x: 55vw;--y: 38vw;">24</span>
+  <span class="yliteksti2" style="--x: 58vw; --y: 58vw;">This was my first more formal jewellery experiment. The line consisted of earrings and was sold alongside the Hanrock concert in 2024. I discovered that making jewellery is a fun and meditative activity, and it also offers the opportunity to surprise yourself as an artist.</span>
+<span class="yliteksti3" style="--x: 10vw; --y : 120vw;">Sold &</span>
+<span class="yliteksti3" style="--x: 25vw; --y: 148vw;">celebrated</span>
+<span class="yliteksti4" style="--x: 25vw; --y: 132vw;">It was amazing to see people get excited about my artistic output as wearable work. As always, dear friends remain the best supporters and give me the motivation to keep creating these projects. This project also taught me that experimentation is worth it. I learned to let go of strict planning and to trust the process. Mixing different materials added a lot of nuance and character to the pieces as well.</span>
 
 <!-- Kuvalayout: 2 isoa kuvaa + 4 pientä rivissä -->
 <div class="kuva-layout">
-  <div class="iso-kuva" style="background-image: url('./assets/img/Koru241.webp');"></div>
+  <div class="iso-kuva2" style="background-image: url('./assets/img/Koru241.webp');"></div>
   <div class="iso-kuva" style="background-image: url('./assets/img/Koru242webp.webp');"></div>
   <div class="kuvarivi">
     <div class="pieni-kuva" style="background-image: url('./assets/img/Koru243.webp');"></div>
