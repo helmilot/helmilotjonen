@@ -8,21 +8,24 @@
 </head>
 
 <style>
+    /* Kapakana fontti */
     @font-face {
-        font-family: 'Big Caslon';
-        src: url('./assets/fonts/BigCaslon.ttf') format('truetype');
-        font-weight: normal;
-        font-style: normal;
+      font-family: 'Kapakana';
+      src: url('./assets/fonts/Kapakana-Regular.ttf') format('truetype');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    /* ITC Garamond oletusfontti #E9D9E8 */ 
+    @font-face {
+      font-family: 'ITC Garamond';
+      src: url('./assets/fonts/ITCGaramondStd-BkNarrow.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
     }
 
         body {
-        color: #000 !important;
-        font-family: 'Big Caslon', serif !important;
-        font-weight: bold !important;
-        display: grid;
-        grid-template-rows: auto 1fr;
-        min-height: 100vh;
-        margin: 60px;
+        background-color: #e5e4e5 !important;
         padding: 0;
         gap: 0;
     }
@@ -37,16 +40,487 @@
         text-decoration: none;
     }
 
+    .navicontainer {
+  display: row;
+  justify-content: flex-end; /* vie .navi oikeaan reunaan */
+  padding-right: 30px;
+  padding-top: 10px;
+}
+
+.navi {
+  display: flex;
+  flex-direction: row;
+   justify-content: center; /* vie linkit oikeaan laitaan boksin sisällä */
+  gap: 10px;                 
+  padding: 20px;
+  gap: 20px;
+}
+
+
+
+.navi a {
+  color: rgb(101, 100, 100);              /* näkyvä linkkiväri */
+  text-decoration: none;
+  font-size: 16px;
+  background: #ffffff;
+}
+
+.navi a:hover {
+  color: rgb(254, 47, 247) !important;              /* näkyvä linkkiväri */
+}
+
+    .kuva-layout {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: -1;
+      display: flex;
+      flex-direction: column;
+      overflow: visible;
+    }
+
+    /* Iso kuva - koko leveys */
+    .iso-kuva {
+      width: 100%;
+      aspect-ratio: 16/5;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+    }
+
+        .iso-kuva2 {
+      width: 100%;
+      aspect-ratio: 16/4;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+    }
+
+        .iso-kuva3 {
+      width: 100%;
+      aspect-ratio: 16/2;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+    }
+
+    /* Kuvarivi - kaksi osaa */
+    .kuvarivi {
+      display: flex;
+      width: auto;
+    }
+
+    /* Vasemman puolen kuvat-osa */
+    .kuvat-osa {
+      display: flex;
+      width: 35%;
+    }
+
+    .kuvat-osa .pieni-kuva,
+    .kuvat-osa .pieni-kuva2 {
+      width: 80%;
+      aspect-ratio: 3 / 4;
+      margin-left: -25%
+    }
+
+    /* Oikean puolen tekstialue */
+    .teksti-osa {
+      flex: 1;
+      padding-top: 10%;
+      padding-left: 3%;
+      padding-right: 15%;
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+    }
+
+    .teksti-osa h2 {
+      font-family: 'Kapakana', serif;
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #000;
+    }
+
+    .teksti-osa p {
+      font-family: 'ITC Garamond', serif;
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 15px;
+    }
+
+    .pieni-kuva {
+      aspect-ratio: 3 / 4;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+      filter: hue-rotate(110deg) brightness(1.12);
+    }
+
+    .pieni-kuva2 {
+      aspect-ratio: 3 / 4;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+      opacity: 0.7;
+      filter: hue-rotate(100deg) brightness(1.1);
+    }
+
+    .kuva-credit {
+      position: absolute;
+      bottom: 2px;
+      right: 5px;
+      color: #E9D9E8;
+      font-size: 13px;
+      font-family: 'ITC Garamond', serif;
+    }
+
+        .yliteksti-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+        .yliteksti {
+      position: absolute;
+      top: var(--y, 5%);
+     left: var(--x, 30%);
+      transform: translateX(-50%);
+      white-space: nowrap;
+      color: #060921;
+      font-size: 15vw;  /* responsiivinen */
+      pointer-events: none;
+  
+    }
+
+      .yliteksti2 {
+      position: absolute;
+      top: var(--y, 5%);
+     left: var(--x, 30%);
+      transform: translateX(-50%);
+      white-space: nowrap;
+      color: #FFFFFF;
+      font-size: 32vw;  /* responsiivinen */
+      pointer-events: none;
+      font-family: 'Kapakana', serif;
+      opacity: 0.3;
+    }
+
+    /* CV-container 3 saraketta */
+    .cv-container {
+      display: flex;
+      width: 100%;
+      min-width: 900px;
+    }
+
+    .cv-otsikot {
+      width: 5%;
+      padding: 40px 2vw 40px 2vw;
+      flex-shrink: 0;
+    }
+
+    .cv-otsikot h4 {
+      font-size: 21px;
+      margin: 0;
+      line-height: 24px;
+      color: #000;
+      white-space: nowrap;
+    }
+
+    .cv-otsikot .otsikko-education {
+      margin-top: 48px;
+    }
+
+    .cv-otsikot .otsikko-experience {
+      margin-top: calc(24px * 2.7 + 1.2em);
+    }
+
+    .cv-otsikot .otsikko-volunteer {
+      margin-top: calc(24px * 3.7 + 1.2em);
+    }
+
+    .cv-lista {
+      width: 45%;
+      padding: 40px 10px;
+      font-family: 'ITC Garamond', serif;
+      flex-shrink: 0;
+    }
+
+    .cv-lista ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .cv-lista li {
+      margin-bottom: 0;
+      font-size: 14px;
+      line-height: 24px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .cv-lista .cv-otsikko {
+      font-size: 38px;
+      line-height: 48px;
+      margin-bottom: 0;
+    }
+
+    .cv-kuvaaja {
+      width: 50%;
+      padding: 40px 45px 40px 20px;
+    }
+
+    /* Aikajana */
+    .aikajana {
+      width: 100%;
+      position: relative;
+    }
+
+    .aikajana-vuodet {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      font-family: 'ITC Garamond', serif;
+      font-size: 12px;
+      color: #333;
+      margin-bottom: 0;
+      height: 48px;
+      align-items: end;
+    }
+
+    .aikajana-vuodet span {
+      text-align: center;
+    }
+
+    .aikajana-rivit {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* Pystyviivat */
+    .aikajana-pystyviivat {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      pointer-events: none;
+    }
+
+    .aikajana-pystyviiva {
+      width: 1px;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.5);
+      justify-self: center;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .aikajana-rivi {
+      height: 24px;
+      position: relative;
+      margin-bottom: 0;
+      border-top: 1px dashed #ffffff;
+    }
+
+    .aikajana-palkki {
+      position: absolute;
+      height: 4px;
+      top: 50%;
+      border-radius: 1px;
+      transform: translateY(-50%);
+    }
+
+
+    /* Värit kategorioittain */
+    .palkki-education {
+      background-color: #141415;
+    }
+
+    .palkki-experience {
+      background-color: #5e5e61;
+    }
+
+    .palkki-volunteer {
+      background-color: #a5a5a5;
+    }
+
+    /* Kategoriavälien margin (vastaa br-elementtiä) */
+    .aikajana-valirivi {
+      height: 0.7em;
+    }
+
+    /* Otsikkorivi aikajanassa (vastaa CV-otsikkoa) */
+    .aikajana-otsikkorivi {
+      height: 48px;
+    }
+
 </style>
 
 <body>
   <div class="container">
     
-    <h2>Coming soon!</h2>
-    
-    <nav>
-      <a href="index.html">← Back to Home</a>
-    </nav>
+<div class="navicontainer">
+
+<div class="navi">
+
+
+  <navi>
+    <a href="index.html">Home</a>
+  </navi>
+
+    <navi>
+    <a href="Jewellery lines.html">Jewellery lines</a>
+  </navi>
+
+    <navi>
+    <a href="Motion.html">Motion work and sounds</a>
+  </navi>
+
+  <navi>
+    <a href="Poster-projects.html">Poster projects</a>
+  </navi>
+
+  <navi>
+    <a href="Experimental-pages.html">Experimental pages</a>
+  </navi>
+
+  </div>
+  </div>
+<div class="yliteksti-container">
+    <span class="yliteksti" style="--x: 35.5vw;--y: 19.5vw;">Mixing fields!</span>
+    <span class="yliteksti2" style="--x: 56vw;--y: 58vw;">Mixing</span>
+    <span class="yliteksti2" style="--x: 35vw;--y: 114vw;">fields!</span>
+
+  <div class="kuva-layout">
+    <div class="iso-kuva"></div>
+    <div class="kuvarivi">
+      <div class="kuvat-osa">
+        <div class="pieni-kuva2" style="background-image: url('./assets/img/omakuva.webp');"></div>
+        <div class="pieni-kuva" style="background-image: url('./assets/img/omakuva.webp');"><span class="kuva-credit">Picture: Joakim Iles</span></div>
+      </div>
+      <div class="teksti-osa">
+        <p>As an MSc and a Bachelor of Arts, I want to combine both sides. My skill set, bringing together analytical and creative abilities, offers an unusual combination. This website represents my artistic work but also serves as a coding experiment for further exploration. As a “from scratch” project, it has given me a chance to utilise and develop various skills. However, the project will not be finished; instead, the experimental pages act as a unique blog element that is constantly evolving.</p>
+      </div>
+    </div>
+
+     <div class="iso-kuva3"></div>
+
+    <!-- CV-container 3 saraketta -->
+    <div class="cv-container">
+      <div class="cv-otsikot">
+        <h4 class="otsikko-education">Education</h4>
+        <h4 class="otsikko-experience">Experience</h4>
+        <h4 class="otsikko-volunteer">Volunteer</h4>
+      </div>
+      <div class="cv-lista">
+        <ul>
+          <li class="cv-otsikko">Curriculum Vitae</li>
+          <li><strong>2023-</strong>  Bachelor of Arts (Art and Design) degree, Aalto ARTS, VCD</li>
+          <li><strong>2015–2022</strong>  B.Sc. & M.Sc. in Economics and Business Administration, Aalto BIZ (Major: Accounting, Minor: ISM)</li>
+          <li><strong>2014–2015</strong>  Turku University School of Economics Bachelor of Science (Discontinued)
+            )</li>
+          <li><strong>2014-</strong>  Kuninkaantie High School, Graduated</li>
+          <br />
+
+        </ul>
+        <ul>
+          <li><strong>8/2025- </strong> Software- and Graphic Designer at Propia</li>
+          <li><strong>2023</strong> Treasurer and Financial Coordinator at Penthousekollektiivi</li>
+          <li><strong>6/2020–8/2025</strong> Assistant Controller at Government ICT Centre Valtori</li>
+          <li><strong>2016–2020 </strong> Sales assistant, and Financial Assistant from 2017 at Ruohonjuuri Oy</li>
+          <li><strong>2016– </strong> Personal Art. Custom acrylic paintings, graphic design, and illustration</li>
+        </ul>
+        <br />
+        <ul>
+          <li><strong>2013– </strong> Hosting leisure events for 20–100 participants, 3–5 times per year</li>
+          <li><strong>2024 </strong> Chairperson and Treasurer, GRRR: Visual Communication Design Students’ Association at Aalto University</li>
+          <li><strong>5/2024 </strong> Manager, Graphic Designer and business controller for the concert Hanrock (with link)</li>
+          <li><strong>8/2022–8/2023 </strong> Head of Marketing, Kuninkaantie High School Alumni Association</li>
+          <li><strong>8/2019–8/2022 </strong> Chairperson, Kuninkaantie High School Alumni Association</li>
+         </ul>
+      
+        </div>
+      <div class="cv-kuvaaja">
+        <div class="aikajana">
+          <!-- Vuodet -->
+          <div class="aikajana-vuodet">
+            <span>2014</span>
+            <span>2015</span>
+            <span>2016</span>
+            <span>2017</span>
+            <span>2018</span>
+            <span>2019</span>
+            <span>2020</span>
+            <span>2021</span>
+            <span>2022</span>
+            <span>2023</span>
+            <span>2024</span>
+            <span>2025</span>
+          </div>
+
+          <!-- Palkit -->
+          <div class="aikajana-rivit">
+            <!-- Pystyviivat -->
+            <div class="aikajana-pystyviivat">
+              <div class="aikajana-pystyviiva"></div>
+              <div class="aikajana-pystyviiva"></div>
+              <div class="aikajana-pystyviiva"></div>
+              <div class="aikajana-pystyviiva"></div>
+              <div class="aikajana-pystyviiva"></div>
+              <div class="aikajana-pystyviiva"></div>
+              <div class="aikajana-pystyviiva"></div>
+              <div class="aikajana-pystyviiva"></div>
+              <div class="aikajana-pystyviiva"></div>
+              <div class="aikajana-pystyviiva"></div>
+              <div class="aikajana-pystyviiva"></div>
+              <div class="aikajana-pystyviiva"></div>
+            </div>
+
+            <!-- Education (4 riviä) -->
+            <div class="aikajana-rivi"><div class="aikajana-palkki palkki-education" style="left: 83.34%; width: 16.66%;"></div></div>
+            <div class="aikajana-rivi"><div class="aikajana-palkki palkki-education" style="left: 16.68%; width: 54.17%;" data-tooltip="Tämä on selittävä teksti tästä palikasta."></div></div>
+            <div class="aikajana-rivi"><div class="aikajana-palkki palkki-education" style="left: 8.34%; width: 8.34%;" data-tooltip="Tämä on selittävä teksti tästä palikasta."></div></div>
+            <div class="aikajana-rivi"><div class="aikajana-palkki palkki-education" style="left: 0%; width: 8.34%;" data-tooltip="Tämä on selittävä teksti tästä palikasta."></div></div>
+
+            <div class="aikajana-valirivi"></div>
+
+            <!-- Experience (5 riviä) -->
+            <div class="aikajana-rivi"><div class="aikajana-palkki palkki-experience" style="left: 98%; width: 2%;"></div></div>
+            <div class="aikajana-rivi"><div class="aikajana-palkki palkki-experience" style="left: 87.5%; width: 8.33%;" ></div></div>
+            <div class="aikajana-rivi"><div class="aikajana-palkki palkki-experience" style="left: 56.23%; width: 43.73%;"></div></div>
+            <div class="aikajana-rivi"><div class="aikajana-palkki palkki-experience" style="left: 22.91%; width: 33.32%;"></div></div>
+            <div class="aikajana-rivi"><div class="aikajana-palkki palkki-experience" style="left: 20.83%; width: 79.18%;"></div></div>
+
+            <div class="aikajana-valirivi"></div>
+
+            <!-- Volunteer (5 riviä) -->
+            <div class="aikajana-rivi"><div class="aikajana-palkki palkki-volunteer" style="left: 0%; width: 100%;"></div></div>
+            <div class="aikajana-rivi"><div class="aikajana-palkki palkki-volunteer" style="left: 87.5%; width: 8.33%;"></div></div>
+            <div class="aikajana-rivi"><div class="aikajana-palkki palkki-volunteer" style="left: 83.33%; width: 16.67%;"></div></div>
+            <div class="aikajana-rivi"><div class="aikajana-palkki palkki-volunteer" style="left: 66.67%; width: 16.67%;"></div></div>
+            <div class="aikajana-rivi"><div class="aikajana-palkki palkki-volunteer" style="left: 41.67%; width: 25%;"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div class="iso-kuva2"></div>
+</div>
+
+  </div>
   </div>
 </body>
 </html>
