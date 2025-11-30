@@ -53,8 +53,8 @@
   display: flex;
   flex-direction: row;
    justify-content: center; /* vie linkit oikeaan laitaan boksin sisällä */
-  gap: 10px;                 
-  padding: 10px;
+  gap: 10px;
+  padding: 20px;
   gap: 20px;
 }
 
@@ -82,6 +82,10 @@
 
 .navi2 a:hover {
   color: #d7d5d5 !important; /* hover-väri */
+}
+
+.navi a.alleviivattu {
+  text-decoration: underline;
 }
 
 .navi a:hover {
@@ -201,33 +205,36 @@
 </style>
 
 <body>
+<div class="navicontainer">
 
-      <div class="navicontainer">
 <div class="navi">
 
-    <navi>
+
+  <navi>
     <a href="index.html">Home</a>
   </navi>
 
-  <navi>
+        <navi>
     <a href="Introduction.html">Intro</a>
   </navi>
 
     <navi>
-    <a href="Jewellery lines.html">Jewellery lines</a>
+    <a href="Poster-projects.html">Static art</a>
   </navi>
 
     <navi>
-    <a href="Motion.html">Motion work and sounds</a>
+    <a href="Jewellery lines.html" class="alleviivattu">Jewellery</a>
   </navi>
 
-  <navi>
-    <a href="Poster-projects.html">Poster projects</a>
+    <navi>
+    <a href="Motion.html">Motion and sound</a>
   </navi>
+
 
   <navi>
     <a href="Experimental-pages.html">Experimental pages</a>
   </navi>
+
   </div>
 
   <div class="navi2">
