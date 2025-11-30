@@ -2,29 +2,47 @@
 <html lang="fi">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sivu 2</title>
+  <script type="module" src="./assets/components/html-css-viewer.js"></script>
   <link rel="icon" href="favicon.png" />
   <link rel="stylesheet" href="mainstyles.css">
-</head>
+
 
 <style>
+
+      /* Kapakana fontti */
     @font-face {
-        font-family: 'Big Caslon';
-        src: url('./assets/fonts/BigCaslon.ttf') format('truetype');
-        font-weight: normal;
-        font-style: normal;
+      font-family: 'Kapakana';
+      src: url('./assets/fonts/Kapakana-Regular.ttf') format('truetype');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+        /* ITC Garamond oletusfontti #E9D9E8 */ 
+    @font-face {
+      font-family: 'ITC Garamond narrow';
+      src: url('./assets/fonts/ITCGaramondStd-LtNarrow.otf') format('opentype');
+      font-weight: auto;
+      font-style: normal;
     }
 
         body {
         color: #000 !important;
-        font-family: 'Big Caslon', serif !important;
-        font-weight: bold !important;
         display: grid;
         grid-template-rows: auto 1fr;
         min-height: 100vh;
-        margin: 60px;
+        margin: 0;
         padding: 0;
         gap: 0;
+    }
+
+            #p5-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -2;
+      pointer-events: none;
     }
 
     a {
@@ -33,20 +51,625 @@
     }
 
     a:hover {
-        color: #717171 !important;
+        color: #ffffff !important;
         text-decoration: none;
     }
+
+    .navicontainer {
+  display: row;
+  justify-content: flex-end; /* vie .navi oikeaan reunaan */
+  padding-right: 28px;
+  padding-top: 17px;
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+}
+
+.navi {
+  display: flex;
+  flex-direction: row;
+   justify-content: center; /* vie linkit oikeaan laitaan boksin sisällä */
+  gap: 10px;
+  padding: 20px;
+  gap: 20px;
+}
+
+.navi a {
+  color: rgb(66, 65, 65) !important;              /* näkyvä linkkiväri */
+  text-decoration: none;
+  font-size: 16px;
+  background: #d9dadb;
+}
+
+.navi2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+  padding: 5px;
+}
+
+.navi2 a {
+  color: rgb(56, 55, 55) !important;
+  text-decoration: none;
+  font-size: 16px;
+  background: #e2e2e2;
+}
+
+.navi2 a:hover {
+  color: #d7d5d5 !important;
+}
+
+
+.navi a.alleviivattu {
+  text-decoration: underline;
+}
+
+.navi2 a.alleviivattu {
+  text-decoration: underline;
+}
+
+.navi a:hover {
+  color: #b3bdb0 !important;              /* näkyvä linkkiväri */
+}
+    
+    .navi nav {
+      margin-right: 30px;
+    }
+
+    .container {
+      margin-top: 120px;
+      padding: 40px;
+      text-align: center;
+    }
+
+  .kuvalohko {
+    display: grid;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    gap: 0;
+  }
+
+  /* 1 kuva */
+  .kuvalohko.k1 {
+    grid-template-columns: 1fr;
+  }
+
+  /* 2 kuvaa */
+  .kuvalohko.k2 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* 3—5 kuvaa (pienet laatikot) */
+  .kuvalohko.k3,
+  .kuvalohko.k4,
+  .kuvalohko.k5 {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  .kuva {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .kuva img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Teksti kuvan päällä */
+
+   .rullaava {
+    width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    color: #bdbbbb;
+    padding: 5px 0;
+    padding-top:10px;
+    background-color: rgba(203, 203, 203, 0.1);
+    border-top: #e1e1e1 1px solid;
+  }
+
+
+  .rullaava .wrap {
+    display: inline-block;
+    white-space: nowrap;
+    animation: scroll 120s linear infinite;
+  }
+
+    .rullaava .item {
+    display: inline-block;      /* tekee itemin mitoitettavaksi */       /* <-- tätä säädä: etäisyys toistuvien tekstien välissä */
+    margin-right: 500px;
+    font-size: 20px;
+  }
+
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-100%); }
+  }
+
+    .alateksti {
+    padding: 10px;
+    padding-left: 20%;
+    padding-right: 20%;
+    border-radius: 6px;
+    margin-top: 400px;
+    margin-bottom: 50px;
+    text-align: center;
+    font-size: 30px;
+    color: #363636;
+    font-family: 'ITC Garamond narrow', serif
+  }
+
+
+      .alateksti2 {
+    padding: 10px;
+    padding-left: 5%;
+    padding-right:5%;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+
+
 
 </style>
 
 <body>
-  <div class="container">
-    
-    <h2>Coming soon!</h2>
-    
-    <nav>
-      <a href="index.html">← Back to Home</a>
-    </nav>
+
+<div class="navicontainer">
+
+<div class="navi">
+
+
+  <navi>
+    <a href="index.html">Home</a>
+  </navi>
+
+        <navi>
+    <a href="Introduction.html">Intro</a>
+  </navi>
+
+    <navi>
+    <a href="Poster-projects.html" class="alleviivattu">Static art</a>
+  </navi>
+
+    <navi>
+    <a href="Jewellery lines.html">Jewellery</a>
+  </navi>
+
+    <navi>
+    <a href="Motion.html">Motion and sound</a>
+  </navi>
+
+
+  <navi>
+    <a href="Experimental-pages.html">Experimental pages</a>
+  </navi>
+
   </div>
+
+  <div class="navi2">
+    <a href="Poster-projects.html" class="alleviivattu">Paintings</a>
+    <a href="Posters.html">Posters</a>
+    <a href="Illustration.html">Illustration</a>
+    <a href="Objects-dart.html">Objects d'art</a>
+  </div>
+
+   </div>
+
+  <div class="alateksti">
+    Below, I present my paintings in chronological order. All of them are commissioned pieces painted with acrylics, and each one has taught me a great deal about both the artistic process and design work.
+  </div>
+</div>
+
+
+  <div class="rullaava" aria-hidden="false">
+    <div class="wrap">
+    <span class="item">A collab for a collab 10/2025</span>
+    <span class="item">A collab for a collab 10/2025</span>
+    <span class="item">A collab for a collab 10/2025</span>
+    <span class="item">A collab for a collab 10/2025</span>
+  </div>
+  </div>
+
+<div class="kuvalohko k2">
+  <div class="kuva"><img src="./assets/img/Paintings/18.1 TK.webp" alt=""></div>
+  <div class="kuva"><img src="./assets/img/Paintings/18.2 TK.webp" alt=""></div>
+</div>
+
+  <div class="alateksti2">
+    For the first time in many years, I had a little time to paint again. My partner suggested we give a painting as a wedding gift to our friends. It took over a year to complete. The final piece brings together our thoughts and the couple’s, coming together step by step over that time.
+  </div>
+</div>
+
+  <div class="rullaava" aria-hidden="false">
+    <div class="wrap">
+    <span class="item">More Colours! 11/2023 </span>
+    <span class="item">More Colours! 11/2023 </span>
+    <span class="item">More Colours! 11/2023 </span>
+    <span class="item">More Colours! 11/2023 </span>
+  </div>
+  </div>
+
+<div class="kuvalohko k3">
+  <div class="kuva"><img src="./assets/img/Paintings/17.1 Valtteri.webp" alt=""></div>
+  <div class="kuva"><img src="./assets/img/Paintings/17.3 Valtteri.webp" alt=""></div>
+  <div class="kuva"><img src="./assets/img/Paintings/17.4 Valtteri.webp" alt=""></div>
+</div>
+
+  <div class="alateksti2">
+    This piece stands out from the others because of its vibrant palette. The client wanted strong colours, and I truly enjoyed working with them. It was also the last piece I had time to finish before diving into my new studies at Aalto ARTS.
+  </div>
+</div>
+
+  <div class="rullaava" aria-hidden="false">
+    <div class="wrap">
+    <span class="item">Blending Representational and Abstract 10/2023</span>
+    <span class="item">Blending Representational and Abstract 10/2023</span>
+    <span class="item">Blending Representational and Abstract 10/2023</span>
+    <span class="item">Blending Representational and Abstract 10/2023</span>
+  </div>
+  </div>
+
+<div class="kuvalohko k3">
+  <div class="kuva"><img src="./assets/img/Paintings/16.1 Riku2.webp" alt=""></div>
+  <div class="kuva"><img src="./assets/img/Paintings/16.2 Riku2.webp" alt=""></div>
+  <div class="kuva"><img src="./assets/img/Paintings/16.4 Riku2.webp" alt=""></div>
+</div>
+
+  <div class="alateksti2">
+   This commission came from a client who wanted a calming theme inspired by nature and animals. The wish was for something subtle yet beautiful, so I chose a peacock as the subject. The result is a rich and detailed work that balances realism with abstraction.
+  </div>
+</div>
+
+  <div class="rullaava" aria-hidden="false">
+    <div class="wrap">
+    <span class="item">Light and Shadow 8/2023</span>
+    <span class="item">Light and Shadow 8/2023</span>
+    <span class="item">Light and Shadow 8/2023</span>
+    <span class="item">Light and Shadow 8/2023</span>
+  </div>
+  </div>
+
+<div class="kuvalohko k3">
+  <div class="kuva"><img src="./assets/img/Paintings/15.1. Antto.webp" alt=""></div>
+  <div class="kuva"><img src="./assets/img/Paintings/15.2 Antto.webp" alt=""></div>
+  <div class="kuva"><img src="./assets/img/Paintings/15.3 Antto.webp" alt=""></div>
+</div>
+
+  <div class="alateksti2">
+    I got a great chance to create a diptych. The client asked for strong contrast, so I made a piece exploring light and shadow. A diptych is such an interesting form. It challenges the artist to multitask between two pieces growing and living side by side.
+  </div>
+</div>
+
+
+    <div class="rullaava" aria-hidden="false">
+    <div class="wrap">
+    <span class="item">Am I Impressive Enough? 2/2023</span>
+    <span class="item">Am I Impressive Enough? 2/2023</span>
+    <span class="item">Am I Impressive Enough? 2/2023</span>
+    <span class="item">Am I Impressive Enough? 2/2023</span>
+  </div>
+  </div>
+
+<div class="kuvalohko k2">
+  <div class="kuva"><img src="./assets/img/Paintings/14.1 Aleksi.webp" alt=""></div>
+  <div class="kuva"><img src="./assets/img/Paintings/14.2 Aleksi.webp" alt=""></div>
+</div>
+
+<div class="kuvalohko k2">
+  <div class="kuva"><img src="./assets/img/Paintings/14.3 Aleksi.webp" alt=""></div>
+  <div class="kuva"><img src="./assets/img/Paintings/14.4. Aleksi.webp" alt=""></div>
+</div>
+
+  <div class="alateksti2">
+    Every artist aims to push their boundaries in different ways. One of them is by creating bigger. I got my chance with this commission: a large piece balancing white and dark tones, inspired by the nature of Lapland. A rehearsal painting was also needed before starting the final one.
+  </div>
+</div>
+
+
+      <div class="rullaava" aria-hidden="false">
+    <div class="wrap">
+    <span class="item">Layers on Layers 10/2022</span>
+    <span class="item">Layers on Layers 10/2022</span>
+    <span class="item">Layers on Layers 10/2022</span>
+    <span class="item">Layers on Layers 10/2022</span>
+  </div>
+  </div>
+
+<div class="kuvalohko k2">
+  <div class="kuva"><img src="./assets/img/Paintings/13.1 Make.webp" alt=""></div>
+  <div class="kuva"><img src="./assets/img/Paintings/13.2. Make.webp" alt=""></div>
+</div>
+
+  <div class="alateksti2">
+    This piece was made for an older client who wanted something that brings nature closer to his home. I had no strict instructions, so I built it up layer by layer. This work also shows how contrast and depth can truly feels on a canvas.
+  </div>
+</div>
+
+        <div class="rullaava" aria-hidden="false">
+    <div class="wrap">
+    <span class="item">So Long, but Worth Waiting 9/2022</span>
+    <span class="item">So Long, but Worth Waiting 9/2022</span>
+    <span class="item">So Long, but Worth Waiting 9/2022</span>
+    <span class="item">So Long, but Worth Waiting 9/2022</span>
+  </div>
+  </div>
+
+<div class="kuvalohko k3">
+  <div class="kuva"><img src="./assets/img/Paintings/12.1 Immu.webp" alt=""></div>
+    <div class="kuva"><img src="./assets/img/Paintings/12.3 Immu.webp" alt=""></div>
+  <div class="kuva"><img src="./assets/img/Paintings/12.4 Immu.webp" alt=""></div>
+</div>
+
+  <div class="alateksti2">
+    It took almost six months to finish this one. I was very excited about this diptych and happy that the client pushed my boundaries in the right way. The colours and contrasts make it an interesting, multilayered piece of art.
+  </div>
+</div>
+
+          <div class="rullaava" aria-hidden="false">
+    <div class="wrap">
+    <span class="item">Turning Point 3/2022</span>
+    <span class="item">Turning Point 3/2022</span>
+    <span class="item">Turning Point 3/2022</span>
+    <span class="item">Turning Point 3/2022</span>
+  </div>
+  </div>
+
+<div class="kuvalohko k2">
+  <div class="kuva"><img src="./assets/img/Paintings/11.1 Antti.webp" alt=""></div>
+  <div class="kuva"><img src="./assets/img/Paintings/11.2 Antti.webp" alt=""></div>
+</div>
+
+<div class="kuvalohko k2">
+  <div class="kuva"><img src="./assets/img/Paintings/11.3 Antti.webp" alt=""></div>
+  <div class="kuva"><img src="./assets/img/Paintings/11.4 Antti.webp" alt=""></div>
+</div>
+
+  <div class="alateksti2">
+    As I told the client, with this I really started to recognise my own style. Maybe it was because I was given freedom with it. By coincidence, the colours turned out to be the same as in the Ukrainian flag. Someone also saw an angel forming in the middle of the piece.
+  </div>
+</div>
+
+
+            <div class="rullaava" aria-hidden="false">
+    <div class="wrap">
+    <span class="item">Growing Family 2/2022</span>
+    <span class="item">Growing Family 2/2022</span>
+    <span class="item">Growing Family 2/2022</span>
+    <span class="item">Growing Family 2/2022</span>
+  </div>
+  </div>
+
+<div class="kuvalohko k2">
+  <div class="kuva"><img src="./assets/img/Paintings/10.1 Vilma.webp" alt=""></div>
+  <div class="kuva"><img src="./assets/img/Paintings/10.2 Vilma.webp" alt=""></div>
+</div>
+
+  <div class="alateksti2">
+    This painting was created for a family of three.Can you recognize them in the painting? The colour scheme was requested to be green and inspired by nature.
+  </div>
+</div>
+
+
+<div class="rullaava" aria-hidden="false">
+    <div class="wrap">
+    <span class="item">Finally, Pink! 12/2021</span>
+    <span class="item">Finally, Pink! 12/2021</span>
+    <span class="item">Finally, Pink! 12/2021</span>
+    <span class="item">Finally, Pink! 12/2021</span>
+  </div>
+  </div>
+
+<div class="kuvalohko k2">
+  <div class="kuva"><img src="./assets/img/Paintings/9.1 Jussi.webp" alt=""></div>
+  <div class="kuva"><img src="./assets/img/Paintings/9.2 Jussi.webp" alt=""></div>
+</div>
+
+  <div class="alateksti2">
+    I had been waiting for the chance to use a brave colour like pink. The piece turned out fabulous and now hangs on the client’s living room wall. He was also very happy to have chosen a colour that stands out from the more typical ones.
+  </div>
+</div>
+
+  <div class="rullaava" aria-hidden="false">
+    <div class="wrap">
+    <span class="item">In Between Beige and White 11/2021</span>
+    <span class="item">In Between Beige and White 11/2021</span>
+    <span class="item">In Between Beige and White 11/2021</span>
+    <span class="item">In Between Beige and White 11/2021</span>
+  </div>
+  </div>
+
+<div class="kuvalohko k3">
+  <div class="kuva"><img src="./assets/img/Paintings/8.1 Juuso.webp" alt=""></div>
+    <div class="kuva"><img src="./assets/img/Paintings/8.2 Juuso.webp" alt=""></div>
+  <div class="kuva"><img src="./assets/img/Paintings/8.3 Juuso.webp" alt=""></div>
+</div>
+
+  <div class="alateksti2">
+    The most challenging aspect of this painting was finding the right balance between beige and white. The client wanted a large piece that wouldn’t dominate the space but would bring harmony to his living room. The textured surface allows the painting to come alive differently throughout the day.
+  </div>
+</div>
+
+
+    <div class="rullaava" aria-hidden="false">
+    <div class="wrap">
+    <span class="item">To Gymnastics and Nature! 10/2021</span>
+    <span class="item">To Gymnastics and Nature! 10/2021</span>
+    <span class="item">To Gymnastics and Nature! 10/2021</span>
+    <span class="item">To Gymnastics and Nature! 10/2021</span>
+  </div>
+  </div>
+
+<div class="kuvalohko k2">
+  <div class="kuva"><img src="./assets/img/Paintings/7.1 Kira.webp" alt=""></div>
+  <div class="kuva"><img src="./assets/img/Paintings/7.2 Kira.webp" alt=""></div>
+</div>
+
+  <div class="alateksti2">
+    A client who coaches gymnastics wanted a piece that represents natural tones and forms. Since her life is deeply connected to gymnastics, I wanted to include an abstract figure of a gymnast in the painting.
+  </div>
+</div>
+
+
+      <div class="rullaava" aria-hidden="false">
+    <div class="wrap">
+    <span class="item">To a Dear Lady 9/2021</span>
+    <span class="item">To a Dear Lady 9/2021</span>
+    <span class="item">To a Dear Lady 9/2021</span>
+    <span class="item">To a Dear Lady 9/2021</span>
+  </div>
+  </div>
+
+<div class="kuvalohko k2">
+  <div class="kuva"><img src="./assets/img/Paintings/6.1 Soffi.webp" alt=""></div>
+  <div class="kuva"><img src="./assets/img/Paintings/6.2 Soffi.webp" alt=""></div>
+</div>
+
+  <div class="alateksti2">
+    A client wanted to surprise his girlfriend with a painting.
+The theme, colours, and inspiration came from her smaragdine sofa and wildflowers.
+
+  </div>
+</div>
+
+
+        <div class="rullaava" aria-hidden="false">
+    <div class="wrap">
+    <span class="item">Abstract sailing 7/2021</span>
+    <span class="item">Abstract sailing 7/2021</span>
+    <span class="item">Abstract sailing 7/2021</span>
+    <span class="item">Abstract sailing 7/2021</span>
+  </div>
+  </div>
+
+<div class="kuvalohko k2">
+  <div class="kuva"><img src="./assets/img/Paintings/5.1 Riku.webp" alt=""></div>
+  <div class="kuva"><img src="./assets/img/Paintings/5.2 Riku.webp" alt=""></div>
+</div>
+
+  <div class="alateksti2">
+    Another sailor client wished for an abstract piece to adorn his walls. The colour palette included shades of blue and other neutral tones.
+  </div>
+</div>
+
+
+          <div class="rullaava" aria-hidden="false">
+    <div class="wrap">
+    <span class="item">Free-Form Commission 5/2021</span>
+    <span class="item">Free-Form Commission 5/2021</span>
+    <span class="item">Free-Form Commission 5/2021</span>
+    <span class="item">Free-Form Commission 5/2021</span>
+  </div>
+  </div>
+
+<div class="kuvalohko k3">
+  <div class="kuva"><img src="./assets/img/Paintings/4.1 Marko.webp" alt=""></div>
+  <div class="kuva"><img src="./assets/img/Paintings/4.3 Marko.webp" alt=""></div>
+    <div class="kuva"><img src="./assets/img/Paintings/4.2 Marko.webp" alt=""></div>
+</div>
+
+  <div class="alateksti2">
+    What happens when you’re given no boundaries or instructions from a client? This painting taught me to trust myself as an artist and to take risks.
+
+  </div>
+</div>
+
+
+          <div class="rullaava" aria-hidden="false">
+    <div class="wrap">
+    <span class="item">Something for a Sailor 4/2021</span>
+    <span class="item">Something for a Sailor 4/2021</span>
+    <span class="item">Something for a Sailor 4/2021</span>
+    <span class="item">Something for a Sailor 4/2021</span>
+  </div>
+  </div>
+
+<div class="kuvalohko k3">
+  <div class="kuva"><img src="./assets/img/Paintings/3.1 Olli.webp" alt=""></div>
+  <div class="kuva"><img src="./assets/img/Paintings/3.2 Olli.webp" alt=""></div>
+  <div class="kuva"><img src="./assets/img/Paintings/3.3 Olli.webp" alt=""></div>
+</div>
+
+  <div class="alateksti2">
+    A client who sails wanted two paintings that combine representational and abstract elements related to sailing. Blue and other neutral colours were requested.
+  </div>
+</div>
+
+   <div class="rullaava" aria-hidden="false">
+    <div class="wrap">
+    <span class="item">An object for a New Home 12/2020</span>
+    <span class="item">An object for a New Home 12/2020</span>
+    <span class="item">An object for a New Home 12/2020</span>
+    <span class="item">An object for a New Home 12/2020</span>
+  </div>
+  </div>
+
+<div class="kuvalohko k2">
+  <div class="kuva"><img src="./assets/img/Paintings/2.1 Oula.webp" alt=""></div>
+  <div class="kuva"><img src="./assets/img/Paintings/2.2 Oula.webp" alt=""></div>
+</div>
+
+  <div class="alateksti2">
+    The client wanted something light, striking, and large for his new home. He also desired an abstract form with a structural surface. This was my largest painting so far.
+  </div>
+</div>
+
+<div class="rullaava" aria-hidden="false">
+    <div class="wrap">
+    <span class="item">Christmas present for a lovely girl 12/2020</span>
+    <span class="item">Christmas present for a lovely girl 12/2020</span>
+    <span class="item">Christmas present for a lovely girl 12/2020</span>
+    <span class="item">Christmas present for a lovely girl 12/2020</span>
+  </div>
+  </div>
+
+<div class="kuvalohko k2">
+  <div class="kuva"><img src="./assets/img/Paintings/1.1 Monna.webp" alt=""></div>
+  <div class="kuva"><img src="./assets/img/Paintings/1.2 Monna.webp" alt=""></div>
+</div>
+
+ <div class="alateksti2">
+    The client  wanted to give a painting as a Christmas present to his relatively new partner.
+The commission was informal and free-form, but abstract. The requested colours were mainly blue and neutral tones.
+
+  </div>
+</div>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+<script>
+function setup() {
+  let canvas = createCanvas(windowWidth, windowHeight);
+  canvas.id('p5-canvas');
+  background(226, 225, 225);
+}
+
+function draw() {
+  noStroke();
+  let stripeWidth = 2;
+  for (let x = 0; x < windowWidth; x += stripeWidth * 2) {
+    fill(240, 240, 240);
+    rect(x, 0, stripeWidth, windowHeight);
+    fill(250, 249, 247);
+    rect(x + stripeWidth, 0, stripeWidth, windowHeight);
+  }
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+</script>
+
+
+
+
 </body>
 </html>
