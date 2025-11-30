@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sivu 2</title>
+  <script type="module" src="./assets/components/html-css-viewer.js"></script>
+  <link rel="icon" href="favicon.png" />
+  <link rel="stylesheet" href="mainstyles.css">
+
+
+<style>
+
+      /* Kapakana fontti */
+    @font-face {
+      font-family: 'Kapakana';
+      src: url('./assets/fonts/Kapakana-Regular.ttf') format('truetype');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+        body {
+        color: #000 !important;
+        display: grid;
+        grid-template-rows: auto 1fr;
+        min-height: 100vh;
+
+        padding: 0;
+        gap: 0;
+    }
+
+            #p5-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    a {
+        color: #000 !important;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: #ffffff !important;
+        text-decoration: none;
+    }
+
+    .navicontainer {
+  display: row;
+  justify-content: flex-end; /* vie .navi oikeaan reunaan */
+  padding-right: 30px;
+  padding-top: 10px;
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+}
+
+.navi {
+  display: flex;
+  flex-direction: row;
+   justify-content: center; /* vie linkit oikeaan laitaan boksin sisällä */
+  gap: 10px;
+  padding: 20px;
+  gap: 20px;
+}
+
+.navi a {
+  color: rgb(66, 65, 65) !important;              /* näkyvä linkkiväri */
+  text-decoration: none;
+  font-size: 16px;
+    background: #f4f8fa;
+}
+
+.navi2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+  padding: 5px;
+}
+
+.navi2 a {
+  color: rgb(56, 55, 55) !important;
+  text-decoration: none;
+  font-size: 16px;
+  background: #e2e2e2;
+}
+
+.navi2 a:hover {
+  color: #d7d5d5 !important;
+}
+
+
+.navi a.alleviivattu {
+  text-decoration: underline;
+}
+
+.navi a:hover {
+  color: #b3bdb0 !important;              /* näkyvä linkkiväri */
+}
+    
+    .navi nav {
+      margin-right: 30px;
+    }
+
+    .container {
+      margin-top: 120px;
+      padding: 40px;
+      text-align: center;
+    }
+
+
+
+</style>
+
+<body>
+
+<div class="navicontainer">
+
+<div class="navi">
+
+
+  <navi>
+    <a href="index.html">Home</a>
+  </navi>
+
+        <navi>
+    <a href="Introduction.html">Intro</a>
+  </navi>
+
+    <navi>
+    <a href="Poster-projects.html">Static art</a>
+  </navi>
+
+    <navi>
+    <a href="Jewellery lines.html">Jewellery</a>
+  </navi>
+
+    <navi>
+    <a href="Motion.html"class="alleviivattu">Motion and sound</a>
+  </navi>
+
+
+  <navi>
+    <a href="Experimental-pages.html">Experimental pages</a>
+  </navi>
+
+  </div>
+
+  <div class="navi2">
+    <a href="Motion.html">Motion graphics</a>
+    <a href="Sound.html" class="alleviivattu">Sound projects</a>
+  </div>
+
+   </div>
+
+<div class="container">
+  <h2>Coming soon!</h2>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+<script>
+function setup() {
+  let canvas = createCanvas(windowWidth, windowHeight);
+  canvas.id('p5-canvas');
+  background(226, 225, 225);
+}
+
+function draw() {
+  noStroke();
+  let stripeWidth = 2;
+  for (let x = 0; x < windowWidth; x += stripeWidth * 2) {
+    fill(247, 239, 215);
+    rect(x, 0, stripeWidth, windowHeight);
+    fill(245, 229, 186);
+    rect(x + stripeWidth, 0, stripeWidth, windowHeight);
+  }
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+</script>
+
+
+
+
+</body>
+</html>
