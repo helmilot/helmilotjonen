@@ -11,11 +11,11 @@
       color: #000 !important;
       background: #ffffff;
     }
-    
+
     h1, h2, h3, h4, h5, h6 {
       color: #000 !important;
     }
-    
+
     p {
       color: #000 !important;
     }
@@ -28,9 +28,44 @@
       color: #ffffff !important;
     }
 
+    .navicontainer {
+        display: row;
+        justify-content: flex-end;
+        padding-right: 30px;
+        padding-top: 10px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 10;
+    }
+
+    .navi {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .navi a {
+        color: rgb(101, 100, 100) !important;
+        text-decoration: none;
+        font-size: 16px;
+        background: #ffffff;
+    }
+
+    .navi a.alleviivattu {
+  text-decoration: underline;
+}
+
+    .navi a:hover {
+        color: rgb(254, 47, 247) !important;
+    }
+
     .header {
       margin-left: 20px;
-      margin-top:20px;
+      margin-top: 50px;
     }
 
     .footer {
@@ -40,7 +75,7 @@
     .pages {
       width: 500px;
     }
-    
+
     .container {
       max-width: 800px;
       margin: 0 auto;
@@ -55,7 +90,7 @@
       flex-direction: column;
       gap: 15px;
     }
-  
+
         @media (max-width: 820px) {
       .header {
         flex-direction: column;
@@ -73,12 +108,23 @@
       }
 
     }
-    
-    
+
+
   </style>
 </head>
 
 <body>
+
+<div class="navicontainer">
+<div class="navi">
+  <navi><a href="index.html">Home</a></navi>
+  <navi><a href="Introduction.html">Intro</a></navi>
+  <navi><a href="Poster-projects.html">Static art</a></navi>
+  <navi><a href="Jewellery lines.html">Jewellery</a></navi>
+  <navi><a href="Motion.html">Motion and sound</a></navi>
+  <navi><a href="Experimental-pages.html" class="alleviivattu">Experimental pages</a></navi>
+</div>
+</div>
 
   <div class="header">
       <img class="experiment" src="./assets/img/xperi.webp" >
@@ -95,12 +141,7 @@
       <a href="hanrock/index.html">Hanrock data (10/25)</a>
       <a href="creative-computation.html">Creative computation (11-12/25)</a>
     </div>
-    
-        <nav>
-      <a href="index.html">← Back to home</a>
-    </nav>
 
-    </nav>
   </div>
 
 
