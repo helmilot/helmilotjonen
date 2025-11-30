@@ -13,11 +13,11 @@
       background: #ffffff;
       line-height: 1.6;
     }
-    
+
     h1, h2, h3, h4, h5, h6 {
       color: #000 !important;
     }
-    
+
     p {
       color: #000 !important;
     }
@@ -25,10 +25,43 @@
     a {
       color: #000 !important;
     }
-    
+
+    .navicontainer {
+        display: row;
+        justify-content: flex-end;
+        padding-right: 30px;
+        padding-top: 10px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 10;
+        background: #ffffff;
+    }
+
+    .navi {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .navi a {
+        color: rgb(101, 100, 100) !important;
+        text-decoration: none;
+        font-size: 16px;
+        background: #ffffff;
+    }
+
+    .navi a:hover {
+        color: rgb(254, 47, 247) !important;
+    }
+
     .container {
       max-width: 1000px;
       margin-left: 50px;
+      margin-top: 60px;
       padding: 40px 20px;
       display: flex;
       flex-direction: column;
@@ -42,23 +75,18 @@
       flex-direction: column;
     }
 
-        .container3 {
+    .container3 {
        margin-left: 50px;
-      margin-bottom: 20px;     
+      margin-bottom: 20px;
       display: flex;
       flex-direction: row;
     }
-    
+
     .sketch-container {
       margin-left: 50px;
       margin-bottom: 20px;
       padding: 40px 20px;
     }
-
-
-.container {
-  display: flex;
-}
 
 .column {
   width: 30px;
@@ -71,6 +99,18 @@
 </head>
 
 <body>
+
+<div class="navicontainer">
+<div class="navi">
+  <navi><a href="index.html">Home</a></navi>
+  <navi><a href="Introduction.html">Intro</a></navi>
+  <navi><a href="Poster-projects.html">Static art</a></navi>
+  <navi><a href="Jewellery lines.html">Jewellery</a></navi>
+  <navi><a href="Motion.html">Motion and sound</a></navi>
+  <navi><a href="Experimental-pages.html">Experimental pages</a></navi>
+</div>
+</div>
+
   <div class="container">
     <h1>Creative Computation</h1>
     <p>Exploring the intersection of art, technology, and algorithmic creativity.</p>
@@ -122,9 +162,6 @@ div class="sketch-container" id="p5-sketch"
 </div>
 
     
-    <nav style="margin-top: 50px;">
-      <a href="Experimental-pages.html">← Back to Experimental Pages</a>
-    </nav>
   </div>
 
 <script>
