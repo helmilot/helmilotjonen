@@ -53,6 +53,12 @@
   justify-content: flex-end; /* vie .navi oikeaan reunaan */
   padding-right: 30px;
   padding-top: 10px;
+  position: fixed;
+  width: 100%;
+}
+
+.navi a.alleviivattu {
+  text-decoration: underline;
 }
 
 .navi {
@@ -542,7 +548,7 @@
 </style>
 
 <body>
-  <div class="container">
+
     
 <div class="navicontainer">
 
@@ -553,17 +559,22 @@
     <a href="index.html">Home</a>
   </navi>
 
-    <navi>
-    <a href="Jewellery lines.html">Jewellery lines</a>
+      <navi>
+    <a href="Introduction.html" class="alleviivattu">Intro</a>
   </navi>
 
     <navi>
-    <a href="Motion.html">Motion work and sounds</a>
+    <a href="Poster-projects.html">Static art</a>
   </navi>
 
-  <navi>
-    <a href="Poster-projects.html">Poster projects</a>
+    <navi>
+    <a href="Jewellery lines.html">Jewellery</a>
   </navi>
+
+    <navi>
+    <a href="Motion.html">Motion and sound</a>
+  </navi>
+
 
   <navi>
     <a href="Experimental-pages.html">Experimental pages</a>
@@ -693,7 +704,7 @@
 </div>
 
   </div>
-  </div>
+
 
 <script>
 // Resizable CV-container
