@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sivu 2</title>
+  <script type="module" src="./assets/components/html-css-viewer.js"></script>
+  <link rel="icon" href="favicon.png" />
+  <link rel="stylesheet" href="mainstyles.css">
+
+
+<style>
+
+      /* Kapakana fontti */
+    @font-face {
+      font-family: 'Kapakana';
+      src: url('./assets/fonts/Kapakana-Regular.ttf') format('truetype');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+        /* ITC Garamond oletusfontti #E9D9E8 */ 
+    @font-face {
+      font-family: 'ITC Garamond narrow';
+      src: url('./assets/fonts/ITCGaramondStd-LtNarrow.otf') format('opentype');
+      font-weight: auto;
+      font-style: normal;
+    }
+
+        body {
+        color: #000 !important;
+        display: grid;
+        grid-template-rows: auto 1fr;
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        gap: 0;
+    }
+
+            #p5-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    a {
+        color: #000 !important;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: #ffffff !important;
+        text-decoration: none;
+    }
+
+    .navicontainer {
+  display: row;
+  justify-content: flex-end; /* vie .navi oikeaan reunaan */
+  padding-right: 30px;
+  padding-top: 17px;
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+}
+
+.navi {
+  display: flex;
+  flex-direction: row;
+   justify-content: center; /* vie linkit oikeaan laitaan boksin sisällä */
+  gap: 10px;
+  padding: 20px;
+  gap: 20px;
+}
+
+.navi a {
+  color: rgb(66, 65, 65) !important;              /* näkyvä linkkiväri */
+  text-decoration: none;
+  font-size: 16px;
+  background: #dbeaf1;
+}
+
+.navi2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+  padding: 5px;
+}
+
+.navi2 a {
+  color: rgb(56, 55, 55) !important;
+  text-decoration: none;
+  font-size: 16px;
+  background: #e2e6e8;
+}
+
+.navi2 a:hover {
+  color: #d7d5d5 !important;
+}
+
+
+.navi a.alleviivattu {
+  text-decoration: underline;
+}
+
+.navi2 a.alleviivattu {
+  text-decoration: underline;
+}
+
+.navi a:hover {
+  color: #b3bdb0 !important;              /* näkyvä linkkiväri */
+}
+    
+    .navi nav {
+      margin-right: 30px;
+    }
+
+    .container {
+      margin-top: 120px;
+      padding: 40px;
+      text-align: center;
+    }
+
+  .kuvalohko {
+    display: grid;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    gap: 0;
+  }
+
+  /* 1 kuva */
+  .kuvalohko.k1 {
+    grid-template-columns: 1fr;
+  }
+
+  /* 2 kuvaa */
+  .kuvalohko.k2 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* 3—5 kuvaa (pienet laatikot) */
+  .kuvalohko.k3,
+  .kuvalohko.k4,
+  .kuvalohko.k5 {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  .kuva {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .kuva img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Teksti kuvan päällä */
+
+   .rullaava {
+    width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    color: #bdbbbb;
+    padding: 5px 0;
+    padding-top:10px;
+    background-color: rgba(203, 203, 203, 0.1);
+    border-top: #e1e1e1 1px solid;
+  }
+
+
+  .rullaava .wrap {
+    display: inline-block;
+    white-space: nowrap;
+    animation: scroll 120s linear infinite;
+  }
+
+    .rullaava .item {
+    display: inline-block;      /* tekee itemin mitoitettavaksi */       /* <-- tätä säädä: etäisyys toistuvien tekstien välissä */
+    margin-right: 500px;
+    font-size: 20px;
+  }
+
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-100%); }
+  }
+
+    .alateksti {
+    padding: 10px;
+    padding-left: 20%;
+    padding-right: 20%;
+    border-radius: 6px;
+    margin-top: 400px;
+    margin-bottom: 50px;
+    text-align: center;
+    font-size: 30px;
+    color: #363636;
+    font-family: 'ITC Garamond narrow', serif
+  }
+
+
+      .alateksti2 {
+    padding: 10px;
+    padding-left: 5%;
+    padding-right:5%;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+
+
+
+</style>
+
+<body>
+
+<div class="navicontainer">
+
+<div class="navi">
+
+
+  <navi>
+    <a href="index.html">Home</a>
+  </navi>
+
+        <navi>
+    <a href="Introduction.html">Intro</a>
+  </navi>
+
+    <navi>
+    <a href="Poster-projects.html" class="alleviivattu">Static art</a>
+  </navi>
+
+    <navi>
+    <a href="Jewellery lines.html">Jewellery</a>
+  </navi>
+
+    <navi>
+    <a href="Motion.html">Motion and sound</a>
+  </navi>
+
+
+  <navi>
+    <a href="Experimental-pages.html">Experimental pages</a>
+  </navi>
+
+  </div>
+
+  <div class="navi2">
+    <a href="Poster-projects.html">Paintings</a>
+    <a href="Posters.html">Posters</a>
+    <a href="Illustration.html" class="alleviivattu">Illustration</a>
+    <a href="Objects-dart.html">Objects d'art</a>
+  </div>
+
+   </div>
+
+  <div class="alateksti">
+    Below, I present my paintings in chronological order. All of them are commissioned pieces painted with acrylics, and each one has taught me a great deal about both the artistic process and design work.
+  </div>
+</div>
+
+
+  <div class="rullaava" aria-hidden="false">
+    <div class="wrap">
+    <span class="item">A collab for a collab 10/2025</span>
+    <span class="item">A collab for a collab 10/2025</span>
+    <span class="item">A collab for a collab 10/2025</span>
+    <span class="item">A collab for a collab 10/2025</span>
+  </div>
+  </div>
+
+<div class="kuvalohko k2">
+  <div class="kuva"><img src="./assets/img/Illu/Hanrock1.webp" alt=""></div>
+  <div class="kuva"><img src="./assets/img/Illu/Hanrock2.webp" alt=""></div>
+</div>
+
+<div class="kuvalohko k3">
+  <div class="kuva"><img src="./assets/img/Illu/Hanrock3.webp" alt=""></div>
+  <div class="kuva"><img src="./assets/img/Illu/Hanrock4.webp" alt=""></div>
+   <div class="kuva"><img src="./assets/img/Illu/Hanrock5.webp" alt=""></div>
+</div>
+
+  <div class="alateksti2">
+    For the first time in many years, I had a little time to paint again. My partner suggested we give a painting as a wedding gift to our friends. It took over a year to complete. The final piece brings together our thoughts and the couple’s, coming together step by step over that time.
+  </div>
+</div>
+
+
+  <div class="rullaava" aria-hidden="false">
+    <div class="wrap">
+    <span class="item">A collab for a collab 10/2025</span>
+    <span class="item">A collab for a collab 10/2025</span>
+    <span class="item">A collab for a collab 10/2025</span>
+    <span class="item">A collab for a collab 10/2025</span>
+  </div>
+  </div>
+
+<div class="kuvalohko k2">
+  <div class="kuva"><img src="./assets/img/Illu/RJ1.webp" alt=""></div>
+  <div class="kuva"><img src="./assets/img/Illu/RJ2.webp" alt=""></div>
+</div>
+
+  <div class="alateksti2">
+    For the first time in many years, I had a little time to paint again. My partner suggested we give a painting as a wedding gift to our friends. It took over a year to complete. The final piece brings together our thoughts and the couple’s, coming together step by step over that time.
+  </div>
+</div>
+
+  <div class="rullaava" aria-hidden="false">
+    <div class="wrap">
+    <span class="item">More Colours! 11/2023 </span>
+    <span class="item">More Colours! 11/2023 </span>
+    <span class="item">More Colours! 11/2023 </span>
+    <span class="item">More Colours! 11/2023 </span>
+  </div>
+  </div>
+
+<div class="kuvalohko k4">
+  <div class="kuva"><img src="./assets/img/Illu/Kiltti1.webp" alt=""></div>
+  <div class="kuva"><img src="./assets/img/Illu/Kiltti2.webp" alt=""></div>
+  <div class="kuva"><img src="./assets/img/Illu/Kiltti3.webp" alt=""></div>
+  <div class="kuva"><img src="./assets/img/Illu/Kiltti4.webp" alt=""></div>
+</div>
+
+
+
+  <div class="alateksti2">
+    This piece stands out from the others because of its vibrant palette. The client wanted strong colours, and I truly enjoyed working with them. It was also the last piece I had time to finish before diving into my new studies at Aalto ARTS.
+  </div>
+</div>
+
+  <div class="rullaava" aria-hidden="false">
+    <div class="wrap">
+    <span class="item">More Colours! 11/2023 </span>
+    <span class="item">More Colours! 11/2023 </span>
+    <span class="item">More Colours! 11/2023 </span>
+    <span class="item">More Colours! 11/2023 </span>
+  </div>
+  </div>
+
+<div class="kuvalohko k4">
+  <div class="kuva"><img src="./assets/img/Illu/Kuk1.webp" alt=""></div>
+  <div class="kuva"><img src="./assets/img/Illu/Kuk2.webp" alt=""></div>
+  <div class="kuva"><img src="./assets/img/Illu/Kuk3.webp" alt=""></div>
+</div>
+
+<div class="kuvalohko k3">
+  <div class="kuva"><img src="./assets/img/Illu/Kuk4.webp" alt=""></div>
+  <div class="kuva"><img src="./assets/img/Illu/Kuk6.webp" alt=""></div>
+  <div class="kuva"><img src="./assets/img/Illu/Kuk7.webp" alt=""></div>
+</div>
+
+  <div class="alateksti2">
+    This piece stands out from the others because of its vibrant palette. The client wanted strong colours, and I truly enjoyed working with them. It was also the last piece I had time to finish before diving into my new studies at Aalto ARTS.
+  </div>
+</div>
+
+
+
+  <div class="rullaava" aria-hidden="false">
+    <div class="wrap">
+    <span class="item">More Colours! 11/2023 </span>
+    <span class="item">More Colours! 11/2023 </span>
+    <span class="item">More Colours! 11/2023 </span>
+    <span class="item">More Colours! 11/2023 </span>
+  </div>
+  </div>
+
+<div class="kuvalohko k4">
+  <div class="kuva"><img src="./assets/img/Illu/Dra1.webp" alt=""></div>
+  <div class="kuva"><img src="./assets/img/Illu/Dra2.webp" alt=""></div>
+  <div class="kuva"><img src="./assets/img/Illu/Dra3.webp" alt=""></div>
+</div>
+
+<div class="kuvalohko k3">
+  <div class="kuva"><img src="./assets/img/Illu/Dra4.webp" alt=""></div>
+  <div class="kuva"><img src="./assets/img/Illu/Dra5.webp" alt=""></div>
+  <div class="kuva"><img src="./assets/img/Illu/Dra6.webp" alt=""></div>
+</div>
+
+<div class="kuvalohko k4">
+  <div class="kuva"><img src="./assets/img/Illu/Dra7.webp" alt=""></div>
+  <div class="kuva"><img src="./assets/img/Illu/Dra8.webp" alt=""></div>
+  <div class="kuva"><img src="./assets/img/Illu/Dra9.webp" alt=""></div>
+  <div class="kuva"><img src="./assets/img/Illu/Dra10.webp" alt=""></div>
+</div>
+
+  <div class="alateksti2">
+    This piece stands out from the others because of its vibrant palette. The client wanted strong colours, and I truly enjoyed working with them. It was also the last piece I had time to finish before diving into my new studies at Aalto ARTS.
+  </div>
+</div>
+
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+<script>
+function setup() {
+  let canvas = createCanvas(windowWidth, windowHeight);
+  canvas.id('p5-canvas');
+  background(226, 225, 225);
+}
+
+function draw() {
+  noStroke();
+  let stripeWidth = 2;
+  for (let x = 0; x < windowWidth; x += stripeWidth * 2) {
+    fill(254, 255, 250);
+    rect(x, 0, stripeWidth, windowHeight);
+    fill(248, 250, 232);
+    rect(x + stripeWidth, 0, stripeWidth, windowHeight);
+  }
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+</script>
+
+
+
+
+</body>
+</html>
