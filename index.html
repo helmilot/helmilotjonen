@@ -437,16 +437,13 @@
       }
 
 
-
-
-
   </style>
 
     </head>
 
 
 <body>
-
+<script src="script.js"></script>
 <!-- Taustapallot -->
 <div class="taustapallot">
   <div class="marquee4">
@@ -483,6 +480,10 @@
 
   <navi>
     <a href="Introduction.html">Intro</a>
+  </navi>
+
+    <navi>
+    <a href="business/index.html">Business</a>
   </navi>
 
     <navi>
@@ -551,7 +552,8 @@
     <a href="https://github.com/helmilotjonen" target="_blank">GitHub</a> · 
   </p>
 </footer>
-  
+
+
 <script>
 // Parannettu kosketustuki mobiililaitteille
 document.addEventListener('DOMContentLoaded', function() {
@@ -639,16 +641,28 @@ window.addEventListener('pageshow', function(event) {
 
 <!-- p5.js efekti -->
 <script>
+// Hiirellä piirtyvät kirjaimet
+let kirjaimet = [];
+const nimi = "HELMILÖTJÖNEN";
+let kirjainIndeksi = 0;
+let viimeinenLisays = 0;
+let edellinenX = 0;
+let edellinenY = 0;
+const kirjainVali = 20; // Kuinka paljon hiiren täytyy liikkua ennen uutta kirjainta
+
 function setup() {
   let canvas = createCanvas(windowWidth, windowHeight);
   canvas.id('p5-canvas');
-  background(226, 225, 225); // sama kuin body background #e2e1e1
+  background(226, 225, 225);
+  textFont('ITC Garamond, Georgia, serif');
+  textSize(16);
+  textAlign(CENTER, CENTER);
 }
 
 function draw() {
   // Pystysuuntainen raidoitus taustaksi
   noStroke();
-  let stripeWidth = 2; // raidan leveys
+  let stripeWidth = 2;
   for (let x = 0; x < windowWidth; x += stripeWidth * 2) {
     fill(219, 219, 219);
     rect(x, 0, stripeWidth, windowHeight);
@@ -660,22 +674,71 @@ function draw() {
     if (frameCount % 8 == 0) {
       noStroke();
       fill(
-  random(240, 255),  // R - vielä valkoisempi
-  random(240, 255),  // G - vielä valkoisempi
-  random(240, 255),  // B - vielä valkoisempi
-  random(200, 255)   // Alpha - kirkkaampi/peittävämpi
+        random(240, 255),
+        random(240, 255),
+        random(240, 255),
+        random(200, 255)
       );
       let x = random(windowWidth);
       let y = random(windowHeight);
       ellipse(x, y, 10, 10);
     }
   }
+
+  // Piirra kirjaimet ja poista vanhat
+  let nykyinenAika = millis();
+  for (let i = kirjaimet.length - 1; i >= 0; i--) {
+    let k = kirjaimet[i];
+    let ika = nykyinenAika - k.aika;
+
+    // Häivytys: täysi näkyvyys 0-1500ms, häivytys 1500-3000ms
+    let alpha = 255;
+    if (ika > 1500) {
+      alpha = map(ika, 1500, 3000, 255, 0);
+    }
+
+    // Poista kirjain kun se on täysin haihtunut
+    if (ika > 3000) {
+      kirjaimet.splice(i, 1);
+    } else {
+      // Piirra kirjain
+      fill(183, 184, 189, alpha);
+      noStroke();
+      text(k.merkki, k.x, k.y);
+    }
+  }
+}
+
+function mouseMoved() {
+  // Laske etäisyys edellisestä kirjaimesta
+  let etaisyys = dist(mouseX, mouseY, edellinenX, edellinenY);
+
+  if (etaisyys > kirjainVali) {
+    // Lisää uusi kirjain
+    kirjaimet.push({
+      merkki: nimi[kirjainIndeksi],
+      x: mouseX,
+      y: mouseY,
+      aika: millis()
+    });
+
+    // Seuraava kirjain (pyörii nimen ympäri)
+    kirjainIndeksi = (kirjainIndeksi + 1) % nimi.length;
+
+    // Päivitä edellinen sijainti
+    edellinenX = mouseX;
+    edellinenY = mouseY;
+  }
 }
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
+
+
 </script>
+
+
 
 </body>
 </html>
