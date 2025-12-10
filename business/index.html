@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Business</title>
+  <link rel="icon" href="../favicon.png" />
+  <link rel="stylesheet" href="../mainstyles.css">
+
+
+<style>
+
+      /* Kapakana fontti */
+    @font-face {
+      font-family: 'Kapakana';
+      src: url('../assets/fonts/Kapakana-Regular.ttf') format('truetype');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+        /* ITC Garamond oletusfontti */
+    @font-face {
+      font-family: 'ITC Garamond narrow';
+      src: url('../assets/fonts/ITCGaramondStd-LtNarrow.otf') format('opentype');
+      font-weight: auto;
+      font-style: normal;
+    }
+
+        body {
+        color: #000 !important;
+        display: grid;
+        grid-template-rows: auto 1fr;
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        gap: 0;
+    }
+
+            #p5-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    a {
+        color: #000 !important;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: #ffffff !important;
+        text-decoration: none;
+    }
+
+    .navicontainer {
+  display: row;
+  justify-content: flex-end;
+  padding-right: 28px;
+  padding-top: 17px;
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+}
+
+.navi {
+  display: flex;
+  flex-direction: row;
+   justify-content: center;
+  gap: 10px;
+  padding: 20px;
+  gap: 20px;
+}
+
+.navi a {
+  color: rgb(66, 65, 65) !important;
+  text-decoration: none;
+  font-size: 16px;
+  background: #d9dadb;
+}
+
+.navi a.alleviivattu {
+  text-decoration: underline;
+}
+
+.navi a:hover {
+  color: #b3bdb0 !important;
+}
+
+    .navi nav {
+      margin-right: 30px;
+    }
+
+    .container {
+      margin-top: 150px;
+      padding: 40px;
+      text-align: center;
+    }
+
+    .otsikko {
+      font-size: 48px;
+      color: #363636;
+      font-family: 'Kapakana', serif;
+      margin-bottom: 40px;
+    }
+
+    .kuvaus {
+      font-size: 20px;
+      color: #363636;
+      font-family: 'ITC Garamond narrow', serif;
+      margin-bottom: 60px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .linkit {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .linkit a {
+      font-size: 18px;
+      color: #363636 !important;
+      font-family: 'ITC Garamond narrow', serif;
+      padding: 15px 30px;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+
+    .linkit a:hover {
+      background: rgba(255, 255, 255, 0.8);
+      color: #000 !important;
+    }
+
+
+
+</style>
+
+<body>
+
+<div class="navicontainer">
+
+<div class="navi">
+
+
+  <navi>
+    <a href="../index.html">Home</a>
+  </navi>
+
+        <navi>
+    <a href="../Introduction.html">Intro</a>
+  </navi>
+
+    <navi>
+    <a href="index.html" class="alleviivattu">Business</a>
+  </navi>
+
+    <navi>
+    <a href="../Poster-projects.html">Static art</a>
+  </navi>
+
+    <navi>
+    <a href="../Jewellery lines.html">Jewellery</a>
+  </navi>
+
+    <navi>
+    <a href="../Motion.html">Motion and sound</a>
+  </navi>
+
+
+  <navi>
+    <a href="../Experimental-pages.html">Experimental pages</a>
+  </navi>
+
+  </div>
+
+   </div>
+
+  <div class="container">
+    <h1 class="otsikko">Business</h1>
+    <p class="kuvaus">This section showcases my expertise as a professional in the commercial field. I am currently seeking projects that emphasize business skills. Over the years, I have specialized in various areas, with a current focus on internationalization. I have hands-on experience in the Swedish market.</p>
+
+    <div class="linkit">
+      <a href="internationalization.html">Internationalization</a>
+      <a href="branding.html">Branding</a>
+      <a href="leadership.html">Leadership</a>
+    </div>
+  </div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+<script>
+function setup() {
+  let canvas = createCanvas(windowWidth, windowHeight);
+  canvas.id('p5-canvas');
+  background(226, 225, 225);
+}
+
+function draw() {
+  noStroke();
+  let stripeWidth = 2;
+  for (let x = 0; x < windowWidth; x += stripeWidth * 2) {
+    fill(240, 240, 240);
+    rect(x, 0, stripeWidth, windowHeight);
+    fill(250, 249, 247);
+    rect(x + stripeWidth, 0, stripeWidth, windowHeight);
+  }
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+</script>
+
+
+
+
+</body>
+</html>
