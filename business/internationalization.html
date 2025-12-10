@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Internationalization</title>
+  <link rel="icon" href="../favicon.png" />
+  <link rel="stylesheet" href="../mainstyles.css">
+
+
+<style>
+
+      /* Kapakana fontti */
+    @font-face {
+      font-family: 'Kapakana';
+      src: url('../assets/fonts/Kapakana-Regular.ttf') format('truetype');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+        /* ITC Garamond oletusfontti */
+    @font-face {
+      font-family: 'ITC Garamond narrow';
+      src: url('../assets/fonts/ITCGaramondStd-LtNarrow.otf') format('opentype');
+      font-weight: auto;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'ITC Garamond';
+      src: url('../assets/fonts/ITCGaramondStd-BkNarrow.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+        body {
+        color: #000 !important;
+        display: grid;
+        grid-template-rows: auto 1fr;
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        gap: 0;
+    }
+
+            #p5-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    a {
+        color: #000 !important;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: #ffffff !important;
+        text-decoration: none;
+    }
+
+    .navicontainer {
+  display: row;
+  justify-content: flex-end;
+  padding-right: 28px;
+  padding-top: 17px;
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+}
+
+.navi {
+  display: flex;
+  flex-direction: row;
+   justify-content: center;
+  gap: 10px;
+  padding: 20px;
+  gap: 20px;
+}
+
+.navi a {
+  color: rgb(66, 65, 65) !important;
+  text-decoration: none;
+  font-size: 16px;
+  background: #d9dadb;
+}
+
+.navi2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+  padding: 5px;
+}
+
+.navi2 a {
+  color: rgb(56, 55, 55) !important;
+  text-decoration: none;
+  font-size: 16px;
+  background: #e2e2e2;
+}
+
+.navi2 a:hover {
+  color: #d7d5d5 !important;
+}
+
+.navi a.alleviivattu {
+  text-decoration: underline;
+}
+
+.navi2 a.alleviivattu {
+  text-decoration: underline;
+}
+
+.navi a:hover {
+  color: #b3bdb0 !important;
+}
+
+    .navi nav {
+      margin-right: 30px;
+    }
+
+    .container {
+      margin-top: 10px;
+      padding: 40px;
+      padding-left: 15%;
+      padding-right: 15%;
+      text-align: left;
+    }
+
+    .otsikko {
+      font-size: 52px;
+      color: #363636;
+      font-family: 'Kapakana', serif;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .alaotsikko {
+      font-size: 18px;
+      color: #6b6b6b;
+      font-family: 'ITC Garamond narrow', serif;
+      margin-bottom: 50px;
+      text-align: center;
+      letter-spacing: 2px;
+    }
+
+    .johdanto {
+      font-size: 18px;
+      color: #363636;
+      font-family: 'ITC Garamond', serif;
+      line-height: 1.7;
+      margin-bottom: 60px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    .palvelut {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      margin-bottom: 70px;
+    }
+
+    .palvelu {
+      background: rgba(255, 255, 255, 0.6);
+      padding: 35px 30px;
+      border-radius: 4px;
+      text-align: left;
+    }
+
+    .palvelu-numero {
+      font-size: 32px;
+      color: #b8b8b8;
+      font-family: 'Kapakana', serif;
+      margin-bottom: 10px;
+    }
+
+    .palvelu-otsikko {
+      font-size: 20px;
+      color: #363636;
+      font-family: 'ITC Garamond narrow', serif;
+      margin-bottom: 15px;
+    }
+
+    .palvelu-kuvaus {
+      font-size: 15px;
+      color: #4a4a4a;
+      font-family: 'ITC Garamond', serif;
+      line-height: 1.6;
+    }
+
+    .lopetus {
+      font-size: 17px;
+      color: #363636;
+      font-family: 'ITC Garamond', serif;
+      line-height: 1.7;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+      padding: 40px;
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: 4px;
+      margin-bottom: 60px;
+    }
+
+    .lopetus-otsikko {
+      font-size: 22px;
+      color: #363636;
+      font-family: 'ITC Garamond narrow', serif;
+      margin-bottom: 20px;
+    }
+
+    .contact {
+      text-align: center;
+      font-size: 16px;
+      color: #6b6b6b;
+      font-family: 'ITC Garamond narrow', serif;
+      margin-bottom: 40px;
+    }
+
+    .contact a {
+      color: #363636 !important;
+    }
+
+    .contact a:hover {
+      color: #000 !important;
+    }
+
+    @media (max-width: 900px) {
+      .palvelut {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      .container {
+        padding-left: 8%;
+        padding-right: 8%;
+      }
+    }
+
+    /* Rullaavat liput */
+    .lippu-rullaava {
+      width: 100%;
+      overflow: hidden;
+      padding: 20px 0;
+      margin-top: 140px;
+    }
+
+    .lippu-rullaava .wrap {
+      display: inline-block;
+      white-space: nowrap;
+      animation: scroll-liput 25s linear infinite;
+    }
+
+    .lippu-rullaava .wrap img {
+      height: 25px;
+      margin-right: 30px;
+      opacity: 0.7;
+    }
+
+    @keyframes scroll-liput {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+</style>
+
+<body>
+
+<div class="navicontainer">
+
+<div class="navi">
+
+  <navi>
+    <a href="../index.html">Home</a>
+  </navi>
+
+        <navi>
+    <a href="../Introduction.html">Intro</a>
+  </navi>
+
+    <navi>
+    <a href="index.html" class="alleviivattu">Business</a>
+  </navi>
+
+    <navi>
+    <a href="../Poster-projects.html">Static art</a>
+  </navi>
+
+    <navi>
+    <a href="../Jewellery lines.html">Jewellery</a>
+  </navi>
+
+    <navi>
+    <a href="../Motion.html">Motion and sound</a>
+  </navi>
+
+
+  <navi>
+    <a href="../Experimental-pages.html">Experimental pages</a>
+  </navi>
+
+  </div>
+
+  <div class="navi2">
+    <a href="internationalization.html" class="alleviivattu">Internationalization</a>
+    <a href="branding.html">Branding</a>
+    <a href="leadership.html">Leadership</a>
+  </div>
+
+   </div>
+
+  <div class="lippu-rullaava">
+    <div class="wrap">
+      <img src="../assets/img/Swed.webp" alt="">
+      <img src="../assets/img/Swed.webp" alt="">
+      <img src="../assets/img/Swed.webp" alt="">
+      <img src="../assets/img/Swed.webp" alt="">
+      <img src="../assets/img/Swed.webp" alt="">
+      <img src="../assets/img/Swed.webp" alt="">
+      <img src="../assets/img/Swed.webp" alt="">
+      <img src="../assets/img/Swed.webp" alt="">
+      <img src="../assets/img/Swed.webp" alt="">
+      <img src="../assets/img/Swed.webp" alt="">
+      <img src="../assets/img/Swed.webp" alt="">
+      <img src="../assets/img/Swed.webp" alt="">
+      <img src="../assets/img/Swed.webp" alt="">
+      <img src="../assets/img/Swed.webp" alt="">
+      <img src="../assets/img/Swed.webp" alt="">
+      <img src="../assets/img/Swed.webp" alt="">
+      <img src="../assets/img/Swed.webp" alt="">
+      <img src="../assets/img/Swed.webp" alt="">
+      <img src="../assets/img/Swed.webp" alt="">
+      <img src="../assets/img/Swed.webp" alt="">
+    </div>
+  </div>
+
+  <div class="container">
+    <h1 class="otsikko">Internationalization</h1>
+    <p class="alaotsikko">The Swedish Market</p>
+
+    <p class="johdanto">
+      International markets have always fascinated me. I specialize in the Swedish market, where I have gained hands-on experience with its dynamics, business culture, and opportunities. I am currently conducting an internationalization study for a client targeting Sweden – work that combines an analytical approach with concrete action recommendations.
+    </p>
+
+    <div class="palvelut">
+      <div class="palvelu">
+        <div class="palvelu-numero">01</div>
+        <h3 class="palvelu-otsikko">Market Analysis</h3>
+        <p class="palvelu-kuvaus">
+          An in-depth look at the target market: market size and growth prospects, key trends, customer segments, and competitive landscape. I identify opportunities and risks so you can make decisions based on facts.
+        </p>
+      </div>
+
+      <div class="palvelu">
+        <div class="palvelu-numero">02</div>
+        <h3 class="palvelu-otsikko">Sales & Customer Mapping</h3>
+        <p class="palvelu-kuvaus">
+          Identifying potential customers and partners, mapping sales channels, and providing concrete recommendations for market entry. I build a clear picture of who you sell to and how to reach them.
+        </p>
+      </div>
+
+      <div class="palvelu">
+        <div class="palvelu-numero">03</div>
+        <h3 class="palvelu-otsikko">Local Adaptation</h3>
+        <p class="palvelu-kuvaus">
+          Support for entering the Swedish business environment: cultural nuances, adapting business models to local expectations, and establishing early-stage partnerships and contacts. I help you start on the right foot.
+        </p>
+      </div>
+    </div>
+
+    <div class="lopetus">
+      <h3 class="lopetus-otsikko">Why Choose Me as Your Partner?</h3>
+      <p>
+        I combine an analytical approach with practical understanding of the Swedish market. My work is based on data and thorough research – not assumptions. My goal is to create a clear path to market for you: understanding your starting point, concrete steps forward, and a realistic view of what success requires. When expanding to Sweden, you want a partner who knows the terrain.
+      </p>
+    </div>
+
+    <p class="contact">Contact: <a href="mailto:helmi.lotjonen@gmail.com">helmi.lotjonen@gmail.com</a></p>
+
+  </div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+<script>
+function setup() {
+  let canvas = createCanvas(windowWidth, windowHeight);
+  canvas.id('p5-canvas');
+  background(226, 225, 225);
+}
+
+function draw() {
+  noStroke();
+  let stripeWidth = 2;
+  for (let x = 0; x < windowWidth; x += stripeWidth * 2) {
+    fill(240, 240, 240);
+    rect(x, 0, stripeWidth, windowHeight);
+    fill(250, 249, 247);
+    rect(x + stripeWidth, 0, stripeWidth, windowHeight);
+  }
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+</script>
+
+</body>
+</html>
