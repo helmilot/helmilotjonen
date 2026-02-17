@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sivu 2</title>
   <script type="module" src="./assets/components/html-css-viewer.js"></script>
-  <link rel="icon" href="favicon.png" />
+  
+  <link rel="icon" href="faviconhelmi2.svg" />
   <link rel="stylesheet" href="mainstyles.css">
 
 
@@ -27,7 +28,8 @@
 
         padding: 0;
         gap: 0;
-    }
+        background: #f2f2f2;
+      }
 
             #p5-canvas {
       position: fixed;
@@ -107,15 +109,224 @@
 
     .container {
       margin-top: 120px;
-      padding: 40px;
-      text-align: center;
+      padding: 20px;
+      text-align: left;
+    }
+
+    .sound-item {
+      margin: 20px auto;
+      max-width: 700px;
+      padding: 30px;
     }
 
 
+    .sound-item2 {
+      margin: 20px auto;
+      margin-bottom: 20px;
+      max-width: 700px;
+      padding-bottom: 5px;
+
+    }
+
+    .sound-item h3 {
+      margin-top: 0;
+      color: #333;
+      font-size: 24px;
+      text-align: left;
+    }
+
+        .sound-item h4 {
+      margin-top: 0;
+      color: #333;
+      font-size: 30px;
+      text-align: left;
+    }
+
+    .sound-projects-title {
+      font-size: 40px;
+      margin: 0 0 10px;
+    }
+
+    .sound-intro {
+      text-align: left;
+      font-size: 16px;
+      column-count: 1;
+      margin: 20px 0 0px;
+    }
+
+    .sound-description {
+      text-align: left;
+      font-size: 14px;
+      column-count: 2;
+      column-gap: 24px;
+      margin: 12px 0 16px;
+    }
+
+    .sound-item audio {
+      width: 100%;
+      margin: 8px 0 0;
+      height: 40px;
+      border-radius: 0;
+    }
+
+    #canvas1, #canvas3 {
+      width: 700px;
+      height: 400px;
+      margin: 12px auto 6px;
+    }
+
+    #canvas2 {
+      width: 700px;
+      height: 400px;
+      margin: 12px auto 6px;
+    }
+
+    /* Hamburger menu */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 10px;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1001;
+      background: #f4f8fa;
+      border-radius: 4px;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background-color: rgb(66, 65, 65);
+      margin: 3px 0;
+      transition: 0.3s;
+    }
+
+    /* Mobile menu overlay */
+    .mobile-menu-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #f2f2f2;
+      z-index: 1000;
+      overflow-y: auto;
+      padding: 80px 30px 30px;
+    }
+
+    .mobile-menu-overlay.active {
+      display: block;
+    }
+
+    .mobile-menu-overlay .navi {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 0;
+    }
+
+    .mobile-menu-overlay .navi a {
+      font-size: 24px;
+      background: none;
+    }
+
+    .mobile-menu-overlay .navi2 {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 5px;
+      margin-top: 0px;
+      margin-bottom: 20px;
+      padding: 0;
+    }
+
+    .mobile-menu-overlay .navi2 a {
+      font-size: 20px;
+      background: none;
+    }
+
+    @media (max-width: 768px) {
+      .sound-description {
+        column-count: 1;
+      }
+
+      .sound-item {
+        padding: 0;
+        padding-top: 20px;
+      }
+
+      .sound-item2 {
+        padding: 0;
+        padding-top: 20px;
+      }
+
+      #canvas1, #canvas2, #canvas3 {
+        width: 100%;
+        height: auto;
+        margin: 12px 0 0px;
+      }
+
+      canvas {
+        width: 100% !important;
+        height: auto !important;
+      }
+
+      .navicontainer {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
 
 </style>
 
 <body>
+
+<!-- Hamburger menu button -->
+<div class="hamburger" onclick="toggleMobileMenu()">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<!-- Mobile menu overlay -->
+<div class="mobile-menu-overlay" id="mobileMenu">
+  <div class="navi">
+    <navi>
+      <a href="index.html" onclick="toggleMobileMenu()">Home</a>
+    </navi>
+    <navi>
+      <a href="Introduction.html" onclick="toggleMobileMenu()">Intro</a>
+    </navi>
+    <navi>
+      <a href="business/index.html" onclick="toggleMobileMenu()">Business</a>
+    </navi>
+    <navi>
+      <a href="Poster-projects.html" onclick="toggleMobileMenu()">Static art</a>
+    </navi>
+    <navi>
+      <a href="Jewellery lines.html" onclick="toggleMobileMenu()">Jewellery</a>
+    </navi>
+    <navi>
+      <a href="Motion.html" class="alleviivattu" onclick="toggleMobileMenu()">Motion and sound</a>
+    </navi>
+  </div>
+
+  <div class="navi2">
+    <a href="Motion.html" onclick="toggleMobileMenu()">Motion graphics</a>
+    <a href="Sound.html" class="alleviivattu" onclick="toggleMobileMenu()">Sound projects</a>
+  </div>
+
+  <div class="navi">
+    <navi>
+      <a href="Experimental-pages.html" onclick="toggleMobileMenu()">Experimental pages</a>
+    </navi>
+  </div>
+</div>
 
 <div class="navicontainer">
 
@@ -161,24 +372,62 @@
    </div>
 
 <div class="container">
-  <h2>Coming soon!</h2>
+
+  <div class="sound-item2">
+    <h4 class="sound-projects-title">Sound projects</h4>
+    <p class="sound-intro">During my second year of visual communication design studies at Aalto University, I became captivated by audio projects. These works became integral parts of larger projects, where spatial storytelling played a central role. Beyond visual elements, I found audio essential, because it adds a new dimension to the space and introduces subtle details that enrich the overall experience. The sounds themselves are experimental, existing in the liminal space between sound art and music. I also aimed for them to be open to interpretation, allowing each listener to pick out fragments that resonate personally and create their own connections.</p>
+
+  </div>
+  
+  <div class="sound-item">
+    <h3>Digital Dining</h3>
+    <p class="sound-description">This piece was created during Aalto University's Experiment 2 course in the spring of 2025. As our final project, we designed a projection for a dining table, and this piece served as the soundtrack for the first setting. The soundtrack reflects the feeling of beginning an evening amidst conversations and contemplation. The atmosphere builds, and participants search for their place within the group. Additionally, the track includes the perspective of an observer spending their own time, positioned outside the dinner party. Can you find yourself in both roles? The piece is visualized to evoke the mood that I experienced while creating it. It was made by combining and editing pre-existing audio clips from Pixabay.</p>
+    <div id="canvas1"></div>
+    <audio controls>
+      <source src="Sounds/Biisi1.mp3" type="audio/mpeg">
+      Selaimesi ei tue audio-elementtiä
+    </audio>
+  </div>
+
+  <div class="sound-item">
+    <h3>Elle's table</h3>
+    <p class="sound-description">This piece was created during Aalto University’s Experiment 2 course in the spring of 2025. For our final project, we designed a projection for a dining table, and this track was the second soundtrack for the first setting. It was made for my friend Elle’s table, with a theme of boldness and a party in full swing. I wanted the piece to reflect Elle’s optimistic yet surprising personality. The atmosphere conveys the joy of creating and being, as well as the richness of events. In the visualization, retro elements, intensity, and playfulness were particularly important. The piece was created by combining and editing pre-existing audio clips from Pixabay.</p>
+    <div id="canvas2"></div>
+    <audio id="audio2" controls>
+      <source src="Sounds/Biisi2.mp3" type="audio/mpeg">
+      Selaimesi ei tue audio-elementtiä
+    </audio>
+  </div>
+
+  <div class="sound-item">
+    <h3>Garden Party</h3>
+    <p class="sound-description">This piece was created during Aalto University’s Experimental Project course in the spring of 2025. It was designed to be played alongside a group-created garden party table setting. The piece would have been especially needed if it had rained and we had to present our work indoors. I wanted to capture the sound of friends gathering outside to celebrate spring on a calm, sunny day. In the project, it was important to consider which sound effects and combinations could evoke the feeling of an outdoor space in audio. The piece was created by combining and editing pre-existing audio clips from Pixabay.</p>
+    <div id="canvas3"></div>
+    <audio id="audio3" controls>
+      <source src="Sounds/Biisi3.mp3" type="audio/mpeg">
+      Selaimesi ei tue audio-elementtiä
+    </audio>
+  </div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/addons/p5.sound.min.js"></script>
+
+<!-- Background stripe pattern -->
 <script>
 function setup() {
   let canvas = createCanvas(windowWidth, windowHeight);
   canvas.id('p5-canvas');
-  background(226, 225, 225);
+  background(242, 242, 242);
 }
 
 function draw() {
   noStroke();
   let stripeWidth = 2;
   for (let x = 0; x < windowWidth; x += stripeWidth * 2) {
-    fill(247, 239, 215);
+    fill(240, 240, 240);
     rect(x, 0, stripeWidth, windowHeight);
-    fill(245, 229, 186);
+    fill(232, 232, 232);
     rect(x + stripeWidth, 0, stripeWidth, windowHeight);
   }
 }
@@ -188,8 +437,420 @@ function windowResized() {
 }
 </script>
 
+<!-- Sketch 1 -->
+<script>
+const sketch1 = (p) => {
+  let colors = [
+    "#F2E9A2",
+    "#EB0851",
+    "#EAA2B4",
+    "#62637C",
+    "#FF3E55",
+    "#F46085",
+    "#DF315D",
+    "#A8A9C2",
+    "#F1812C",
+    "#F1812C"
+  ];
 
+  let rects = [];
+  let nextBeat = 0;
+  let audioElement;
+  let amplitudeEnvelope = [];
+  const envelopeRate = 30; // analyysipisteitä per sekunti
 
+  p.setup = function() {
+    let container = document.getElementById('canvas1');
+    let canvas = p.createCanvas(700, 400);
+    canvas.parent('canvas1');
+    p.noStroke();
+    generateRects();
+
+    // Etsi audio-elementti (ensimmäinen sivulla = Biisi 1)
+    audioElement = document.querySelector('audio');
+
+    // Lataa audiotiedosto ja analysoi äänenvoimakkuus etukäteen
+    fetch('Sounds/Biisi1.mp3')
+      .then(r => r.arrayBuffer())
+      .then(buf => {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        return ctx.decodeAudioData(buf);
+      })
+      .then(audioBuffer => {
+        const data = audioBuffer.getChannelData(0);
+        const sampleRate = audioBuffer.sampleRate;
+        const windowSize = Math.floor(sampleRate / envelopeRate);
+        amplitudeEnvelope = [];
+
+        for (let i = 0; i < data.length; i += windowSize) {
+          let sum = 0;
+          let count = Math.min(windowSize, data.length - i);
+          for (let j = 0; j < count; j++) {
+            sum += data[i + j] * data[i + j];
+          }
+          amplitudeEnvelope.push(Math.sqrt(sum / count));
+        }
+        console.log('Biisi1 analysoitu, envelope-pisteitä:', amplitudeEnvelope.length,
+          'max energy:', Math.max(...amplitudeEnvelope).toFixed(4));
+      })
+      .catch(err => console.error('Audio-analyysi epäonnistui:', err));
+  };
+
+  p.draw = function() {
+    p.background(220);
+    p.noStroke();
+
+    let energy = 0;
+    let tempo = 400;
+    let isPlaying = audioElement && !audioElement.paused;
+
+    // Hae energia esianalysoidusta datasta currentTimen perusteella
+    if (isPlaying && amplitudeEnvelope.length > 0) {
+      let timeIndex = Math.floor(audioElement.currentTime * envelopeRate);
+      timeIndex = Math.min(timeIndex, amplitudeEnvelope.length - 1);
+      energy = amplitudeEnvelope[timeIndex];
+
+      tempo = p.map(energy, 0, 0.2, 600, 80);
+      tempo = p.constrain(tempo, 80, 600);
+    }
+
+    let x = 0;
+
+    // Vaihdetaan väriä vain kun energiaa on oikeasti
+    if (isPlaying && energy > 0.01 && p.millis() > nextBeat && rects.length > 0) {
+      let idx = Math.floor(p.random(rects.length));
+      rects[idx].color = p.random(colors);
+      nextBeat = p.millis() + tempo;
+    }
+
+    for (let r of rects) {
+      p.fill(r.color);
+      p.rect(x, 0, r.width, p.height);
+      x += r.width;
+    }
+  };
+
+  function generateRects() {
+    rects = [];
+    let totalWidth = 0;
+
+    while (totalWidth < p.width) {
+      let w = p.random(4, 30);
+
+      if (totalWidth + w > p.width) {
+        w = p.width - totalWidth;
+      }
+
+      rects.push({
+        width: w,
+        color: p.random(colors)
+      });
+
+      totalWidth += w;
+    }
+  }
+
+  p.windowResized = function() {
+    if (document.getElementById('canvas1')) {
+      let container = document.getElementById('canvas1');
+      p.resizeCanvas(700, 400);
+      generateRects();
+    }
+  };
+};
+new p5(sketch1);
+</script>
+
+<!-- Sketch 2 -->
+<script>
+const sketch2 = (p) => {
+  let balls = [];
+  let audioElement;
+  let amplitudeEnvelope = [];
+  const envelopeRate = 30;
+  let pulse = 0;
+  let activeIndex = 0;
+  let lastPulse = 0;
+  let pulseThreshold = 0.25;
+
+  p.setup = function() {
+    let container = document.getElementById('canvas2');
+    let canvas = p.createCanvas(700, 400);
+    canvas.parent('canvas2');
+    p.noiseSeed(2);
+
+    balls = [
+      { x: 50, y: 70, size: 1 },
+      { x: 760, y: 70, size: 1 },
+      { x: 400, y: 70, size: 1 },
+
+      { x: 230, y: 80, size: 2 },
+      { x: 590, y: 60, size: 2 },
+
+      { x: 10, y: 290, size: 1 },
+      { x: 720, y: 286, size: 1 },
+      { x: 360, y: 280, size: 1 },
+
+      { x: 280, y: 480, size: 1 },
+      { x: 590, y: 480, size: 1 },
+
+      { x: 180, y: 320, size: 2 },
+      { x: 540, y: 285, size: 2 },
+
+      { x: 150, y: 200, size: 3 },
+      { x: 610, y: 180, size: 3 },
+
+      { x: 110, y: 430, size: 3 },
+      { x: 450, y: 430, size: 3 },
+
+      { x: 240, y: 200, size: 4 },
+      { x: 510, y: 160, size: 4 }
+    ];
+
+    audioElement = document.getElementById('audio2');
+
+    fetch('Sounds/Biisi2.mp3')
+      .then(r => r.arrayBuffer())
+      .then(buf => {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        return ctx.decodeAudioData(buf);
+      })
+      .then(audioBuffer => {
+        const data = audioBuffer.getChannelData(0);
+        const sampleRate = audioBuffer.sampleRate;
+        const windowSize = Math.floor(sampleRate / envelopeRate);
+        amplitudeEnvelope = [];
+
+        for (let i = 0; i < data.length; i += windowSize) {
+          let sum = 0;
+          let count = Math.min(windowSize, data.length - i);
+          for (let j = 0; j < count; j++) {
+            sum += data[i + j] * data[i + j];
+          }
+          amplitudeEnvelope.push(Math.sqrt(sum / count));
+        }
+      })
+      .catch(err => console.error('Biisi2 analyysi epäonnistui:', err));
+
+  };
+
+  p.draw = function() {
+    p.background(171, 17, 80);
+
+    let isPlaying = audioElement && !audioElement.paused;
+    if (isPlaying && amplitudeEnvelope.length > 0) {
+      let timeIndex = Math.floor(audioElement.currentTime * envelopeRate);
+      timeIndex = Math.min(timeIndex, amplitudeEnvelope.length - 1);
+      pulse = p.constrain(p.map(amplitudeEnvelope[timeIndex], 0, 0.2, 0, 1), 0, 1);
+    } else {
+      pulse = 0;
+    }
+
+    if (pulse > pulseThreshold && lastPulse <= pulseThreshold) {
+      activeIndex = Math.floor(p.random(balls.length));
+    }
+    lastPulse = pulse;
+
+    for (let i = 0; i < balls.length; i++) {
+      let b = balls[i];
+      let baseSize;
+
+      if (b.size === 1) baseSize = 100; // iso
+      if (b.size === 2) baseSize = 70;  // keskikoko
+      if (b.size === 3) baseSize = 50;  // pieni
+      if (b.size === 4) baseSize = 35;  // pienin
+
+      let isActive = i === activeIndex;
+      drawBall(b.x, b.y, baseSize, isActive ? pulse : 0);
+    }
+  };
+
+  function drawBall(cx, cy, baseSize, localPulse) {
+    p.noStroke();
+
+    let seed = cx * 0.01 + cy * 0.01;
+
+    let c1 = p.lerpColor(p.color(244, 96, 133), p.color(223, 49, 93, 200), localPulse);
+    let c2 = p.lerpColor(p.color(274, 62, 85, 130), p.color(206, 44, 64, 170), localPulse);
+    let c3 = p.lerpColor(p.color(235, 8, 81, 90), p.color(196, 7, 68, 130), localPulse);
+
+    p.fill(c1);
+    blob(cx, cy, baseSize, p.noise(seed) * p.TWO_PI, seed + 10);
+
+    p.fill(c2);
+    blob(cx, cy + 5, baseSize * 0.75, p.noise(seed + 20) * p.TWO_PI, seed + 30);
+
+    p.fill(c3);
+    blob(cx, cy - (cy * 0.05), baseSize * 0.55, p.noise(seed + 40) * p.TWO_PI, seed + 50);
+  }
+
+  function blob(x, y, radius, rot, noiseOffset) {
+    p.push();
+    p.translate(x, y);
+    p.rotate(rot);
+
+    p.beginShape();
+    let points = 32;
+
+    for (let a = 0; a < p.TWO_PI; a += p.TWO_PI / points) {
+      let n = p.noise(
+        p.cos(a) * 1.2 + noiseOffset,
+        p.sin(a) * 1.2 + noiseOffset
+      );
+
+      let r = radius + p.map(n, 0, 1, -radius * 0.15, radius * 0.15);
+
+      p.vertex(
+        p.cos(a) * r,
+        p.sin(a) * r
+      );
+    }
+
+    p.endShape(p.CLOSE);
+    p.pop();
+  }
+
+  p.windowResized = function() {
+    if (document.getElementById('canvas2')) {
+      p.resizeCanvas(700, 400);
+      p.redraw();
+    }
+  };
+};
+new p5(sketch2);
+</script>
+
+<!-- Sketch 3 -->
+<script>
+const sketch3 = (p) => {
+  let audioElement;
+  let amplitudeEnvelope = [];
+  const envelopeRate = 30;
+  let pulse = 0;
+
+  p.setup = function() {
+    let container = document.getElementById('canvas3');
+    let canvas = p.createCanvas(700, 400);
+    canvas.parent('canvas3');
+    p.noStroke();
+
+    audioElement = document.getElementById('audio3');
+
+    fetch('Sounds/Biisi3.mp3')
+      .then(r => r.arrayBuffer())
+      .then(buf => {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        return ctx.decodeAudioData(buf);
+      })
+      .then(audioBuffer => {
+        const data = audioBuffer.getChannelData(0);
+        const sampleRate = audioBuffer.sampleRate;
+        const windowSize = Math.floor(sampleRate / envelopeRate);
+        amplitudeEnvelope = [];
+
+        for (let i = 0; i < data.length; i += windowSize) {
+          let sum = 0;
+          let count = Math.min(windowSize, data.length - i);
+          for (let j = 0; j < count; j++) {
+            sum += data[i + j] * data[i + j];
+          }
+          amplitudeEnvelope.push(Math.sqrt(sum / count));
+        }
+      })
+      .catch(err => console.error('Biisi3 analyysi epäonnistui:', err));
+  };
+
+  p.draw = function() {
+    p.background(220);
+
+    let isPlaying = audioElement && !audioElement.paused;
+    if (isPlaying && amplitudeEnvelope.length > 0) {
+      let timeIndex = Math.floor(audioElement.currentTime * envelopeRate);
+      timeIndex = Math.min(timeIndex, amplitudeEnvelope.length - 1);
+      pulse = p.constrain(p.map(amplitudeEnvelope[timeIndex], 0, 0.2, 0, 1), 0, 1);
+    } else {
+      pulse = 0;
+    }
+
+    // taustaoranssi 1 (ei reagoi)
+    p.fill("#E59D37");
+    p.rect(0, 0, p.width, 120);
+
+    // taustaoranssi 2 (ei reagoi)
+    p.fill("rgb(211,115,66)");
+    p.rect(0, 107, p.width, p.height - 107);
+
+    let pink1 = p.lerpColor(p.color(206, 48, 141, 150), p.color(235, 140, 180, 190), pulse);
+let pink2 = p.lerpColor(p.color(206, 48, 141, 110), p.color(225, 125, 170, 160), pulse);
+// Lähempänä alkuperäisiä, hieman himmeämmät
+let white1 = p.lerpColor(p.color(243, 234, 229, 110), p.color(235, 230, 228, 130), pulse);
+let white2 = p.lerpColor(p.color(243, 234, 229, 80), p.color(230, 224, 222, 100), pulse);
+let green1 = p.lerpColor(p.color(118, 196, 47, 170), p.color(165, 210, 120, 190), pulse);
+    // pinkki neliö
+    p.fill(pink1);
+    p.rect(0, 107, 297, p.height - 107);
+
+    // pinkki suorakulma vaalea vasen
+    p.fill(white2);
+    p.rect(130, 0, 10, p.height);
+
+    // pinkki suorakulma vaalea vasen
+    p.fill(white2);
+    p.rect(206, 0, 64, p.height);
+
+    // pinkki suorakulma tumma
+    p.fill(pink1);
+    p.rect(160, 0, 17, 280);
+
+    // pinkki suorakulma paksuin
+    p.fill(pink2);
+    p.rect(430, 0, 159, p.height);
+
+    // pinkki suorakulma paksun sisällä pinkki
+    p.fill(pink1);
+    p.rect(430, 107, 159, p.height - 107);
+
+    // vihreä
+    p.fill(green1);
+    p.rect(50, 0, 50, p.height);
+
+    // valkoinen viiva ala
+    p.fill(white1);
+    p.rect(0, 280, p.width, 40);
+
+    // valkoinen pysty 1
+    p.fill(white1);
+    p.rect(110, 0, 20, p.height);
+
+    // valkoinen pysty 2
+    p.fill(white2);
+    p.rect(140, 0, 20, p.height);
+
+    // valkoinen pysty 3
+    p.fill(white2);
+    p.rect(177, 0, 29, p.height);
+
+    // valkoinen pysty 4
+    p.fill(white2);
+    p.rect(270, 0, 27, p.height);
+  };
+
+  p.windowResized = function() {
+    if (document.getElementById('canvas3')) {
+      let container = document.getElementById('canvas3');
+      p.resizeCanvas(700, 400);
+    }
+  };
+};
+new p5(sketch3);
+</script>
+
+<script>
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  menu.classList.toggle('active');
+}
+</script>
 
 </body>
 </html>
