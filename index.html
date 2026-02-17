@@ -35,7 +35,8 @@
     body {
       color: #000;
       position: relative;
-      overflow-x: hidden;
+      overflow: hidden;
+      height: 100vh;
       background:#efefef;
       font-family: 'ITC Garamond', serif;
     }
@@ -317,6 +318,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      transform: translateY(-40px);
     }
     
     .ovet-grid {
@@ -476,11 +478,17 @@
     }
 
     footer {
+      position: fixed;
+      left: 0;
+      bottom: 10px;
+      width: 100%;
       display: flex;
       flex-direction: row;
+      justify-content: center;
       gap: 4px;
-      margin-left: 30px;
-      }
+      margin: 0;
+      z-index: 5;
+    }
 
       footer a {
         color: inherit;
@@ -562,6 +570,11 @@
 </div>
 
 <div class="navicontainer">
+  <div class="nav-logo">
+    <a href="index.html">
+      <img class="nav-logo-img--large" src="helmilogo.svg" alt="Helmi logo">
+    </a>
+  </div>
 
 <div class="navi">
 
