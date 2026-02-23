@@ -78,7 +78,7 @@
   color: rgb(66, 65, 65) !important;              /* näkyvä linkkiväri */
   text-decoration: none;
   font-size: 16px;
-  background: #dbeaf1;
+  background: #e9e1e1;
 }
 
 .navi2 {
@@ -111,6 +111,38 @@
 
 .navi a:hover {
   color: #b3bdb0 !important;              /* näkyvä linkkiväri */
+}
+
+/* Dropdown menu */
+.navi navi {
+  position: relative;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #dbeaf1;
+  min-width: 200px;
+  padding: 10px 0;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.navi navi:hover .dropdown {
+  display: block;
+}
+
+.dropdown a {
+  display: block;
+  padding: 8px 20px;
+  white-space: nowrap;
+  background: transparent;
+}
+
+.dropdown a:hover {
+  background: rgba(255, 255, 255, 0.3);
 }
     
     .navi nav {
@@ -215,11 +247,419 @@
     font-size: 14px;
   }
 
+  /* Objects d'art layout */
+  .objects-grid {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    margin-top: 20vw;
+  }
 
+  .row {
+    display: flex;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    margin-bottom: -10px; /* Väli rivien välissä - muuta tätä arvoa */
+  }
+
+  .row:nth-child(2) {
+    margin-top: -30vw; /* Toinen rivi menee osittain ensimmäisen päälle */
+  }
+
+  .row:last-child {
+    margin-bottom: 0; /* Viimeisellä rivillä ei alareunassa väliä */
+  }
+
+  .div1, .div2, .div3, .div4 {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Div1: kuva vasemmalta, määrittää leveyden */
+  .div1 {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+  }
+
+  .div1.center {
+    justify-content: center;
+  }
+
+  /* Div2 ja Div3: täyttävät loput tilasta */
+  .div2, .div3 {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .div3.text-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin-left: 5%;
+    margin-top: 5%;
+    margin-right: 2%;
+  }
+
+  .div3 p {
+    font-size: 14px;
+    color: #333;
+    margin: 0 0 15px 0;
+    max-width: 600px;
+    text-align: left;
+  }
+
+  .div2.center {
+    justify-content: center;
+  }
+
+  .div2 img, .div3 img {
+    display: block;
+    height: auto;
+    width: auto;
+    max-width: 100%;
+  }
+
+  .div2 img.kalusteet {
+    max-width: 50%; /* Muuta tätä: pienempi % = pienempi kuva */
+  }
+
+  /* Div4: kuva oikealta, määrittää leveyden */
+  .div4 {
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  /* Div5: koko sivun levyinen */
+  .div5 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Kuvat */
+  .div1 img {
+    display: block;
+    height: auto;
+    width: 50vw;
+    max-width: 600px;
+  }
+
+  .div4 img {
+    display: block;
+    height: auto;
+    width: 70vw;
+    max-width: 900px;
+  }
+
+  .div5 img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .div5 img.shotti {
+    width: 80%; /* Muuta tätä: pienempi % = pienempi kuva, suurempi % = isompi kuva */
+  }
+
+  /* Rullaava kuva */
+  .scrolling-container {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+  }
+
+  .scrolling-wrapper {
+    display: flex;
+    animation: scroll-horizontal 30s linear infinite; /* Muuta aikaa nopeuden säätämiseksi */
+  }
+
+  .scrolling-wrapper img {
+    display: block;
+    height: auto;
+    flex-shrink: 0;
+  }
+
+  @keyframes scroll-horizontal {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* Hover-efekti */
+  .image-container {
+    position: relative;
+    display: inline-block;
+  }
+
+  .image-base {
+    display: block;
+    transition: opacity 0.4s ease;
+  }
+
+  .image-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .image-container:hover .image-base {
+    opacity: 0;
+  }
+
+  .image-container:hover .image-hover {
+    opacity: 1;
+  }
+
+  /* Pyörivä hover-efekti */
+  .rotating-container {
+    display: inline-block;
+    transition: transform 0.6s ease;
+  }
+
+  .rotating-container:hover {
+    transform: rotate(360deg);
+  }
+
+  /* Otsikko */
+  .div2.text-container {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 20px;
+    margin-top: 15%;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  .div2 h2 {
+    font-size: 40px;
+    margin: 0 0 20px 0;
+    color: #333;
+  }
+
+  /* Otsikon tyyli Jewellery-sivun kaltaisesti */
+  .yliteksti-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .yliteksti {
+    position: absolute;
+    top: var(--y, -2%);
+    left: var(--x, 0%);
+    width: 100%;
+    white-space: nowrap;
+    color: #dfdfdf;
+    font-size: 15vw;
+    pointer-events: none;
+    margin: 0;
+  }
+
+  .yliteksti-text {
+    position: absolute;
+    top: var(--y, 50%);
+    left: var(--x, 5%);
+    max-width: 60%;
+    white-space: normal;
+    color: #333;
+    font-size: 1vw;
+    pointer-events: none;
+  }
+
+    .yliteksti2 {
+    position: absolute;
+    top: var(--y, -2%);
+    left: var(--x, 0%);
+    width: 100%;
+    white-space: nowrap;
+    color: #dfdfdf;
+    font-size: 15vw;
+    pointer-events: none;
+    margin: 0;
+  }
+
+    .yliteksti2-text {
+    position: absolute;
+    top: var(--y, 50%);
+    left: var(--x, 5%);
+    max-width: 60%;
+    white-space: normal;
+    color: #333;
+    font-size: 1vw;
+    pointer-events: none;
+  }
+
+  .div2 p {
+    font-size: 16px;
+    color: #333;
+    margin: 0 0 15px 0;
+    max-width: 600px;
+  }
+
+  /* Koontikuvat */
+  .collection-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    margin-top: 50px;
+  }
+
+  .collection-grid img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Responsiiviinen layout - pienemmillä näytöillä divit allekkain */
+  @media (max-width: 1024px) {
+    /* iPadilla säilytetään sama layout kuin isossa näytössä, vain kuvat pienemmät */
+    .div1 img {
+      width: 35vw;
+      max-width: 500px;
+    }
+
+    .div4 img {
+      width: 50vw;
+      max-width: 700px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .row {
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+
+    .row:nth-child(2) {
+      margin-top: -50vw;
+    }
+
+    .div1 img {
+      width: 60vw;
+      max-width: 300px;
+    }
+
+    .div4 img {
+      width: 60vw;
+      max-width: 400px;
+    }
+
+    .div3.text-container,
+    .div2.text-container {
+      margin: 20px 0;
+      padding: 20px;
+    }
+  }
+
+/* Hamburger menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 10px;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1001;
+  background: #f4f8fa;
+  border-radius: 4px;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: rgb(66, 65, 65);
+  margin: 3px 0;
+  transition: 0.3s;
+}
+
+/* Mobile menu overlay */
+.mobile-menu-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #f2f2f2;
+  z-index: 1000;
+  overflow-y: auto;
+  padding: 80px 30px 30px;
+}
+
+.mobile-menu-overlay.active {
+  display: block;
+}
+
+.mobile-menu-overlay .navi {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 0;
+}
+
+.mobile-menu-overlay .navi a {
+  font-size: 24px;
+  background: none;
+}
+
+@media (max-width: 820px) {
+  .navicontainer {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
 
 </style>
 
 <body>
+
+<!-- Hamburger menu button -->
+<div class="hamburger" onclick="toggleMobileMenu()">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<!-- Mobile menu overlay -->
+<div class="mobile-menu-overlay" id="mobileMenu">
+  <div class="navi">
+    <navi>
+      <a href="index.html" onclick="toggleMobileMenu()">Home</a>
+    </navi>
+    <navi>
+      <a href="Introduction.html" onclick="toggleMobileMenu()">Intro</a>
+    </navi>
+    <navi>
+      <a href="arts/index.html" class="alleviivattu" onclick="toggleMobileMenu()">Arts</a>
+    </navi>
+    <navi>
+      <a href="data/index.html" onclick="toggleMobileMenu()">Data</a>
+    </navi>
+    <navi>
+      <a href="business/index.html" onclick="toggleMobileMenu()">Biz</a>
+    </navi>
+    <navi>
+      <a href="Experimental-pages.html" onclick="toggleMobileMenu()">Experimental</a>
+    </navi>
+  </div>
+</div>
 
 <div class="navicontainer">
   <div class="nav-logo">
@@ -230,55 +670,120 @@
 
 <div class="navi">
 
-
-  <navi>
-    <a href="index.html">Home</a>
-  </navi>
-
         <navi>
     <a href="Introduction.html">Intro</a>
   </navi>
 
     <navi>
-    <a href="business/index.html">Business</a>
+    <a href="arts/index.html" class="alleviivattu">Arts</a>
+    <div class="dropdown">
+      <a href="Poster-projects.html">Paintings</a>
+      <a href="Posters.html">Posters</a>
+      <a href="Illustration.html">Illustration</a>
+      <a href="Objects-dart.html">Objects d'art</a>
+      <a href="Jewellery lines.html">Jewellery</a>
+      <a href="Motion.html">Motion</a>
+      <a href="Sound.html">Sound</a>
+    </div>
   </navi>
 
     <navi>
-    <a href="Poster-projects.html" class="alleviivattu">Static art</a>
+    <a href="data/index.html">Data</a>
+    <div class="dropdown">
+      <a href="creative-computation.html">Creative Computation</a>
+    </div>
   </navi>
 
     <navi>
-    <a href="Jewellery lines.html">Jewellery</a>
+    <a href="business/index.html">Biz</a>
+    <div class="dropdown">
+      <a href="business/internationalization.html">Internationalization</a>
+      <a href="business/branding.html">Branding</a>
+      <a href="business/leadership.html">Leadership</a>
+    </div>
   </navi>
-
-    <navi>
-    <a href="Motion.html">Motion and sound</a>
-  </navi>
-
 
   <navi>
-    <a href="Experimental-pages.html">Experimental pages</a>
+    <a href="Experimental-pages.html">Experimental</a>
   </navi>
 
-  </div>
-
-  <div class="navi2">
-    <a href="Poster-projects.html">Paintings</a>
-    <a href="Posters.html">Posters</a>
-    <a href="Illustration.html">Illustration</a>
-    <a href="Objects-dart.html" class="alleviivattu">Objects d'art</a>
   </div>
 
    </div>
 
-<div class="container">
-  <h2>Coming soon!</h2>
+<!-- Läpi menevät tekstit -->
+<div class="yliteksti-container">
+  <span class="yliteksti" style="--y: 7vw; --x: 15%;">Christmas</span>
+  <span class="yliteksti2" style="--y: 18vw; --x: 30%;">Collection</span>
+  <span class="yliteksti-text" style="--y: 55vw; --x: 5%;">For Christmas 2025, I wanted to make use of the ceramic studio at Aalto University to experiment with art objects. I find it helpful to work within a certain frame, and this time the inspiration came from the joy of giving, creating Christmas gifts for my family.</span>
+  <span class="yliteksti-text" style="--y: 65vw; --x: 5%;">With this collection, I wanted to materialize an artistic inspiration that had been quietly bubbling beneath the surface for some time. After an autumn heavily focused on screen-based work, it also felt important to return to a more tactile process — to put my hands deep into clay and embrace improvisation.</span>
+  <span class="yliteksti-text" style="--y: 75vw; --x: 5%;">The jewelry boxes symbolize preservation, while their exterior reflects the value of what is held within. In these pieces, I wanted to combine two-dimensional patterns rooted in graphic design with a more three-dimensional expression.</span>
 </div>
 
+<div class="objects-grid">
+  <!-- Rivi 1: kuva vasemmalta (div1) + tyhjä (div2) -->
+  <div class="row">
+    <div class="div1">
+      <div class="image-container">
+        <img class="image-base" src="./assets/img/taide_esine_kädet/käsi2.webp" alt="Käsi 2">
+        <img class="image-hover" src="./assets/img/taide_esine_kädet/käsi2.2.webp" alt="Käsi 2 hover">
+      </div>
+    </div>
+    <div class="div2 text-container">
+    </div>
+  </div>
 
+  <!-- Rivi 2: tyhjä (div3) + kuva oikealta (div4) -->
+  <div class="row">
+    <div class="div3 text-container">
+    </div>
+    <div class="div4">
+      <div class="image-container">
+        <img class="image-base" src="./assets/img/taide_esine_kädet/käsi1.webp" alt="Käsi 1">
+        <img class="image-hover" src="./assets/img/taide_esine_kädet/käsi1.2.webp" alt="Käsi 1 hover">
+      </div>
+    </div>
+  </div>
 
+  <!-- Rivi 3: kuva vasemmalta (pyörivä kranssi) + kalusteet -->
+  <div class="row">
+    <div class="div1 center">
+      <div class="rotating-container">
+        <img src="./assets/img/taide_esine_kädet/kranssi.webp" alt="Kranssi">
+      </div>
+    </div>
+    <div class="div2 center">
+      <img class="kalusteet" src="./assets/img/taide_esine_kädet/kalusteet.webp" alt="Kalusteet">
+    </div>
+  </div>
 
+  <!-- Rivi 4: koko leveys, shotti -->
+  <div class="row">
+    <div class="div5">
+      <img class="shotti" src="./assets/img/taide_esine_kädet/shotti.webp" alt="Shotti">
+    </div>
+  </div>
 
+  <!-- Rivi 5: koko leveys, rullaava -->
+  <div class="row">
+    <div class="div5">
+      <div class="scrolling-container">
+        <div class="scrolling-wrapper">
+          <img src="./assets/img/taide_esine_kädet/joukkue.webp" alt="Joukkue">
+          <img src="./assets/img/taide_esine_kädet/joukkue.webp" alt="Joukkue">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Koontikuvat -->
+<div class="collection-grid">
+  <img src="./assets/img/taide_esine_kädet/koonti1.webp" alt="Koontokuva 1">
+  <img src="./assets/img/taide_esine_kädet/koonti2.webp" alt="Koontokuva 2">
+  <img src="./assets/img/taide_esine_kädet/koonti3.webp" alt="Koontokuva 3">
+  <img src="./assets/img/taide_esine_kädet/koonti4.webp" alt="Koontokuva 4">
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
 <script>
@@ -292,9 +797,9 @@ function draw() {
   noStroke();
   let stripeWidth = 2;
   for (let x = 0; x < windowWidth; x += stripeWidth * 2) {
-    fill(240, 240, 240);
+    fill(179, 177, 177);
     rect(x, 0, stripeWidth, windowHeight);
-    fill(250, 249, 247);
+    fill(191, 189, 189);
     rect(x + stripeWidth, 0, stripeWidth, windowHeight);
   }
 }
@@ -304,8 +809,12 @@ function windowResized() {
 }
 </script>
 
-
-
+<script>
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  menu.classList.toggle('active');
+}
+</script>
 
 </body>
 </html>
