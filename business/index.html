@@ -88,6 +88,38 @@
   color: #b3bdb0 !important;
 }
 
+/* Dropdown menu */
+.navi navi {
+  position: relative;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #dbeaf1;
+  min-width: 200px;
+  padding: 10px 0;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.navi navi:hover .dropdown {
+  display: block;
+}
+
+.dropdown a {
+  display: block;
+  padding: 8px 20px;
+  white-space: nowrap;
+  background: transparent;
+}
+
+.dropdown a:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
 /* Hamburger menu */
 .hamburger {
   display: none;
@@ -270,34 +302,41 @@
 
 <div class="navi">
 
-
-  <navi>
-    <a href="../index.html">Home</a>
-  </navi>
-
         <navi>
     <a href="../Introduction.html">Intro</a>
   </navi>
 
     <navi>
-    <a href="index.html" class="alleviivattu">Business</a>
+    <a href="../arts/index.html">Arts</a>
+    <div class="dropdown">
+      <a href="../Poster-projects.html">Paintings</a>
+      <a href="../Posters.html">Posters</a>
+      <a href="../Illustration.html">Illustration</a>
+      <a href="../Objects-dart.html">Objects d'art</a>
+      <a href="../Jewellery lines.html">Jewellery</a>
+      <a href="../Motion.html">Motion</a>
+      <a href="../Sound.html">Sound</a>
+    </div>
   </navi>
 
     <navi>
-    <a href="../Poster-projects.html">Static art</a>
+    <a href="../data/index.html">Data</a>
+    <div class="dropdown">
+      <a href="../creative-computation.html">Creative Computation</a>
+    </div>
   </navi>
 
     <navi>
-    <a href="../Jewellery lines.html">Jewellery</a>
+    <a href="index.html" class="alleviivattu">Biz</a>
+    <div class="dropdown">
+      <a href="internationalization.html">Internationalization</a>
+      <a href="branding.html">Branding</a>
+      <a href="leadership.html">Leadership</a>
+    </div>
   </navi>
-
-    <navi>
-    <a href="../Motion.html">Motion and sound</a>
-  </navi>
-
 
   <navi>
-    <a href="../Experimental-pages.html">Experimental pages</a>
+    <a href="../Experimental-pages.html">Experimental</a>
   </navi>
 
   </div>
