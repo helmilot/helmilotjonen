@@ -109,6 +109,38 @@
   color: #b3bdb0 !important;              /* näkyvä linkkiväri */
 }
 
+/* Dropdown menu */
+.navi navi {
+  position: relative;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #dbeaf1;
+  min-width: 200px;
+  padding: 10px 0;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.navi navi:hover .dropdown {
+  display: block;
+}
+
+.dropdown a {
+  display: block;
+  padding: 8px 20px;
+  white-space: nowrap;
+  background: transparent;
+}
+
+.dropdown a:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
     /* Hamburger menu */
     .hamburger {
       display: none;
@@ -309,16 +341,13 @@
       <a href="Introduction.html" onclick="toggleMobileMenu()">Intro</a>
     </navi>
     <navi>
-      <a href="business/index.html" onclick="toggleMobileMenu()">Business</a>
+      <a href="arts/index.html" class="alleviivattu" onclick="toggleMobileMenu()">Arts</a>
     </navi>
     <navi>
-      <a href="Poster-projects.html" onclick="toggleMobileMenu()">Static art</a>
+      <a href="data/index.html" onclick="toggleMobileMenu()">Data</a>
     </navi>
     <navi>
-      <a href="Jewellery lines.html" onclick="toggleMobileMenu()">Jewellery</a>
-    </navi>
-    <navi>
-      <a href="Motion.html" class="alleviivattu" onclick="toggleMobileMenu()">Motion and sound</a>
+      <a href="business/index.html" onclick="toggleMobileMenu()">Biz</a>
     </navi>
   </div>
 
@@ -329,7 +358,7 @@
 
   <div class="navi">
     <navi>
-      <a href="Experimental-pages.html" onclick="toggleMobileMenu()">Experimental pages</a>
+      <a href="Experimental-pages.html" onclick="toggleMobileMenu()">Experimental</a>
     </navi>
   </div>
 </div>
@@ -343,41 +372,43 @@
 
 <div class="navi">
 
-
-  <navi>
-    <a href="index.html">Home</a>
-  </navi>
-
         <navi>
     <a href="Introduction.html">Intro</a>
   </navi>
 
     <navi>
-    <a href="business/index.html">Business</a>
+    <a href="arts/index.html" class="alleviivattu">Arts</a>
+    <div class="dropdown">
+      <a href="Poster-projects.html">Paintings</a>
+      <a href="Posters.html">Posters</a>
+      <a href="Illustration.html">Illustration</a>
+      <a href="Objects-dart.html">Objects d'art</a>
+      <a href="Jewellery lines.html">Jewellery</a>
+      <a href="Motion.html">Motion</a>
+      <a href="Sound.html">Sound</a>
+    </div>
   </navi>
 
     <navi>
-    <a href="Poster-projects.html">Static art</a>
+    <a href="data/index.html">Data</a>
+    <div class="dropdown">
+      <a href="creative-computation.html">Creative Computation</a>
+    </div>
   </navi>
 
     <navi>
-    <a href="Jewellery lines.html">Jewellery</a>
+    <a href="business/index.html">Biz</a>
+    <div class="dropdown">
+      <a href="business/internationalization.html">Internationalization</a>
+      <a href="business/branding.html">Branding</a>
+      <a href="business/leadership.html">Leadership</a>
+    </div>
   </navi>
-
-    <navi>
-    <a href="Motion.html" class="alleviivattu">Motion and sound</a>
-  </navi>
-
 
   <navi>
-    <a href="Experimental-pages.html">Experimental pages</a>
+    <a href="Experimental-pages.html">Experimental</a>
   </navi>
 
-  </div>
-
-  <div class="navi2">
-    <a href="Motion.html" class="alleviivattu">Motion</a>
-    <a href="Sound.html">Sound</a>
   </div>
 
    </div>
