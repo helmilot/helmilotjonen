@@ -228,16 +228,30 @@
     }
     
 .navicontainer {
-  display: row;
-  justify-content: flex-end; /* vie .navi oikeaan reunaan */
-  padding-right: 30px;
+  display: flex;
+  justify-content: flex-start;  /* tai center */
+  align-items: flex-start;
   padding-top: 10px;
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+}
+
+.nav-logo {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nav-spacer {
+  flex: 1;
 }
 
 .navi {
+  flex: 0 auto;
   display: flex;
   flex-direction: row;
-   justify-content: center; /* vie linkit oikeaan laitaan boksin sisällä */
+  justify-content: center;
   gap: 10px;                 
   padding: 20px;
   gap: 20px;
@@ -249,6 +263,7 @@
   color: rgb(101, 100, 100);              /* näkyvä linkkiväri */
   text-decoration: none;
   font-size: 16px;
+  background-color: #eae9e9;
 }
 
 .navi a.alleviivattu {
@@ -257,6 +272,37 @@
 
 .navi a:hover {
   color: rgb(255, 255, 255);              /* näkyvä linkkiväri */
+}
+
+/* Dropdown menu */
+.navi navi {
+  position: relative;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #f1f0f0;
+  min-width: 200px;
+  padding: 10px 0;
+  z-index: 1000;
+}
+
+.navi navi:hover .dropdown {
+  display: block;
+}
+
+.dropdown a {
+  display: block;
+  padding: 8px 20px;
+  white-space: nowrap;
+  background: transparent;
+}
+
+.dropdown a:hover {
+  background: rgba(255, 255, 255, 0.3);
 }
 
     /* Hamburger menu */
@@ -318,6 +364,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      padding-top: 5%;
       transform: translateY(-40px);
     }
     
@@ -552,19 +599,16 @@
       <a href="Introduction.html" onclick="toggleMobileMenu()">Intro</a>
     </navi>
     <navi>
-      <a href="business/index.html" onclick="toggleMobileMenu()">Business</a>
+      <a href="arts/index.html" onclick="toggleMobileMenu()">Arts</a>
     </navi>
     <navi>
-      <a href="Poster-projects.html" onclick="toggleMobileMenu()">Static art</a>
+      <a href="data/index.html" onclick="toggleMobileMenu()">Data</a>
     </navi>
     <navi>
-      <a href="Jewellery lines.html" onclick="toggleMobileMenu()">Jewellery</a>
+      <a href="business/index.html" onclick="toggleMobileMenu()">Biz</a>
     </navi>
     <navi>
-      <a href="Motion.html" onclick="toggleMobileMenu()">Motion and sound</a>
-    </navi>
-    <navi>
-      <a href="Experimental-pages.html" onclick="toggleMobileMenu()">Experimental pages</a>
+      <a href="Experimental-pages.html" onclick="toggleMobileMenu()">Experimental</a>
     </navi>
   </div>
 </div>
@@ -576,38 +620,46 @@
     </a>
   </div>
 
-<div class="navi">
+  <div class="navi">
+    <navi>
+      <a href="Introduction.html">Intro</a>
+    </navi>
 
     <navi>
-    <a href="index.html" class="alleviivattu">Home</a>
-  </navi>
-
-  <navi>
-    <a href="Introduction.html">Intro</a>
-  </navi>
-
-    <navi>
-    <a href="business/index.html">Business</a>
-  </navi>
-
-    <navi>
-    <a href="Poster-projects.html">Static art</a>
-  </navi>
+      <a href="arts/index.html">Arts</a>
+      <div class="dropdown">
+        <a href="Poster-projects.html">Paintings</a>
+        <a href="Posters.html">Posters</a>
+        <a href="Illustration.html">Illustration</a>
+        <a href="Objects-dart.html">Objects d'art</a>
+        <a href="Jewellery lines.html">Jewellery</a>
+        <a href="Motion.html">Motion</a>
+        <a href="Sound.html">Sound</a>
+      </div>
+    </navi>
 
     <navi>
-    <a href="Jewellery lines.html">Jewellery</a>
-  </navi>
+      <a href="data/index.html">Data</a>
+      <div class="dropdown">
+        <a href="creative-computation.html">Creative Computation</a>
+      </div>
+    </navi>
 
     <navi>
-    <a href="Motion.html">Motion and sound</a>
-  </navi>
+      <a href="business/index.html">Biz</a>
+      <div class="dropdown">
+        <a href="business/internationalization.html">Internationalization</a>
+        <a href="business/branding.html">Branding</a>
+        <a href="business/leadership.html">Leadership</a>
+      </div>
+    </navi>
 
-
-  <navi>
-    <a href="Experimental-pages.html">Experimental pages</a>
-  </navi>
-
+    <navi>
+      <a href="Experimental-pages.html">Experimental</a>
+    </navi>
   </div>
+
+  <div class="nav-spacer"></div>
   </div>
 
   <!-- Ovet-osio -->
@@ -745,22 +797,10 @@ window.addEventListener('pageshow', function(event) {
 
 <!-- p5.js efekti -->
 <script>
-// Hiirellä piirtyvät kirjaimet
-let kirjaimet = [];
-const nimi = "HELMILÖTJÖNEN";
-let kirjainIndeksi = 0;
-let viimeinenLisays = 0;
-let edellinenX = 0;
-let edellinenY = 0;
-const kirjainVali = 20; // Kuinka paljon hiiren täytyy liikkua ennen uutta kirjainta
-
 function setup() {
   let canvas = createCanvas(windowWidth, windowHeight);
   canvas.id('p5-canvas');
   background(226, 225, 225);
-  textFont('ITC Garamond, Georgia, serif');
-  textSize(16);
-  textAlign(CENTER, CENTER);
 }
 
 function draw() {
@@ -788,57 +828,11 @@ function draw() {
       ellipse(x, y, 10, 10);
     }
   }
-
-  // Piirra kirjaimet ja poista vanhat
-  let nykyinenAika = millis();
-  for (let i = kirjaimet.length - 1; i >= 0; i--) {
-    let k = kirjaimet[i];
-    let ika = nykyinenAika - k.aika;
-
-    // Häivytys: täysi näkyvyys 0-1500ms, häivytys 1500-3000ms
-    let alpha = 255;
-    if (ika > 1500) {
-      alpha = map(ika, 1500, 3000, 255, 0);
-    }
-
-    // Poista kirjain kun se on täysin haihtunut
-    if (ika > 3000) {
-      kirjaimet.splice(i, 1);
-    } else {
-      // Piirra kirjain
-      fill(183, 184, 189, alpha);
-      noStroke();
-      text(k.merkki, k.x, k.y);
-    }
-  }
-}
-
-function mouseMoved() {
-  // Laske etäisyys edellisestä kirjaimesta
-  let etaisyys = dist(mouseX, mouseY, edellinenX, edellinenY);
-
-  if (etaisyys > kirjainVali) {
-    // Lisää uusi kirjain
-    kirjaimet.push({
-      merkki: nimi[kirjainIndeksi],
-      x: mouseX,
-      y: mouseY,
-      aika: millis()
-    });
-
-    // Seuraava kirjain (pyörii nimen ympäri)
-    kirjainIndeksi = (kirjainIndeksi + 1) % nimi.length;
-
-    // Päivitä edellinen sijainti
-    edellinenX = mouseX;
-    edellinenY = mouseY;
-  }
 }
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
-
 
 </script>
 
