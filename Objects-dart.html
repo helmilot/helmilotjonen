@@ -35,6 +35,7 @@
         margin: 0;
         padding: 0;
         gap: 0;
+        overflow-x: hidden;
     }
 
             #p5-canvas {
@@ -370,7 +371,9 @@
   /* Rullaava kuva */
   .scrolling-container {
     width: 100%;
+    max-width: 100vw;
     overflow: hidden;
+    overflow-x: hidden;
     display: flex;
   }
 
@@ -383,6 +386,8 @@
     display: block;
     height: auto;
     flex-shrink: 0;
+    width: 100%;
+    max-width: 100vw;
   }
 
   @keyframes scroll-horizontal {
@@ -471,7 +476,7 @@
     position: absolute;
     top: var(--y, 50%);
     left: var(--x, 5%);
-    max-width: 60%;
+    max-width: 40%;
     white-space: normal;
     color: #333;
     font-size: 1vw;
@@ -715,7 +720,7 @@
 <div class="yliteksti-container">
   <span class="yliteksti" style="--y: 7vw; --x: 15%;">Christmas</span>
   <span class="yliteksti2" style="--y: 18vw; --x: 30%;">Collection</span>
-  <span class="yliteksti-text" style="--y: 55vw; --x: 5%;">For Christmas 2025, I wanted to make use of the ceramic studio at Aalto University to experiment with art objects. I find it helpful to work within a certain frame, and this time the inspiration came from the joy of giving, creating Christmas gifts for my family.</span>
+  <span class="yliteksti-text" style="--y: 32vw; --x: 45%;">For Christmas 2025, I wanted to make use of the ceramic studio at Aalto University to experiment with art objects. I find it helpful to work within a certain frame, and this time the inspiration came from the joy of giving, creating Christmas gifts for my family.</span>
   <span class="yliteksti-text" style="--y: 65vw; --x: 5%;">With this collection, I wanted to materialize an artistic inspiration that had been quietly bubbling beneath the surface for some time. After an autumn heavily focused on screen-based work, it also felt important to return to a more tactile process — to put my hands deep into clay and embrace improvisation.</span>
   <span class="yliteksti-text" style="--y: 75vw; --x: 5%;">The jewelry boxes symbolize preservation, while their exterior reflects the value of what is held within. In these pieces, I wanted to combine two-dimensional patterns rooted in graphic design with a more three-dimensional expression.</span>
 </div>
