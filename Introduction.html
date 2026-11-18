@@ -182,7 +182,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      z-index: -1;
+      z-index: 1;
       display: flex;
       flex-direction: column;
       overflow: visible;
@@ -261,6 +261,46 @@
       margin-bottom: 15px;
     }
 
+    @media (min-width: 901px) and (max-width: 1100px) {
+      .kuvarivi {
+        flex-direction: row;
+      }
+
+      .kuvat-osa {
+        width: 40%;
+      }
+
+      .kuvat-osa .pieni-kuva,
+      .kuvat-osa .pieni-kuva2 {
+        width: 50%;
+        margin-left: 0;
+      }
+
+      .teksti-osa {
+        padding: 5% 6%;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .kuvarivi {
+        flex-direction: column;
+      }
+
+      .kuvat-osa {
+        width: 100%;
+      }
+
+      .kuvat-osa .pieni-kuva,
+      .kuvat-osa .pieni-kuva2 {
+        width: 50%;
+        margin-left: 0;
+      }
+
+      .teksti-osa {
+        padding: 5% 10%;
+      }
+    }
+
     .pieni-kuva {
       aspect-ratio: 3 / 4;
       background-size: cover;
@@ -307,7 +347,23 @@
       color: #343540;
       font-size: 15vw;  /* responsiivinen */
       pointer-events: none;
-  
+      z-index: 2;
+    }
+
+    .yliteksti .tuikkiva {
+      display: inline-block;
+      animation: tuike 5s ease-in-out infinite;
+      animation-delay: var(--viive);
+    }
+
+    @keyframes tuike {
+      0%, 100% {
+        color: #343540;
+      }
+
+      50% {
+        color: #aeb1b5;
+      }
     }
 
       .yliteksti2 {
@@ -321,6 +377,7 @@
       pointer-events: none;
       font-family: 'Kapakana', serif;
       opacity: 0.3;
+      z-index: 0;
     }
 
     /* CV-container 3 saraketta */
@@ -381,6 +438,11 @@
       text-overflow: ellipsis;
     }
 
+    .cv-lista li:not(.cv-otsikko) strong {
+      display: inline-block;
+      width: 100px;
+    }
+
     .cv-lista .cv-otsikko {
       font-size: 38px;
       line-height: 48px;
@@ -390,7 +452,7 @@
     .cv-kuvaaja {
       width: 50%;
       padding: 10px 45px 10px 5px;
-      border-left: 2px solid #cfdfe2;
+      border-left: 2px solid rgba(119, 119, 119, 0.7);
       background-color: #e9eeef;
     }
 
@@ -411,8 +473,8 @@
       left: -2px;
       transform: translateY(-50%);
       font-size: 10px;
-      color: #bbd0d4;
-      opacity: 0.8;
+      color: #858585;
+      opacity: 0.7;
       transition: opacity 0.2s;
     }
 
@@ -423,15 +485,15 @@
       right: -12px;
       transform: translateY(-50%);
       font-size: 10px;
-      color: #bbd0d4;
-      opacity: 0.8;
+      color: #858585;
+      opacity: 0.7;
       transition: opacity 0.2s;
     }
 
     .cv-divider:hover::before,
     .cv-divider:hover::after {
       opacity: 1;
-      color: #999;
+      color: #858585;
     }
 
     /* Aikajana */
@@ -442,7 +504,7 @@
 
     .aikajana-vuodet {
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
+      grid-template-columns: repeat(14, 1fr);
       font-family: 'ITC Garamond', serif;
       font-size: 12px;
       color: #333;
@@ -469,7 +531,7 @@
       right: 0;
       bottom: 0;
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
+      grid-template-columns: repeat(14, 1fr);
       pointer-events: none;
     }
 
@@ -490,8 +552,10 @@
 
     .aikajana-palkki {
       position: absolute;
-      height: 7px;
+      height: 18px;
       top: 50%;
+      box-sizing: border-box;
+      border: 1px solid rgba(162, 162, 162, 0.7);
       border-radius: 1px;
       transform: translateY(-50%);
     }
@@ -724,7 +788,7 @@
   </div>
   </div>
 <div class="yliteksti-container">
-    <span class="yliteksti" style="--x: 35.5vw;--y: 25.5vw;">Mixing fields!</span>
+    <span class="yliteksti" style="--x: 35.5vw;--y: 25.5vw;"><span class="tuikkiva" style="--viive: 1.7s;">M</span><span class="tuikkiva" style="--viive: 0.2s;">i</span><span class="tuikkiva" style="--viive: 2.8s;">x</span><span class="tuikkiva" style="--viive: 1.1s;">i</span><span class="tuikkiva" style="--viive: 3.4s;">n</span><span class="tuikkiva" style="--viive: 0.8s;">g</span> <span class="tuikkiva" style="--viive: 2.1s;">f</span><span class="tuikkiva" style="--viive: 3.7s;">i</span><span class="tuikkiva" style="--viive: 1.5s;">e</span><span class="tuikkiva" style="--viive: 0.4s;">l</span><span class="tuikkiva" style="--viive: 2.9s;">d</span><span class="tuikkiva" style="--viive: 1.9s;">s</span></span>
     <span class="yliteksti2" style="--x: 56vw;--y: 58vw;">Mixing</span>
 
   <div class="kuva-layout">
@@ -793,6 +857,8 @@
             <span>2023</span>
             <span>2024</span>
             <span>2025</span>
+            <span>2026</span>
+            <span>2027</span>
           </div>
 
           <!-- Palkit -->
@@ -811,31 +877,33 @@
               <div class="aikajana-pystyviiva"></div>
               <div class="aikajana-pystyviiva"></div>
               <div class="aikajana-pystyviiva"></div>
+              <div class="aikajana-pystyviiva"></div>
+              <div class="aikajana-pystyviiva"></div>
             </div>
 
             <!-- Education (4 riviä) -->
-            <div class="aikajana-rivi"><div class="aikajana-palkki palkki-education" style="left: 83.34%; width: 16.66%;"></div><div class="aikajana-haamu"><span class="tooltip">Aalto ARTS, VCD</span></div></div>
-            <div class="aikajana-rivi"><div class="aikajana-palkki palkki-education" style="left: 16.68%; width: 54.17%;"></div><div class="aikajana-haamu"><span class="tooltip">Aalto BIZ</span></div></div>
-            <div class="aikajana-rivi"><div class="aikajana-palkki palkki-education" style="left: 8.34%; width: 8.34%;"></div><div class="aikajana-haamu"><span class="tooltip">Turku School of Economics</span></div></div>
-            <div class="aikajana-rivi"><div class="aikajana-palkki palkki-education" style="left: 0%; width: 8.34%;"></div><div class="aikajana-haamu"><span class="tooltip">Kuninkaantie High School</span></div></div>
+            <div class="aikajana-rivi"><div class="aikajana-palkki palkki-education" style="left: 71.43%; width: 25%;"></div><div class="aikajana-haamu"><span class="tooltip">Aalto ARTS, VCD</span></div></div>
+            <div class="aikajana-rivi"><div class="aikajana-palkki palkki-education" style="left: 14.30%; width: 46.43%;"></div><div class="aikajana-haamu"><span class="tooltip">Aalto BIZ</span></div></div>
+            <div class="aikajana-rivi"><div class="aikajana-palkki palkki-education" style="left: 7.15%; width: 7.15%;"></div><div class="aikajana-haamu"><span class="tooltip">Turku School of Economics</span></div></div>
+            <div class="aikajana-rivi"><div class="aikajana-palkki palkki-education" style="left: 0%; width: 7.15%;"></div><div class="aikajana-haamu"><span class="tooltip">Kuninkaantie High School</span></div></div>
 
             <div class="aikajana-valirivi"></div>
 
             <!-- Experience (5 riviä) -->
-            <div class="aikajana-rivi"><div class="aikajana-palkki palkki-experience" style="left: 98%; width: 2%;"></div><div class="aikajana-haamu"><span class="tooltip">Market Research Analyst at Propia</span></div></div>
-            <div class="aikajana-rivi"><div class="aikajana-palkki palkki-experience" style="left: 87.5%; width: 8.33%;"></div><div class="aikajana-haamu"><span class="tooltip">Treasurer at Penthousekollektiivi</span></div></div>
-            <div class="aikajana-rivi"><div class="aikajana-palkki palkki-experience" style="left: 56.23%; width: 43.73%;"></div><div class="aikajana-haamu"><span class="tooltip">Assistant Controller at Valtori</span></div></div>
-            <div class="aikajana-rivi"><div class="aikajana-palkki palkki-experience" style="left: 22.91%; width: 33.32%;"></div><div class="aikajana-haamu"><span class="tooltip">Financial Assistant at Ruohonjuuri</span></div></div>
-            <div class="aikajana-rivi"><div class="aikajana-palkki palkki-experience" style="left: 20.83%; width: 79.18%;"></div><div class="aikajana-haamu"><span class="tooltip">Personal Art: paintings & illustration</span></div></div>
+            <div class="aikajana-rivi"><div class="aikajana-palkki palkki-experience" style="left: 84%; width: 12.43%;"></div><div class="aikajana-haamu"><span class="tooltip">Market Research Analyst at Propia</span></div></div>
+            <div class="aikajana-rivi"><div class="aikajana-palkki palkki-experience" style="left: 75%; width: 7.14%;"></div><div class="aikajana-haamu"><span class="tooltip">Treasurer at Penthousekollektiivi</span></div></div>
+            <div class="aikajana-rivi"><div class="aikajana-palkki palkki-experience" style="left: 48.20%; width: 37.48%;"></div><div class="aikajana-haamu"><span class="tooltip">Assistant Controller at Valtori</span></div></div>
+            <div class="aikajana-rivi"><div class="aikajana-palkki palkki-experience" style="left: 19.64%; width: 28.56%;"></div><div class="aikajana-haamu"><span class="tooltip">Financial Assistant at Ruohonjuuri</span></div></div>
+            <div class="aikajana-rivi"><div class="aikajana-palkki palkki-experience" style="left: 17.85%; width: 78.58%;"></div><div class="aikajana-haamu"><span class="tooltip">Personal Art: paintings & illustration</span></div></div>
 
             <div class="aikajana-valirivi"></div>
 
             <!-- Volunteer (5 riviä) -->
-            <div class="aikajana-rivi"><div class="aikajana-palkki palkki-volunteer" style="left: 0%; width: 100%;"></div><div class="aikajana-haamu"><span class="tooltip">Hosting leisure events</span></div></div>
-            <div class="aikajana-rivi"><div class="aikajana-palkki palkki-volunteer" style="left: 87.5%; width: 8.33%;"></div><div class="aikajana-haamu"><span class="tooltip">Chairperson & Treasurer, GRRR</span></div></div>
-            <div class="aikajana-rivi"><div class="aikajana-palkki palkki-volunteer" style="left: 83.33%; width: 16.67%;"></div><div class="aikajana-haamu"><span class="tooltip">Manager & Designer for Hanrock concert</span></div></div>
-            <div class="aikajana-rivi"><div class="aikajana-palkki palkki-volunteer" style="left: 66.67%; width: 16.67%;"></div><div class="aikajana-haamu"><span class="tooltip">Head of Marketing, Alumni Association</span></div></div>
-            <div class="aikajana-rivi"><div class="aikajana-palkki palkki-volunteer" style="left: 41.67%; width: 25%;"></div><div class="aikajana-haamu"><span class="tooltip">Chairperson, Alumni Association</span></div></div>
+            <div class="aikajana-rivi"><div class="aikajana-palkki palkki-volunteer" style="left: 0%; width: 96.43%;"></div><div class="aikajana-haamu"><span class="tooltip">Hosting leisure events</span></div></div>
+            <div class="aikajana-rivi"><div class="aikajana-palkki palkki-volunteer" style="left: 75%; width: 7.14%;"></div><div class="aikajana-haamu"><span class="tooltip">Chairperson & Treasurer, GRRR</span></div></div>
+            <div class="aikajana-rivi"><div class="aikajana-palkki palkki-volunteer" style="left: 71.43%; width: 25%;"></div><div class="aikajana-haamu"><span class="tooltip">Manager & Designer for Hanrock concert</span></div></div>
+            <div class="aikajana-rivi"><div class="aikajana-palkki palkki-volunteer" style="left: 57.15%; width: 14.29%;"></div><div class="aikajana-haamu"><span class="tooltip">Head of Marketing, Alumni Association</span></div></div>
+            <div class="aikajana-rivi"><div class="aikajana-palkki palkki-volunteer" style="left: 35.72%; width: 21.43%;"></div><div class="aikajana-haamu"><span class="tooltip">Chairperson, Alumni Association</span></div></div>
           </div>
         </div>
       </div>
