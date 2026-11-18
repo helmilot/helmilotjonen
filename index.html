@@ -27,7 +27,7 @@
     /* ITC Garamond oletusfontti */
     @font-face {
       font-family: 'ITC Garamond';
-      src: url('./assets/fonts/ITCGaramondStd-BkNarrow.otf') format('opentype');
+      src: url('./assets/fonts/BigCaslon.ttf') format('truetype');
       font-weight: 400;
       font-style: normal;
     }
@@ -39,6 +39,37 @@
       height: 100vh;
       background:#efefef;
       font-family: 'ITC Garamond', serif;
+    }
+
+    @media (min-width: 821px) {
+      body,
+      a,
+      button,
+      .ovi,
+      .ovi a {
+        cursor: none;
+      }
+
+      #custom-cursor {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 46px;
+        height: 46px;
+        pointer-events: none;
+        z-index: 99999;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: opacity 0.04s ease;
+      }
+
+      #custom-cursor img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        filter: drop-shadow(0 0 4px rgba(0,0,0,0.15));
+      }
     }
 
     /* p5.js canvas taustalle */
@@ -271,27 +302,39 @@
 }
 
 .navi a:hover {
-  color: rgb(255, 255, 255);              /* näkyvä linkkiväri */
+  color: rgb(255, 255, 255);
+  background-color: rgba(0, 0, 0, 0.08);
 }
 
 /* Dropdown menu */
 .navi navi {
   position: relative;
+  display: inline-block;
+}
+
+.navi navi > a {
+  position: relative;
+  display: inline-block;
+  z-index: 2;
 }
 
 .dropdown {
   display: none;
   position: absolute;
-  top: 100%;
+  top: calc(100% + 4px);
   left: 0;
   background: #f1f0f0;
   min-width: 200px;
   padding: 10px 0;
   z-index: 1000;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  pointer-events: none;
 }
 
-.navi navi:hover .dropdown {
+.navi navi:hover > .dropdown,
+.navi navi:focus-within > .dropdown {
   display: block;
+  pointer-events: auto;
 }
 
 .dropdown a {
@@ -317,6 +360,10 @@
       z-index: 1001;
       background: #f4f8fa;
       border-radius: 4px;
+    }
+
+    .home-page-logo {
+      display: none;
     }
 
     .hamburger span {
@@ -371,12 +418,13 @@
     .ovet-grid {
       display: flex;
       flex-direction: row;
-      gap: 30px;
+      gap: clamp(18px, 2.6vw, 44px);
       justify-content: space-evenly;
+      align-items: flex-end;
     }
     
     .ovi {
-      width: 170px;
+      width: clamp(180px, 15vw, 260px);
       height: auto;
       position: relative;
     }
@@ -429,8 +477,32 @@
 
     /* Mobiiliversio */
     @media (max-width: 820px) {
+      body {
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: auto;
+      }
+
+      body.home-page .navicontainer {
+        display: none !important;
+      }
+
       .navicontainer {
         display: none;
+      }
+
+      .home-page-logo {
+        display: block;
+        position: fixed;
+        top: 14px;
+        left: 18px;
+        z-index: 1000;
+      }
+
+      .home-page-logo img {
+        display: block;
+        height: 92px;
+        width: auto;
       }
 
       .hamburger {
@@ -450,14 +522,25 @@
       }
       
       .ovet-container {
-        margin: auto;
-        padding: 0 10px;
+        width: 100%;
+        max-width: 100vw;
+        min-height: 100vh;
+        height: auto;
+        margin: 0;
+        padding: 120px 10px 80px;
+        box-sizing: border-box;
+        transform: none;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
       }
       
       .ovet-grid {
         flex-direction: column;
         align-items: center;
         gap: 15px;
+        width: 100%;
+        max-width: 240px;
       }
       
       .ovi {
@@ -555,7 +638,7 @@
     </head>
 
 
-<body>
+<body class="home-page">
 <script src="script.js"></script>
 <!-- Taustapallot -->
 <div class="taustapallot">
@@ -581,6 +664,14 @@
 <div class="marquee3">
   <span class="marquee3-content">Welcome! Welcome! Welcome! Welcome! Welcome! Welcome! Welcome!</span>
 </div>
+
+<div id="custom-cursor" aria-hidden="true">
+  <img src="./assets/img/hiiri.png" alt="" />
+</div>
+
+<a href="index.html" class="home-page-logo" aria-label="Home">
+  <img src="helmilogo.svg" alt="Helmi logo">
+</a>
 
 <!-- Hamburger menu button -->
 <div class="hamburger" onclick="toggleMobileMenu()">
@@ -667,32 +758,32 @@
     <div class="ovet-grid">
       <div class="ovi">
         <a href="Introduction.html">
-          <img class="ovi-kiinni" src="./assets/img/ovi1.webp" alt="Ovi 1">
-          <img class="ovi-auki" src="./assets/img/ovi1-auki.webp" alt="Ovi 1 auki">
+          <img class="ovi-kiinni" src="./assets/img/Intro_1.1.webp" alt="Intro ovi 1">
+          <img class="ovi-auki" src="./assets/img/Intro_1.2.webp" alt="Intro ovi 1 hover">
         </a>
       </div>
             <div class="ovi">
         <a href="Poster-projects.html">
-          <img class="ovi-kiinni" src="./assets/img/ovi4.webp" alt="Ovi 4">
-          <img class="ovi-auki" src="./assets/img/ovi4-auki.webp" alt="Ovi 4 auki">
+          <img class="ovi-kiinni" src="./assets/img/Intro_2.1.webp" alt="Intro ovi 2">
+          <img class="ovi-auki" src="./assets/img/Intro_2.2.webp" alt="Intro ovi 2 hover">
         </a>
       </div>
       <div class="ovi">
         <a href="Jewellery lines.html">
-          <img class="ovi-kiinni" src="./assets/img/ovi2.webp" alt="Ovi 2">
-          <img class="ovi-auki" src="./assets/img/ovi2-auki.webp" alt="Ovi 2 auki">
+          <img class="ovi-kiinni" src="./assets/img/Intro_3.1.webp" alt="Intro ovi 3">
+          <img class="ovi-auki" src="./assets/img/Intro_3.2.webp" alt="Intro ovi 3 hover">
         </a>
       </div>
       <div class="ovi">
         <a href="Motion.html">
-          <img class="ovi-kiinni" src="./assets/img/ovi3.webp" alt="Ovi 3">
-          <img class="ovi-auki" src="./assets/img/ovi3-auki.webp" alt="Ovi 3 auki">
+          <img class="ovi-kiinni" src="./assets/img/Intro_4.1.webp" alt="Intro ovi 4">
+          <img class="ovi-auki" src="./assets/img/Intro_4.2.webp" alt="Intro ovi 4 hover">
         </a>
       </div>
       <div class="ovi">
         <a href="Experimental-pages.html">
-          <img class="ovi-kiinni" src="./assets/img/ovi5.webp" alt="Ovi 5">
-          <img class="ovi-auki" src="./assets/img/ovi5-auki.webp" alt="Ovi 5 auki">
+          <img class="ovi-kiinni" src="./assets/img/Intro_5.1.webp" alt="Intro ovi 5">
+          <img class="ovi-auki" src="./assets/img/Intro_5.2.webp" alt="Intro ovi 5 hover">
         </a>
       </div>
     </div>
@@ -840,6 +931,32 @@ function windowResized() {
 function toggleMobileMenu() {
   const menu = document.getElementById('mobileMenu');
   menu.classList.toggle('active');
+}
+
+if (window.innerWidth > 820) {
+  const customCursor = document.getElementById('custom-cursor');
+
+  if (customCursor) {
+    const showCursor = () => {
+      customCursor.style.opacity = '1';
+    };
+
+    const hideCursor = () => {
+      customCursor.style.opacity = '0';
+    };
+
+    document.addEventListener('mousemove', (event) => {
+      customCursor.style.left = event.clientX + 'px';
+      customCursor.style.top = event.clientY + 'px';
+      showCursor();
+    });
+
+    document.addEventListener('mouseleave', hideCursor);
+    document.addEventListener('mouseenter', showCursor);
+    document.addEventListener('mouseout', (event) => {
+      if (!event.relatedTarget) hideCursor();
+    });
+  }
 }
 </script>
 
