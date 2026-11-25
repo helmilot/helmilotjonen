@@ -57,14 +57,27 @@
     }
 
     .navicontainer {
-  display: row;
-  justify-content: flex-end; /* vie .navi oikeaan reunaan */
+      display: flex;
+      justify-content: space-between !important;
+      align-items: flex-start;
+      box-sizing: border-box;
+      padding-left: 30px;
   padding-right: 30px;
   padding-top: 17px;
   position: fixed;
   width: 100%;
   z-index: 10;
 }
+
+    .nav-menu {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transform: translateX(-50%);
+    }
 
 .navi {
   display: flex;
@@ -87,7 +100,7 @@
   flex-direction: row;
   justify-content: center;
   gap: 10px;
-  padding: 5px;
+  padding: 0 20px;
 }
 
 .navi2 a {
@@ -673,6 +686,7 @@
     </a>
   </div>
 
+  <div class="nav-menu">
 <div class="navi">
 
         <navi>
@@ -712,6 +726,12 @@
     <a href="Experimental-pages.html">Experimental</a>
   </navi>
 
+  </div>
+
+  <div class="navi2">
+    <a href="Objects-dart.html" class="alleviivattu">Xmas 25</a>
+    <a href="Objects-aapasuo.html">Aapasuo</a>
+  </div>
   </div>
 
    </div>
