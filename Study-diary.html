@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study Diary — Thoughts Alongside My Master's Thesis</title>
+  <link rel="icon" type="image/svg+xml" href="faviconhelmi2.svg">
+  <link rel="stylesheet" href="mainstyles.css">
+  <style>
+    :root {
+      --chrome: #d8d8d8;
+      --chrome-dark: #a7a7a7;
+      --paper: #fffefb;
+      --ink: #171717;
+      --blue: #79bff1;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #bcbcbc;
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      position: relative;
+      z-index: 20;
+      min-height: 70px;
+      padding: 14px 28px;
+      border-bottom: 1px solid #1e4f88;
+      background:
+        radial-gradient(ellipse at center, #c8e8ff 0%, #a4d6fa 28%, #79bff1 60%, #4c8ecb 84%, #275a96 100%);
+      box-shadow:
+        inset 0 2px rgba(255, 255, 255, 0.9),
+        inset 0 -2px rgba(20, 66, 119, 0.3),
+        inset 20px 0 35px rgba(21, 69, 121, 0.12),
+        inset -20px 0 35px rgba(21, 69, 121, 0.12),
+        0 1px 3px rgba(16, 49, 88, 0.35);
+    }
+
+    .site-nav .nav-logo img {
+      display: block;
+      width: auto;
+      height: 40px;
+    }
+
+    .site-nav-links {
+      display: flex;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .site-nav a {
+      color: #fff;
+      font: 16px var(--font-main);
+      text-shadow: 0 1px 1px rgba(15, 54, 99, 0.8);
+      text-decoration: none;
+    }
+
+    .site-nav a:hover {
+      color: #e7f5ff;
+      text-shadow: 0 0 7px rgba(255, 255, 255, 0.95);
+    }
+
+    .mac-window {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: calc(100vh - 70px);
+      margin: 0;
+      border-top: 0;
+      border-right: 0;
+      border-bottom: 0;
+      border-left: 0;
+      border-radius: 0;
+      background: var(--chrome);
+      box-shadow: none;
+      overflow: hidden;
+    }
+
+    .mac-titlebar {
+      display: grid;
+      grid-template-columns: 90px 1fr 90px;
+      align-items: center;
+      min-height: 44px;
+      padding: 0 13px;
+      border-bottom: 1px solid #888;
+      background: linear-gradient(#f2f2f2, #c8c8c8);
+      font: 12px -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      text-align: center;
+      box-shadow: inset 0 1px #fff;
+    }
+
+    .window-controls {
+      display: flex;
+      gap: 7px;
+      align-items: center;
+    }
+
+    .window-controls span {
+      display: block;
+      width: 13px;
+      height: 13px;
+      border: 1px solid #777;
+      border-radius: 50%;
+      background: #e7e7e7;
+      box-shadow: inset 0 1px #fff;
+    }
+
+    .window-title {
+      overflow: hidden;
+      font-weight: bold;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .window-status {
+      justify-self: end;
+      width: 14px;
+      height: 14px;
+      border: 1px solid #777;
+      border-radius: 50%;
+      background: #eee;
+    }
+
+    .mac-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-height: 39px;
+      padding: 5px 15px;
+      border-bottom: 1px solid var(--chrome-dark);
+      background: linear-gradient(#e9e9e9, #d0d0d0);
+      font-size: 12px;
+    }
+
+    .toolbar-button {
+      padding: 3px 9px;
+      border: 1px solid #aaa;
+      border-radius: 3px;
+      background: linear-gradient(#fff, #d2d2d2);
+      color: #333;
+      box-shadow: 0 1px #fff;
+    }
+
+    .toolbar-path {
+      flex: 1;
+      padding: 4px 8px;
+      border: 1px solid #aaa;
+      border-radius: 3px;
+      background: #fff;
+      color: #555;
+    }
+
+    .workspace {
+      display: grid;
+      grid-template-columns: 245px minmax(0, 1fr);
+      flex: 1;
+      min-height: 0;
+    }
+
+    .sidebar {
+      min-height: 0;
+      padding: 18px 13px;
+      border-right: 1px solid #999;
+      background: linear-gradient(90deg, #ededed, #d8d8d8);
+      overflow-y: auto;
+    }
+
+    .sidebar-heading {
+      margin: 0 0 14px 8px;
+      color: #555;
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .week-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .week-list button {
+      width: 100%;
+      padding: 8px 10px;
+      border: 0;
+      border-radius: 3px;
+      background: transparent;
+      color: #222;
+      font: inherit;
+      font-size: 13px;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .week-list button:hover,
+    .week-list button.active {
+      background: linear-gradient(#a9ddff, var(--blue));
+      color: #123e6b;
+      box-shadow:
+        inset 0 1px rgba(255, 255, 255, 0.85),
+        0 1px 2px rgba(42, 94, 143, 0.35);
+    }
+
+    .week-number {
+      display: inline-block;
+      width: 55px;
+      color: #666;
+      font-size: 11px;
+    }
+
+    .week-list button:hover .week-number,
+    .week-list button.active .week-number {
+      color: #35668f;
+    }
+
+    .paper-area {
+      min-width: 0;
+      min-height: 0;
+      padding: 28px clamp(20px, 5vw, 75px);
+      background: #b5b5b5;
+      overflow: auto;
+    }
+
+    .paper {
+      width: min(690px, 100%);
+      min-height: 980px;
+      margin: 0 auto;
+      padding: 70px clamp(28px, 8vw, 92px) 100px;
+      background: var(--paper);
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.28);
+      font-family: "Courier New", Courier, monospace;
+    }
+
+    .paper-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 110px;
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      font-size: 11px;
+    }
+
+    .paper h1 {
+      margin: 0 0 70px;
+      font-size: 30px;
+      font-weight: 400;
+      line-height: 1.15;
+      text-align: center;
+    }
+
+    .paper h2 {
+      margin: 0 0 35px;
+      font-size: 18px;
+      font-weight: 400;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .paper p {
+      margin: 0 0 22px;
+      font-size: 16px;
+      line-height: 1.6;
+      text-align: justify;
+    }
+
+    .paper p.empty-note {
+      color: #777;
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      font-size: 13px;
+      text-align: center;
+    }
+
+    .paper-footer {
+      margin-top: 120px;
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .hamburger {
+      display: none;
+    }
+
+    @media (max-width: 700px) {
+      body {
+        overflow: auto;
+      }
+
+      .site-nav {
+        justify-content: flex-start;
+        min-height: 58px;
+        padding: 9px 15px;
+      }
+
+      .site-nav .nav-logo {
+        display: none;
+      }
+
+      .site-nav-links {
+        gap: 14px;
+        padding: 10px 0;
+      }
+
+      .site-nav a {
+        font-size: 14px;
+      }
+
+      .mac-window {
+        height: calc(100vh - 58px);
+      }
+
+      .mac-titlebar {
+        grid-template-columns: 70px 1fr 30px;
+      }
+
+      .mac-toolbar {
+        gap: 8px;
+      }
+
+      .toolbar-button {
+        display: none;
+      }
+
+      .workspace {
+        grid-template-columns: 145px minmax(0, 1fr);
+      }
+
+      .sidebar {
+        padding: 15px 7px;
+      }
+
+      .sidebar-heading {
+        margin-left: 5px;
+      }
+
+      .week-list button {
+        padding: 8px 5px;
+        font-size: 11px;
+      }
+
+      .week-number {
+        display: block;
+        width: auto;
+        margin-bottom: 2px;
+        font-size: 9px;
+      }
+
+      .paper-area {
+        padding: 16px 10px;
+      }
+
+      .paper {
+        min-height: 850px;
+        padding: 40px 25px 70px;
+      }
+
+      .paper-meta {
+        margin-bottom: 75px;
+      }
+
+      .paper h1 {
+        margin-bottom: 50px;
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="nav-logo">
+      <a href="index.html">
+        <img src="helmilogo.svg" alt="Helmi logo">
+      </a>
+    </div>
+    <div class="site-nav-links">
+      <a href="Introduction.html">Intro</a>
+      <a href="arts/index.html">Arts</a>
+      <a href="data/index.html">Data</a>
+      <a href="business/index.html">Biz</a>
+      <a href="Experimental-pages.html">Experimental</a>
+    </div>
+  </nav>
+
+  <main class="mac-window">
+    <header class="mac-titlebar">
+      <div class="window-controls" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="window-title">Study Diary — Master's Thesis</div>
+      <div class="window-status" aria-hidden="true"></div>
+    </header>
+
+    <div class="mac-toolbar">
+      <span class="toolbar-button">Back</span>
+      <span class="toolbar-button">Forward</span>
+      <span class="toolbar-path">/ Study Diary / Master's Thesis</span>
+      <span>◀︎ ▶︎</span>
+    </div>
+
+    <div class="workspace">
+      <aside class="sidebar">
+        <p class="sidebar-heading">Thesis weeks</p>
+        <ul class="week-list">
+          <li><button class="active" type="button" data-week="1" data-title="Backwards into Slowness"><span class="week-number">WEEK 01</span>Backwards into Slowness</button></li>
+        </ul>
+      </aside>
+
+      <section class="paper-area" aria-label="Study diary entry preview">
+        <article class="paper">
+          <div class="paper-meta">
+            <span id="paper-week">WEEK 01</span>
+            <span>Study Diary</span>
+          </div>
+          <h1 id="paper-title">Backwards into Slowness</h1>
+          <h2>Notes alongside my Master's thesis</h2>
+          <p class="empty-note">This is where the entry for this week will appear.</p>
+          <div class="paper-footer">— 1 —</div>
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const weekButtons = document.querySelectorAll('.week-list button');
+    const paperWeek = document.getElementById('paper-week');
+    const paperTitle = document.getElementById('paper-title');
+
+    weekButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        weekButtons.forEach((item) => item.classList.remove('active'));
+        button.classList.add('active');
+        paperWeek.textContent = `WEEK ${button.dataset.week.padStart(2, '0')}`;
+        paperTitle.textContent = button.dataset.title;
+      });
+    });
+  </script>
+</body>
+</html>
