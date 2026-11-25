@@ -40,12 +40,26 @@
     }
 
     .navicontainer {
-  display: row;
-  justify-content: flex-end; /* vie .navi oikeaan reunaan */
+  display: flex;
+  justify-content: space-between !important;
+  align-items: flex-start;
+  box-sizing: border-box;
+  padding-left: 30px;
   padding-right: 30px;
   padding-top: 10px;
-  position: absolute;
+  position: fixed;
   width: 100%;
+  z-index: 10;
+}
+
+.nav-menu {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateX(-50%);
 }
 
 .navi a.alleviivattu {
@@ -72,8 +86,8 @@
   display: flex;
   flex-direction: row;
    justify-content: center; /* vie linkit oikeaan laitaan boksin sisällä */
-  gap: 10px;                 
-  padding: 20px;
+  gap: 10px;
+  padding: 0 20px;
 }
 
 .navi2 a {
@@ -85,6 +99,10 @@
 
 .navi2 a:hover {
   color: #1f1f1f !important; /* hover-väri */
+}
+
+.navi2 a.alleviivattu {
+  text-decoration: underline;
 }
 
 .navi a:hover {
@@ -348,6 +366,28 @@
 </style>
 
 <body>
+
+<div class="navicontainer">
+  <div class="nav-logo">
+    <a href="index.html">
+      <img src="helmilogo.svg" alt="Helmi logo">
+    </a>
+  </div>
+  <div class="nav-menu">
+    <div class="navi">
+      <navi><a href="Introduction.html">Intro</a></navi>
+      <navi><a href="arts/index.html" class="alleviivattu">Arts</a></navi>
+      <navi><a href="data/index.html">Data</a></navi>
+      <navi><a href="business/index.html">Biz</a></navi>
+      <navi><a href="Experimental-pages.html">Experimental</a></navi>
+    </div>
+    <div class="navi2">
+      <a href="Jewellery lines.html" class="alleviivattu">2025</a>
+      <a href="Jewellery_two.html">2024</a>
+      <a href="Jewellery_three.html">Aalto ARTS</a>
+    </div>
+  </div>
+</div>
 
 
 
