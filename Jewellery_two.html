@@ -40,14 +40,27 @@
     }
 
     .navicontainer {
-  display: row;
-  justify-content: flex-end; /* vie .navi oikeaan reunaan */
+      display: flex;
+      justify-content: space-between !important;
+      align-items: flex-start;
+      box-sizing: border-box;
+      padding-left: 30px;
   padding-right: 30px;
   padding-top: 10px;
   position: fixed;
   width: 100%;
   z-index: 10;
 }
+
+    .nav-menu {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transform: translateX(-50%);
+    }
 
 .navi {
   display: flex;
@@ -85,6 +98,10 @@
 }
 
 .navi a.alleviivattu {
+  text-decoration: underline;
+}
+
+.navi2 a.alleviivattu {
   text-decoration: underline;
 }
 
@@ -212,6 +229,7 @@
     </a>
   </div>
 
+  <div class="nav-menu">
 <div class="navi">
 
         <navi>
@@ -239,9 +257,11 @@
   <div class="navi2">
 
     <a href="Jewellery lines.html">2025</a>
+    <a href="Jewellery_two.html" class="alleviivattu">2024</a>
     <a href="Jewellery_three.html">Aalto ARTS</a>
 
   </div>
+   </div>
    </div>
 
 
